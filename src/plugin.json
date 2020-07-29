@@ -30,6 +30,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "ComplianceExclusions"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRulesets",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceRulesets"
     }
   ],
   "dependencies": {

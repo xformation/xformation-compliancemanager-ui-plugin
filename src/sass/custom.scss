@@ -101,6 +101,10 @@ a {
 .float-right {
     float: right;
 }
+.float-left {
+    float: left;
+}
+
 .text-left{
     text-align: left;
 }
@@ -114,11 +118,9 @@ a {
 .d-flex {
     display: flex;
 }
-
 .d-block{
     display: block;
 }
-
 .d-inline-block{
     display: inline-block;
 }
@@ -126,29 +128,59 @@ a {
 .p-l-0 {
     padding-left: 0 !important;
 }
-
 .p-r-0 {
     padding-right: 0 !important;
 }
-
 .p-t-0 {
     padding-top: 0 !important;
 }
 .p-b-0 {
     padding-bottom: 0 !important;
 }
-
-.m-l-0 {
-    margin-left: 0 !important;
+.p-t-10 {
+    padding-top: 10px !important;
 }
-
-.m-r-0 {
-    margin-right: 0 !important;
+.p-t-15 {
+    padding-top: 15px !important;
 }
 .p-t-20 {
     padding-top: 20px !important;
 }
+.p-b-10 {
+    padding-bottom: 10px !important;
+}
+.p-b-15 {
+    padding-bottom: 15px !important;
+}
+.p-b-20 {
+    padding-bottom: 20px !important;
+}
 
+.m-l-0 {
+    margin-left: 0 !important;
+}
+.m-r-0 {
+    margin-right: 0 !important;
+}
+.m-t-0 {
+    margin-top: 0 !important;
+}
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+.width-25{
+    width: 25%;
+}
+.width-50{
+    width: 50%;
+}
+.width-75{
+    width: 75%;
+}
+.width-100{
+    width: 100%;
+}
 .width-auto {
     width: auto;
 }
@@ -160,6 +192,7 @@ a {
 .border-bottom-0 {
     border-bottom: none !important;
 }
+
 .orange{
     color: #FF8F00;
 }
@@ -169,8 +202,6 @@ a {
 .red{
     color: #F93D3D;
 }
-
-
 
 .form-control {
     display: block;
