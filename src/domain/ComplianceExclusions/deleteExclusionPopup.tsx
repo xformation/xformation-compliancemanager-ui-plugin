@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class DeleteExclusionPopup extends React.Component<any, any> {
     constructor(props: any) {
@@ -19,20 +19,16 @@ export class DeleteExclusionPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
                 <ModalHeader toggle={this.toggle}>Delete Exclusion</ModalHeader>
-                <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
-                    <div className="row">
-                        <div className="col-lg-12 col-md-12 col-sm-12">
-                            <span>You are about to delete Exclusion for cloud account '*' and ruleset 'AWS CIS Foundations v. 1.0.0', are you sure?</span>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-12 col-md-12 col-sm-12">
-                            <button className="text-center">Delete</button>
-                        </div>
-                    </div>
+                <ModalBody style={{ overflowY: 'auto', overflowX: "hidden" }}>
+                    <p>You are about to delete Exclusion for cloud account '*' and ruleset 'AWS CIS Foundations v. 1.0.0', are you sure?</p>
                 </ModalBody>
+                <ModalFooter>
+                    <div className="d-block text-center">
+                        <button className="blue-button m-r-0 m-b-0">Delete</button>
+                    </div>
+                </ModalFooter>
             </Modal>
         );
     }
