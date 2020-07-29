@@ -1,12 +1,88 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
+import { NewRulSetPopup } from './newRuleSetPopup';
+import { AssessmentPopup } from './assessmentPopup';
 
 export class ComplianceRulesets extends React.Component<any, any> {
     breadCrumbs: any;
+    rulesetRef: any;
+    assessmentRef: any;
     constructor(props: any) {
         super(props);
-        this.state = {};
+        this.state = {
+            ruleSetData: [{
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            }, {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            ],
+        };
         this.breadCrumbs = [
             {
                 label: "Home",
@@ -17,6 +93,60 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
+        this.rulesetRef = React.createRef();
+        this.assessmentRef = React.createRef();
+    }
+
+    onClickonClickRunRuleset = (e: any) => {
+        this.rulesetRef.current.toggle();
+    };
+
+    onClickonClickRunAssessment = (e: any) => {
+        this.assessmentRef.current.toggle();
+    };
+
+    displayRuleSetData = () => {
+        const { ruleSetData } = this.state;
+        const retData = [];
+        for (let i = 0; i < ruleSetData.length; i++) {
+            const data = ruleSetData[i];
+            retData.push(
+                <div className="col-lg-4 col-md-6 col-sm-12" >
+                    <div className="d-block width-100 assessment-box" onClick={this.onClickonClickRunAssessment}>
+                        <div className="d-block width-100 assessment-heading">
+                            <i className="fa fa-caret-right left-arrow"></i>
+                            <strong className="d-inline-block">{data.mainTitle}</strong>
+                            <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
+                                <i className="fa fa-ellipsis-v"></i>
+                            </a>
+                        </div>
+                        <div className="d-block width-100 assessment-inner">
+                            <div className="d-block width-100 p-b-15">
+                                <div className="d-inline-block width-50">
+                                    <strong className="d-block cat-sub-name">{data.subTitle}</strong>
+                                </div>
+                                <div className="d-inline-block width-50 text-right">
+                                    <img src={amazonLogo} alt="" />
+                                </div>
+                            </div>
+                            <div className="d-block width-100 p-b-5 cat-name">
+                                {data.title}
+                            </div>
+                            <div className="d-block width-100 p-b-10 rules-policies-text">
+                                {data.no_of_rule}
+                            </div>
+                            <div className="d-block width-100 p-b-5 privacy-text">
+                                {data.company_name}
+                            </div>
+                            <div className="d-block width-100 reference-text">
+                                For additional reference:<a href="#">{data.reference}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        return retData;
     }
 
     render() {
@@ -103,7 +233,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <h3>Showing 6 of 60 results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
-                                    <a href="#" className="blue-button m-r-0">ADD RULESET</a>
+                                    <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
                                 </div>
                             </div>
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">
@@ -128,204 +258,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                             </div>
                             <div className="d-block width-100">
                                 <div className="row">
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-6 col-sm-12">
-                                        <div className="d-block width-100 assessment-box">
-                                            <div className="d-block width-100 assessment-heading">
-                                                <i className="fa fa-caret-right left-arrow"></i>
-                                                <strong className="d-inline-block">RUN ASSESSMENT</strong>
-                                                <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                                    <i className="fa fa-ellipsis-v"></i>
-                                                </a>
-                                            </div>
-                                            <div className="d-block width-100 assessment-inner">
-                                                <div className="d-block width-100 p-b-15">
-                                                    <div className="d-inline-block width-50">
-                                                        <strong className="d-block cat-sub-name">CIS</strong>
-                                                    </div>
-                                                    <div className="d-inline-block width-50 text-right">
-                                                        <img src={amazonLogo} alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 cat-name">
-                                                    AWS CCPA Framework
-                                                </div>
-                                                <div className="d-block width-100 p-b-10 rules-policies-text">
-                                                    33 Rules | No Policies
-                                                </div>
-                                                <div className="d-block width-100 p-b-5 privacy-text">
-                                                    California Consumer Privacy Act.
-                                                </div>
-                                                <div className="d-block width-100 reference-text">
-                                                    For additional reference: <a href="#">https"//oag.ca.gov/privacy/ccpa</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {this.displayRuleSetData()}
                                 </div>
                             </div>
                             <div className="d-block width-100 text-right pagination">
@@ -342,6 +275,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
+                <AssessmentPopup ref={this.assessmentRef} />
+                <NewRulSetPopup ref={this.rulesetRef} />
             </div>
         );
     }
