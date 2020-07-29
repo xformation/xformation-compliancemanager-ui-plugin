@@ -53,7 +53,18 @@
           border: none !important;
           font-size: 13px;
           height: 36px;
-          cursor: pointer;
+        }
+        .input-group-text{
+          background-color: #FFFFFF;
+          border: 1px solid #8392A7;
+          border-radius: 4px;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 34px;
+          color: #3B4859;
+          padding: 0 10px;
+          width: 100%;
+          text-align: left;
         }
         .checkbox{
           display: inline-block;
@@ -63,7 +74,7 @@
           margin-top: -4px;
         }
         textarea.form-control{
-          height: 100px;
+          height: 120px;
         }
         .select-rule{
           margin-top: 10px;

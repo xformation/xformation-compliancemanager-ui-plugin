@@ -850,6 +850,13 @@ a:hover {
   border-bottom-right-radius: 5px;
 }
 
+.environment-text {
+  color: #3b4859;
+  font-weight: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
 @media (max-width: 1200px) {
   .filter-container .assessments {
     float: left;
@@ -924,7 +931,18 @@ a:hover {
   border: none !important;
   font-size: 13px;
   height: 36px;
-  cursor: pointer;
+}
+.modal-container .modal-content .modal-body .form-group .input-group-text {
+  background-color: #ffffff;
+  border: 1px solid #8392a7;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 34px;
+  color: #3b4859;
+  padding: 0 10px;
+  width: 100%;
+  text-align: left;
 }
 .modal-container .modal-content .modal-body .form-group .checkbox {
   display: inline-block;
@@ -934,7 +952,7 @@ a:hover {
   margin-top: -4px;
 }
 .modal-container .modal-content .modal-body .form-group textarea.form-control {
-  height: 100px;
+  height: 120px;
 }
 .modal-container .modal-content .modal-body .form-group .select-rule {
   margin-top: 10px;
