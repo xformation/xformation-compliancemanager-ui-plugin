@@ -164,7 +164,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Monitor | Alerts",
+                label: "Compiiance | COMPLIANCE RULESETS",
                 isCurrentPage: true
             }
         ];
@@ -202,15 +202,15 @@ export class ComplianceRulesets extends React.Component<any, any> {
                     const data = ruleSetData[i];
                     retData.push(
                         <div className="col-lg-4 col-md-6 col-sm-12" >
-                            <div className="d-block width-100 assessment-box" onClick={this.onClickonClickRunAssessment}>
+                            <div className="d-block width-100 assessment-box">
                                 <div className="d-block width-100 assessment-heading">
-                                    <i className="fa fa-caret-right left-arrow"></i>
-                                    <strong className="d-inline-block">{data.mainTitle}</strong>
+                                    <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
+                                    <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.mainTitle}</strong>
                                     <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
                                         <i className="fa fa-ellipsis-v"></i>
                                     </a>
                                 </div>
-                                <div className="d-block width-100 assessment-inner">
+                                <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
                                     <div className="d-block width-100 p-b-15">
                                         <div className="d-inline-block width-50">
                                             <strong className="d-block cat-sub-name">{data.subTitle}</strong>
@@ -306,10 +306,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
     }
 
     render() {
-        const state = this.state;
+        const {perPageLimit, ruleSetData} = this.state;
         return (
             <div className="compliancemanager-dashboard-container">
-                <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="PREFORMANCE MANAGEMENT" />
+                <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
                         <div className="row">
@@ -386,7 +386,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50">
-                                    <h3>Showing 6 of 60 results</h3>
+                                    <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
