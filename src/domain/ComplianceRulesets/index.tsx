@@ -3,6 +3,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
 import { NewRulSetPopup } from './newRuleSetPopup';
 import { AssessmentPopup } from './assessmentPopup';
+import { search } from 'angular-route';
 
 export class ComplianceRulesets extends React.Component<any, any> {
     breadCrumbs: any;
@@ -176,13 +177,13 @@ export class ComplianceRulesets extends React.Component<any, any> {
         this.calculateTotalPages(this.state.ruleSetData);
     }
 
-    calculateTotalPages(displayData: any) {
+    calculateTotalPages = (displayData: any) => {
         const { perPageLimit } = this.state;
         let indexOfLastData = Math.ceil(displayData.length / perPageLimit);
         this.setState({
             totalPages: indexOfLastData,
         });
-    }
+    };
 
     onClickonClickRunRuleset = (e: any) => {
         this.rulesetRef.current.toggle();
@@ -242,8 +243,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
         return retData;
     }
 
-    keyPress = (e: any) => {
-        const { value } = e.target.value;
+    onSearchChange = (e: any) => {
+        const { value } = e.target;
         this.setState({
             searchKey: value,
         });
@@ -254,9 +255,11 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 searchResult.push(duplicateruleSetData[i]);
             }
         }
-        // this.setState({
-        //     ruleSetData: searchResult,
-        // });
+        this.calculateTotalPages(searchResult);
+        this.setState({
+            ruleSetData: searchResult,
+            currentPage: 0
+        });
     }
 
     peginationOfBox() {
@@ -306,7 +309,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
     }
 
     render() {
-        const {perPageLimit, ruleSetData} = this.state;
+        const { perPageLimit, ruleSetData } = this.state;
         return (
             <div className="compliancemanager-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
@@ -396,12 +399,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6">
                                         <div className="d-inline-block form-group search-control-group">
-                                            <form>
-                                                <input type="text" onChange={this.keyPress} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
-                                                <button>
-                                                    <i className="fa fa-search"></i>
-                                                </button>
-                                            </form>
+                                            <input type="text" onChange={this.onSearchChange} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
+                                            <button>
+                                                <i className="fa fa-search"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-6">
