@@ -35,11 +35,12 @@ export class NewRulSetPopup extends React.Component<any, any> {
                             <i className="fa fa-info-circle"></i>
                         </label>
                         <select className="form-control d-block" id="rulesetGroup">
-                            <option>Select Platform</option>
-                            <option>Select Platform</option>
-                            <option>Select Platform</option>
-                            <option>Select Platform</option>
-                            <option>Select Platform</option>
+                            <option value="" selected>Select Platform</option>
+                            <option value="All">All</option>
+                            <option value="AWS">AWS</option>
+                            <option value="Azure">Azure</option>
+                            <option value="Gcp">Gcp</option>
+                            <option value="Kubernetes">Kubernetes</option>
                         </select>
                     </div>
                 </ModalBody>

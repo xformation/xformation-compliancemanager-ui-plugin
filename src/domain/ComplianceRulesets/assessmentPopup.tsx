@@ -28,11 +28,12 @@ export class AssessmentPopup extends React.Component<any, any> {
                             <i className="fa fa-info-circle"></i>
                         </label>
                         <select className="form-control d-block" id="rulesetGroup">
-                            <option>Select account</option>
-                            <option>Select account</option>
-                            <option>Select account</option>
-                            <option>Select account</option>
-                            <option>Select account</option>
+                            <option value="" selected>Cloud account</option>
+                            <option value="AllAccount">All Account</option>
+                            <option value="AWS">AWS</option>
+                            <option value="Azure">Azure</option>
+                            <option value="Gcp">Gcp</option>
+                            <option value="Kubernetes">Kubernetes</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -41,11 +42,12 @@ export class AssessmentPopup extends React.Component<any, any> {
                             <i className="fa fa-info-circle"></i>
                         </label>
                         <select className="form-control d-block" id="rulesetGroup">
-                            <option>Select Region</option>
-                            <option>Select Region</option>
-                            <option>Select Region</option>
-                            <option>Select Region</option>
-                            <option>Select Region</option>
+                            <option value="" selected>Select Region</option>
+                            <option value="Bahrain">Bahrain</option>
+                            <option value="CanadaCentral">Canada Central</option>
+                            <option value="Frunkfurt">Frunkfurt</option>
+                            <option value="HongKong">Hong Kong</option>
+                            <option value="Ireland">Ireland</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -55,10 +57,8 @@ export class AssessmentPopup extends React.Component<any, any> {
                         </label>
                         <select className="form-control d-block" id="rulesetGroup">
                             <option>Select VPC</option>
-                            <option>Select VPC</option>
-                            <option>Select VPC</option>
-                            <option>Select VPC</option>
-                            <option>Select VPC</option>
+                            <option value="All">All</option>
+                            <option value="vpc-0123abcdrfgh">vpc-0123abcdrfgh</option>
                         </select>
                     </div>
                 </ModalBody>

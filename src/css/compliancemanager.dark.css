@@ -167,6 +167,10 @@ a:hover {
   padding-bottom: 20px !important;
 }
 
+.p-r-5 {
+  padding-right: 5px !important;
+}
+
 .m-l-0 {
   margin-left: 0 !important;
 }
@@ -221,6 +225,10 @@ a:hover {
 
 .red {
   color: #f93d3d;
+}
+
+.yellow {
+  color: #ffff00;
 }
 
 .form-control {
@@ -343,12 +351,75 @@ a:hover {
   margin-top: 23px;
 }
 .filter-container .assessments .settings {
+  position: relative;
+}
+.filter-container .assessments .settings a {
   padding: 5px 10px 4px !important;
   min-width: auto;
 }
+.filter-container .assessments .settings .settings-toggle {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  z-index: 1;
+  background-color: #e6e6e6;
+  width: 180px;
+  padding: 5px;
+  text-align: right;
+}
+.filter-container .assessments .settings .settings-toggle.active {
+  display: block;
+}
+.filter-container .assessments .settings .settings-toggle ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.filter-container .assessments .settings .settings-toggle ul li {
+  font-size: 12px;
+  line-height: 18px;
+  color: #3b4859;
+  font-weight: 500;
+  display: block;
+  padding-bottom: 3px;
+}
 .filter-container .assessments .file-export {
+  position: relative;
+}
+.filter-container .assessments .file-export a {
   padding: 5px 10px 4px !important;
   min-width: auto;
+}
+.filter-container .assessments .file-export .file-export-toggle {
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 35px;
+  z-index: 1;
+  background-color: #e6e6e6;
+  width: 230px;
+  padding: 5px;
+}
+.filter-container .assessments .file-export .file-export-toggle.active {
+  display: block;
+}
+.filter-container .assessments .file-export .file-export-toggle ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.filter-container .assessments .file-export .file-export-toggle ul li {
+  font-size: 12px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  display: block;
+  padding-bottom: 3px;
+}
+.filter-container .assessments .file-export .file-export-toggle ul li img {
+  max-width: 20px;
+  height: auto;
 }
 
 .compliance-main-box {
@@ -763,12 +834,64 @@ a:hover {
   font-weight: 500;
   vertical-align: top;
 }
-.assessment-boxes .assessment-box .assessment-heading a {
+.assessment-boxes .assessment-box .assessment-heading .assessment-toggle-main {
+  position: relative;
+}
+.assessment-boxes
+  .assessment-box
+  .assessment-heading
+  .assessment-toggle-main
+  .gray-button {
   padding: 3px 10px !important;
   vertical-align: top;
   font-size: 16px;
   background-color: #f0f3f7 !important;
   color: #707070 !important;
+}
+.assessment-boxes
+  .assessment-box
+  .assessment-heading
+  .assessment-toggle-main
+  .assessment-toggle {
+  display: none;
+  position: absolute;
+  right: 35px;
+  top: 0;
+  background-color: #efefef;
+  width: 85px;
+  text-align: center;
+  border-radius: 3px;
+}
+.assessment-boxes
+  .assessment-box
+  .assessment-heading
+  .assessment-toggle-main
+  .assessment-toggle.active {
+  display: block;
+}
+.assessment-boxes
+  .assessment-box
+  .assessment-heading
+  .assessment-toggle-main
+  .assessment-toggle:after {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5px 0 5.5px 11px;
+  border-color: transparent transparent transparent #ebebeb;
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 10px;
+}
+.assessment-boxes
+  .assessment-box
+  .assessment-heading
+  .assessment-toggle-main
+  .assessment-toggle
+  a {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .assessment-boxes .assessment-box .assessment-inner {
   background: #f0f3f7;
@@ -866,7 +989,7 @@ a:hover {
   border-bottom-right-radius: 5px;
 }
 
-.there-no-date {
+.there-no-data {
   text-align: center;
   padding-top: 50px;
   font-weight: 600;

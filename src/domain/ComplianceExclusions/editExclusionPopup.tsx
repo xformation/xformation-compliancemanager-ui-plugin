@@ -29,10 +29,11 @@ export class EditExclusionPopup extends React.Component<any, any> {
                         </label>
                         <select className="form-control d-block" id="rulesetGroup">
                             <option>Select Ruleset</option>
-                            <option>Select Ruleset</option>
-                            <option>Select Ruleset</option>
-                            <option>Select Ruleset</option>
-                            <option>Select Ruleset</option>
+                            <option>AWS CCPA Fremework</option>
+                            <option>AWS CIS Foundation V.1.0.0</option>
+                            <option>AWS CIS Foundation V.1.0.1</option>
+                            <option>AWS CIS Foundation V.1.0.2</option>
+                            <option>AWS CIS Foundation V.1.0.3</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -40,24 +41,36 @@ export class EditExclusionPopup extends React.Component<any, any> {
                         <div className="d-block select-rule">
                             <select className="form-control d-block" id="ruleGroup">
                                 <option>Select Rule</option>
-                                <option>Select Rule</option>
-                                <option>Select Rule</option>
-                                <option>Select Rule</option>
-                                <option>Select Rule</option>
+                                <option>Avoid the use of "root" account</option>
+                                <option>CloudTrail must enable log file validation</option>
+                                <option>Enforce password policy</option>
+                                <option>Ensure CloudTrail is enable in all regions</option>
+                                <option>Credential reports was generated in the last 24 hours</option>
                             </select>
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="checkbox" className="checkbox" /> Excluded by Cloud Account
+                        <input type="checkbox" className="checkbox" checked /> Excluded by Cloud Account
+                        <div className="d-block select-rule">
+                            <select className="form-control d-block" id="ruleGroup">
+                                <option>Select Account</option>
+                                <option>AWS (0123456)</option>
+                                <option>AWS (0123456789)</option>
+                                <option>AWS (0123456323232)</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="form-group">
-                        <input type="checkbox" className="checkbox" /> Excluded by Entity
+                        <input type="checkbox" className="checkbox" checked /> Excluded by Entity
+                        <div className="d-block select-rule">
+                            
+                        </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="commentsGroup" className="d-block">
                             Comments
                         </label>
-                        <textarea className="form-control d-block"></textarea>
+                        <textarea className="input-group-text d-block"></textarea>
                     </div>
                 </ModalBody>
                 <ModalFooter>

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
+import runHandIcon from '../../img/run-hand-icon.png';
+import runSettingisIcon from '../../img/run-settingis-icon.png';
 import { NewRulSetPopup } from './newRuleSetPopup';
 import { AssessmentPopup } from './assessmentPopup';
 
@@ -171,11 +173,17 @@ export class ComplianceRulesets extends React.Component<any, any> {
         ];
         this.rulesetRef = React.createRef();
         this.assessmentRef = React.createRef();
+        this.assessmentHandleClick = this.assessmentHandleClick.bind(this);
     }
+
+    assessmentHandleClick() {
+        var toggle = this.state.assessmentActive === 'active' ? '' : 'active';
+        this.setState({assessmentActive: toggle});
+    };
 
     componentDidMount() {
         this.calculateTotalPages(this.state.ruleSetData);
-    }
+    };
 
     calculateTotalPages = (displayData: any) => {
         const { perPageLimit } = this.state;
@@ -207,9 +215,19 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 <div className="d-block width-100 assessment-heading">
                                     <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
                                     <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.mainTitle}</strong>
-                                    <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                        <i className="fa fa-ellipsis-v"></i>
-                                    </a>
+                                    <div className="d-inline-block float-right width-auto assessment-toggle-main">
+                                        <a href="#" className="gray-button min-width-inherit m-r-0" onClick={this.assessmentHandleClick}>
+                                            <i className="fa fa-ellipsis-v"></i>
+                                        </a>
+                                        <div className={`assessment-toggle ${this.state.assessmentActive}`}>
+                                            <a href="#" className="d-inline-block">
+                                                <img src={runSettingisIcon} alt="" />
+                                            </a>
+                                            <a href="#" className="d-inline-block">
+                                                <img src={runHandIcon} alt="" />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
                                     <div className="d-block width-100 p-b-15">
@@ -325,11 +343,12 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="rousourceGroup">
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
+                                        <option value="" selected>Select Platform</option>
+                                        <option value="All">All</option>
+                                        <option value="AWS">AWS</option>
+                                        <option value="Azure">Azure</option>
+                                        <option value="Gcp">Gcp</option>
+                                        <option value="Kubernetes">Kubernetes</option>
                                     </select>
                                 </div>
                             </div>
@@ -340,11 +359,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="resources">
-                                        <option>Select Policy Category</option>
-                                        <option>Select Policy Category</option>
-                                        <option>Select Policy Category</option>
-                                        <option>Select Policy Category</option>
-                                        <option>Select Policy Category</option>
+                                        <option value="" selected>Select Policy Category</option>
+                                        <option value="All">All</option>
+                                        <option value="ComplianceFramework">Compliance Framework</option>
+                                        <option value="BestPractices">Best Practices</option>
                                     </select>
                                 </div>
                             </div>
@@ -355,11 +373,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="timeRange">
-                                        <option>Select Type</option>
-                                        <option>Select Type</option>
-                                        <option>Select Type</option>
-                                        <option>Select Type</option>
-                                        <option>Select Type</option>
+                                        <option value="" selected>Select Type</option>
+                                        <option value="All">All</option>
+                                        <option value="Managed">Managed</option>
+                                        <option value="All">Customer Managed</option>
                                     </select>
                                 </div>
                             </div>
@@ -370,11 +387,9 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="timeRange">
-                                        <option>Select Policy Enabled</option>
-                                        <option>Select Policy Enabled</option>
-                                        <option>Select Policy Enabled</option>
-                                        <option>Select Policy Enabled</option>
-                                        <option>Select Policy Enabled</option>
+                                        <option value="" selected>Select Policy Enabled</option>
+                                        <option value="All">All</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
                             </div>

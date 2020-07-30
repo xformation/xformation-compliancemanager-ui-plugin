@@ -3,10 +3,12 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import settingsIcon from '../../img/settings.png';
 import fileExportIcon from '../../img/file-export.png';
 import { AssessmentPopup } from './assessmentPopup';
+import { AssetssmentPopup } from './assetssmentPopup';
 
 export class Dashboard extends React.Component<any, any> {
     breadCrumbs: any;
     assessmentRef: any;
+    assetssmentRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -71,6 +73,7 @@ export class Dashboard extends React.Component<any, any> {
                 color: 'yellow-green',
             },
             ],
+            settingsToggle:true
         };
         this.breadCrumbs = [
             {
@@ -82,11 +85,30 @@ export class Dashboard extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
+        
         this.assessmentRef = React.createRef();
+        this.assetssmentRef = React.createRef();
+        this.settingsHandleClick = this.settingsHandleClick.bind(this);
+        this.fileExportHandleClick = this.fileExportHandleClick.bind(this);
+        
     }
+
+    settingsHandleClick() {
+        var toggle = this.state.settingsActive === 'active' ? '' : 'active';
+        this.setState({settingsActive: toggle});
+    };
+
+    fileExportHandleClick() {
+        var toggle = this.state.fileExportActive === 'active' ? '' : 'active';
+        this.setState({fileExportActive: toggle});
+    };
 
     onClickonClickRunAssessment = (e: any) => {
         this.assessmentRef.current.toggle();
+    };
+
+    onClickonClickRunAssetssment = (e: any) => {
+        this.assetssmentRef.current.toggle();
     };
 
     displayDashboardData() {
@@ -96,7 +118,7 @@ export class Dashboard extends React.Component<any, any> {
             const data = dashboardData[i];
             retData.push(
                 <div className="col-xl-5 col-lg-4 col-md-6 col-sm-12">
-                    <div className="d-block compliance-main-box" onClick={this.onClickonClickRunAssessment}>
+                    <div className="d-block compliance-main-box" onClick={this.onClickonClickRunAssetssment}>
                         <div className="d-block heading">
                             <strong className="d-inline-block">{data.title}</strong>
                             <i className="fa fa-caret-right float-right"></i>
@@ -112,6 +134,8 @@ export class Dashboard extends React.Component<any, any> {
         }
         return retData;
     }
+
+    
     render() {
         const state = this.state;
         return (
@@ -129,11 +153,12 @@ export class Dashboard extends React.Component<any, any> {
                                             <i className="fa fa-info-circle"></i>
                                             </label>
                                             <select className="form-control" id="rousourceGroup">
-                                                <option>Select Platform</option>
-                                                <option>Select Platform</option>
-                                                <option>Select Platform</option>
-                                                <option>Select Platform</option>
-                                                <option>Select Platform</option>
+                                                <option value="" selected>Select Platform</option>
+                                                <option value="All">All</option>
+                                                <option value="AWS">AWS</option>
+                                                <option value="Azure">Azure</option>
+                                                <option value="Gcp">Gcp</option>
+                                                <option value="Kubernetes">Kubernetes</option>
                                             </select>
                                         </div>
                                     </div>
@@ -144,11 +169,12 @@ export class Dashboard extends React.Component<any, any> {
                                             <i className="fa fa-info-circle"></i>
                                             </label>
                                             <select className="form-control" id="resources">
-                                                <option>Select Ruleset</option>
-                                                <option>Select Ruleset</option>
-                                                <option>Select Ruleset</option>
-                                                <option>Select Ruleset</option>
-                                                <option>Select Ruleset</option>
+                                                <option value="">Select Ruleset</option>
+                                                <option value="All">All</option>
+                                                <option value="AWS-Test">AWS-Test</option>
+                                                <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                                <option value="AzureCheckUp">Azure CheckUp</option>
+                                                <option value="GcpCheckUp">GCP CheckUp</option>
                                             </select>
                                         </div>
                                     </div>
@@ -159,11 +185,8 @@ export class Dashboard extends React.Component<any, any> {
                                             <i className="fa fa-info-circle"></i>
                                             </label>
                                             <select className="form-control" id="timeRange">
-                                                <option>Select Organizational Unit</option>
-                                                <option>Select Organizational Unit</option>
-                                                <option>Select Organizational Unit</option>
-                                                <option>Select Organizational Unit</option>
-                                                <option>Select Organizational Unit</option>
+                                                <option value="">Select Organizational Unit</option>
+                                                <option value="Synectiks">Synectiks</option>
                                             </select>
                                         </div>
                                     </div>
@@ -181,12 +204,57 @@ export class Dashboard extends React.Component<any, any> {
                                     <a onClick={this.onClickonClickRunAssessment} className="blue-button">
                                         <i className="fa fa-caret-right"></i>&nbsp;&nbsp; RUN ASSESSMENTS
                                     </a>
-                                    <a href="#" className="white-button settings">
-                                        <img src={settingsIcon} alt="" />
-                                    </a>
-                                    <a href="#" className="white-button m-r-0 file-export">
-                                        <img src={fileExportIcon} alt="" />
-                                    </a>
+
+                                    <div className="d-inline-block settings">
+                                        <a href="#" className="white-button" onClick={this.settingsHandleClick}>
+                                            <img src={settingsIcon} alt="" />
+                                        </a>
+                                        
+                                        <div className={`settings-toggle ${this.state.settingsActive}`}>
+                                            <ul>
+                                                <li>
+                                                    <span className="red">Red </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">0% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>10%</span>
+                                                </li>
+                                                <li>
+                                                    <span className="orange">Yellow </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">10% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>90%</span>
+                                                </li>
+                                                <li>
+                                                    <span className="yellow-green">Green </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">90% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>100%</span>
+                                                </li>
+                                            </ul>
+                                        </div> 
+                                    </div>
+
+                                    <div className="d-inline-block file-export">
+                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                                            <img src={fileExportIcon} alt="" />
+                                        </a>
+                                        
+                                        <div className={`file-export-toggle ${this.state.fileExportActive}`}>
+                                            <ul>
+                                                <li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                                </li>
+                                                <li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                                </li>
+                                            </ul>
+                                        </div> 
+                                    </div>
+
+                                    
                                 </div>
                             </div>
                         </div>
@@ -198,6 +266,7 @@ export class Dashboard extends React.Component<any, any> {
                     </div>
                 </div>
                 <AssessmentPopup ref={this.assessmentRef} />
+                <AssetssmentPopup ref={this.assetssmentRef} />
             </div>
         );
     }
