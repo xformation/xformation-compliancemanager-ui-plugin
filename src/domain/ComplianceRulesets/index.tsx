@@ -3,7 +3,6 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
 import { NewRulSetPopup } from './newRuleSetPopup';
 import { AssessmentPopup } from './assessmentPopup';
-import { search } from 'angular-route';
 
 export class ComplianceRulesets extends React.Component<any, any> {
     breadCrumbs: any;
@@ -16,76 +15,77 @@ export class ComplianceRulesets extends React.Component<any, any> {
             totalPages: '',
             currentPage: 0,
             perPageLimit: 6,
-            ruleSetData: [{
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            }, {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
+            ruleSetData: [
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: '',
+                    title: 'AWS CCPA Framework',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: 'CIS',
+                    title: 'AWS CIS Foundation',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: '',
+                    title: 'AWS CCPA Framework',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: '',
+                    title: 'AWS CCPA Framework',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: 'CIS',
+                    title: 'AWS CIS Foundation',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: '',
+                    title: 'AWS CCPA Framework',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                }, {
+                    mainTitle: 'RUN ASSESSMENT',
+                    subTitle: 'CIS',
+                    title: 'AWS CIS Foundation',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
+                {
+                    mainTitle: 'RUN ASSESSMENT',
+                    title: 'AWS CCPA Framework',
+                    no_of_rule: '33 Rules | No Policies',
+                    company_name: 'California Consumer Privacy Act.',
+                    reference: 'https"//oag.ca.gov/privacy/ccpa',
+                    menuStatusOpen: false,
+                },
             ],
             duplicateruleSetData: [{
                 mainTitle: 'RUN ASSESSMENT',
@@ -238,6 +238,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
                     );
                 }
             }
+        } else {
+            retData.push(<div className="d-block width-100 there-no-data">There is no data</div>);
         }
 
         return retData;
@@ -263,7 +265,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
     }
 
     peginationOfBox() {
-        const { currentPage, totalPages } = this.state;
+        const { currentPage, totalPages, ruleSetData } = this.state;
         let rows = [];
         for (let i = 0; i < totalPages; i++) {
             console.log(currentPage);
@@ -389,13 +391,13 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50">
-                                    <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>
+                                    {ruleSetData.length > 0 && <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>}
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
                                 </div>
                             </div>
-                            <div className="d-block width-100 p-t-15 p-b-20 search-box">
+                            {ruleSetData.length > 0 && <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6">
                                         <div className="d-inline-block form-group search-control-group">
@@ -412,15 +414,16 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>}
                             <div className="d-block width-100">
                                 <div className="row">
                                     {this.displayRuleSetData()}
                                 </div>
                             </div>
-                            <div className="d-block width-100 text-right pagination">
+
+                            {ruleSetData.length > 0 && <div className="d-block width-100 text-right pagination">
                                 {this.peginationOfBox()}
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </div>

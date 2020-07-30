@@ -167,8 +167,8 @@ export class ComplianceExclusions extends React.Component<any, any> {
         return retData;
     }
 
-    keyPress = (e: any) => {
-        const { value } = e.target.value;
+    onSearchChange = (e: any) => {
+        const { value } = e.target;
         this.setState({
             searchKey: value,
         });
@@ -179,9 +179,9 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 searchResult.push(duplicatedata[i]);
             }
         }
-        // this.setState({
-        //     exclusionData: searchResult,
-        // });
+        this.setState({
+            exclusionData: searchResult,
+        });
     }
 
     render() {
@@ -269,7 +269,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                 <div className="col-lg-6 col-md-6 col-sm-9">
                                     <div className="d-inline-block form-group search-control-group">
                                         <form>
-                                            <input type="text" onChange={this.keyPress} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
+                                            <input type="text" onChange={this.onSearchChange} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
                                             <button>
                                                 <i className="fa fa-search"></i>
                                             </button>

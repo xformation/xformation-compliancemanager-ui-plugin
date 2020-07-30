@@ -830,7 +830,7 @@ a:hover {
 }
 .assessment-boxes .pagination ul li a.active {
   background-color: #cbcfd4;
-  color: white;
+  color: black;
 }
 .assessment-boxes .pagination ul li a.deactive {
   background-color: white;
@@ -864,6 +864,14 @@ a:hover {
   -moz-border-radius-bottomright: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.there-no-date {
+  text-align: center;
+  padding-top: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .environment-text {
