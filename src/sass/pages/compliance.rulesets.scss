@@ -209,6 +209,24 @@
                         background-color: #CBCFD4;
                     }
                 }
+                a.active{
+                    background-color: #CBCFD4;
+                    color: black;
+                  }
+                 a.deactive{
+                    background-color: white;
+                    color: black;
+                  }
+                 a.desable{
+                    background-color:rgb(94, 87, 87);
+                    color: white;
+                  
+                  }
+                 a.enable{
+                    background-color: #3b4859;
+                    color: #ffffff;
+                  
+                  }
                 &.previous{
                     a{
                         padding-left: 20px;
@@ -236,6 +254,7 @@
                 }
             }
         }
+      
     }
 }
 

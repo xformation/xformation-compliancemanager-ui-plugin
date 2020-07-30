@@ -11,6 +11,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
+            searchKey: '',
+            totalPages: '',
+            currentPage: 0,
+            perPageLimit: 6,
             ruleSetData: [{
                 mainTitle: 'RUN ASSESSMENT',
                 subTitle: '',
@@ -82,6 +86,77 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 menuStatusOpen: false,
             },
             ],
+            duplicateruleSetData: [{
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: '',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            }, {
+                mainTitle: 'RUN ASSESSMENT',
+                subTitle: 'CIS',
+                title: 'AWS CIS Foundation',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+            },
+            {
+                mainTitle: 'RUN ASSESSMENT',
+                title: 'AWS CCPA Framework',
+                no_of_rule: '33 Rules | No Policies',
+                company_name: 'California Consumer Privacy Act.',
+                reference: 'https"//oag.ca.gov/privacy/ccpa',
+                menuStatusOpen: false,
+
+            }]
         };
         this.breadCrumbs = [
             {
@@ -97,6 +172,18 @@ export class ComplianceRulesets extends React.Component<any, any> {
         this.assessmentRef = React.createRef();
     }
 
+    componentDidMount() {
+        this.calculateTotalPages(this.state.ruleSetData);
+    }
+
+    calculateTotalPages(displayData: any) {
+        const { perPageLimit } = this.state;
+        let indexOfLastData = Math.ceil(displayData.length / perPageLimit);
+        this.setState({
+            totalPages: indexOfLastData,
+        });
+    }
+
     onClickonClickRunRuleset = (e: any) => {
         this.rulesetRef.current.toggle();
     };
@@ -106,47 +193,116 @@ export class ComplianceRulesets extends React.Component<any, any> {
     };
 
     displayRuleSetData = () => {
-        const { ruleSetData } = this.state;
+        const { ruleSetData, perPageLimit, currentPage } = this.state;
         const retData = [];
-        for (let i = 0; i < ruleSetData.length; i++) {
-            const data = ruleSetData[i];
-            retData.push(
-                <div className="col-lg-4 col-md-6 col-sm-12" >
-                    <div className="d-block width-100 assessment-box" onClick={this.onClickonClickRunAssessment}>
-                        <div className="d-block width-100 assessment-heading">
-                            <i className="fa fa-caret-right left-arrow"></i>
-                            <strong className="d-inline-block">{data.mainTitle}</strong>
-                            <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
-                                <i className="fa fa-ellipsis-v"></i>
-                            </a>
-                        </div>
-                        <div className="d-block width-100 assessment-inner">
-                            <div className="d-block width-100 p-b-15">
-                                <div className="d-inline-block width-50">
-                                    <strong className="d-block cat-sub-name">{data.subTitle}</strong>
+        const length = ruleSetData.length;
+        if (length > 0) {
+            for (let i = 0; i < length; i++) {
+                if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
+                    const data = ruleSetData[i];
+                    retData.push(
+                        <div className="col-lg-4 col-md-6 col-sm-12" >
+                            <div className="d-block width-100 assessment-box" onClick={this.onClickonClickRunAssessment}>
+                                <div className="d-block width-100 assessment-heading">
+                                    <i className="fa fa-caret-right left-arrow"></i>
+                                    <strong className="d-inline-block">{data.mainTitle}</strong>
+                                    <a href="#" className="gray-button float-right width-auto min-width-inherit m-r-0">
+                                        <i className="fa fa-ellipsis-v"></i>
+                                    </a>
                                 </div>
-                                <div className="d-inline-block width-50 text-right">
-                                    <img src={amazonLogo} alt="" />
+                                <div className="d-block width-100 assessment-inner">
+                                    <div className="d-block width-100 p-b-15">
+                                        <div className="d-inline-block width-50">
+                                            <strong className="d-block cat-sub-name">{data.subTitle}</strong>
+                                        </div>
+                                        <div className="d-inline-block width-50 text-right">
+                                            <img src={amazonLogo} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="d-block width-100 p-b-5 cat-name">
+                                        {data.title}
+                                    </div>
+                                    <div className="d-block width-100 p-b-10 rules-policies-text">
+                                        {data.no_of_rule}
+                                    </div>
+                                    <div className="d-block width-100 p-b-5 privacy-text">
+                                        {data.company_name}
+                                    </div>
+                                    <div className="d-block width-100 reference-text">
+                                        For additional reference:<a href="#">{data.reference}</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="d-block width-100 p-b-5 cat-name">
-                                {data.title}
-                            </div>
-                            <div className="d-block width-100 p-b-10 rules-policies-text">
-                                {data.no_of_rule}
-                            </div>
-                            <div className="d-block width-100 p-b-5 privacy-text">
-                                {data.company_name}
-                            </div>
-                            <div className="d-block width-100 reference-text">
-                                For additional reference:<a href="#">{data.reference}</a>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            );
+                    );
+                }
+            }
         }
+
         return retData;
+    }
+
+    keyPress = (e: any) => {
+        const { value } = e.target.value;
+        this.setState({
+            searchKey: value,
+        });
+        const { duplicateruleSetData } = this.state;
+        var searchResult = [];
+        for (let i = 0; i < duplicateruleSetData.length; i++) {
+            if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicateruleSetData[i]);
+            }
+        }
+        // this.setState({
+        //     ruleSetData: searchResult,
+        // });
+    }
+
+    peginationOfBox() {
+        const { currentPage, totalPages } = this.state;
+        let rows = [];
+        for (let i = 0; i < totalPages; i++) {
+            console.log(currentPage);
+            rows.push(<li className="" key={i}><a className={currentPage === i ? 'active' : 'deactive'} href="#" onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
+        }
+        return (
+            <ul>
+                <li className="previous">
+                    <a className={currentPage === 0 ? 'desable' : 'enable'} href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
+                </li>
+                {rows}
+                <li className="next">
+                    <a className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'} href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
+                </li>
+            </ul>
+        );
+    }
+
+    navigatePage(target: any, e: any, i: any) {
+        const { totalPages, currentPage } = this.state;
+        e.preventDefault();
+        switch (target) {
+            case 'pre':
+                if (currentPage !== 0) {
+                    this.setState({
+                        currentPage: currentPage - 1,
+                    });
+                }
+                break;
+            case 'next':
+                if (currentPage !== totalPages - 1) {
+                    this.setState({
+                        currentPage: currentPage + 1,
+                    });
+                }
+                break;
+            case 'btn-click':
+                this.setState({
+                    currentPage: i
+                });
+                break;
+        }
     }
 
     render() {
@@ -241,7 +397,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <div className="col-lg-6 col-md-6 col-sm-6">
                                         <div className="d-inline-block form-group search-control-group">
                                             <form>
-                                                <input type="text" className="input-group-text" placeholder="Search" />
+                                                <input type="text" onChange={this.keyPress} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
                                                 <button>
                                                     <i className="fa fa-search"></i>
                                                 </button>
@@ -262,15 +418,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 </div>
                             </div>
                             <div className="d-block width-100 text-right pagination">
-                                <ul>
-                                    <li className="previous"><a href="#">Previous</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li className="next"><a href="#">Next</a></li>
-                                </ul>
+                                {this.peginationOfBox()}
                             </div>
                         </div>
                     </div>

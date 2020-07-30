@@ -828,6 +828,22 @@ a:hover {
 .assessment-boxes .pagination ul li a:hover {
   background-color: #cbcfd4;
 }
+.assessment-boxes .pagination ul li a.active {
+  background-color: #cbcfd4;
+  color: white;
+}
+.assessment-boxes .pagination ul li a.deactive {
+  background-color: white;
+  color: black;
+}
+.assessment-boxes .pagination ul li a.desable {
+  background-color: #5e5757;
+  color: white;
+}
+.assessment-boxes .pagination ul li a.enable {
+  background-color: #3b4859;
+  color: #ffffff;
+}
 .assessment-boxes .pagination ul li.previous a {
   padding-left: 20px;
   padding-right: 20px;
