@@ -171,6 +171,14 @@ a:hover {
   padding-right: 5px !important;
 }
 
+.p-r-10 {
+  padding-right: 10px !important;
+}
+
+.p-r-15 {
+  padding-right: 15px !important;
+}
+
 .m-l-0 {
   margin-left: 0 !important;
 }
@@ -627,8 +635,42 @@ a:hover {
 }
 
 .results-container .search-box .file-export {
+  position: relative;
+}
+.results-container .search-box .file-export a {
   padding: 5px 10px 4px !important;
   min-width: auto;
+}
+.results-container .search-box .file-export .file-export-toggle {
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 35px;
+  z-index: 1;
+  background-color: #e6e6e6;
+  width: 230px;
+  padding: 5px;
+  text-align: left;
+}
+.results-container .search-box .file-export .file-export-toggle.active {
+  display: block;
+}
+.results-container .search-box .file-export .file-export-toggle ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.results-container .search-box .file-export .file-export-toggle ul li {
+  font-size: 12px;
+  line-height: 20px;
+  color: #3b4859;
+  font-weight: 500;
+  display: block;
+  padding-bottom: 3px;
+}
+.results-container .search-box .file-export .file-export-toggle ul li img {
+  max-width: 20px;
+  height: auto;
 }
 
 .exclusion-details {
@@ -853,7 +895,6 @@ a:hover {
   .assessment-heading
   .assessment-toggle-main
   .assessment-toggle {
-  display: none;
   position: absolute;
   right: 35px;
   top: 0;
@@ -861,13 +902,6 @@ a:hover {
   width: 85px;
   text-align: center;
   border-radius: 3px;
-}
-.assessment-boxes
-  .assessment-box
-  .assessment-heading
-  .assessment-toggle-main
-  .assessment-toggle.active {
-  display: block;
 }
 .assessment-boxes
   .assessment-box
@@ -1062,6 +1096,9 @@ a:hover {
 .modal-container .modal-content .modal-body {
   padding: 0px 10px;
   border-bottom: 1px dashed #a2c0d4;
+}
+.modal-container .modal-content .modal-body p {
+  font-style: italic;
 }
 .modal-container .modal-content .modal-body .form-group {
   padding-bottom: 20px;

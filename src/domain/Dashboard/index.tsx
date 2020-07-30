@@ -252,9 +252,7 @@ export class Dashboard extends React.Component<any, any> {
                                                 </li>
                                             </ul>
                                         </div> 
-                                    </div>
-
-                                    
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>

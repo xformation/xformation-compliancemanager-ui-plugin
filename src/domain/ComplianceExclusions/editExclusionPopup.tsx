@@ -63,7 +63,24 @@ export class EditExclusionPopup extends React.Component<any, any> {
                     <div className="form-group">
                         <input type="checkbox" className="checkbox" checked /> Excluded by Entity
                         <div className="d-block select-rule">
-                            
+                            <div className="d-inline-block width-50">
+                                <div className="d-inline-block radio p-r-10">
+                                    <input type="radio" />
+                                </div>
+                                <div className="d-inline-block radio-input">
+                                    <label htmlFor="rulesetGroup" className="d-block">Entity Name</label>
+                                    <input type="text" className="input-group-text d-block" placeholder="" />
+                                </div>
+                            </div>
+                            <div className="d-inline-block width-50">
+                                <div className="d-inline-block radio p-r-10">
+                                    <input type="radio" />
+                                </div>
+                                <div className="d-inline-block radio-input">
+                                    <label htmlFor="rulesetGroup" className="d-block">Entity ID</label>
+                                    <input type="text" className="input-group-text d-block" placeholder="" />
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                     <div className="form-group">

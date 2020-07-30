@@ -226,7 +226,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                         <a href="#" className="gray-button min-width-inherit m-r-0" onClick={() => this.assessmentHandleClick(i)}>
                                             <i className="fa fa-ellipsis-v"></i>
                                         </a>
-                                        {data.menuStatusOpen == true && <div>
+                                        {data.menuStatusOpen == true && <div className="assessment-toggle">
                                             <a href="#" className="d-inline-block">
                                                 <img src={runSettingisIcon} alt="" />
                                             </a>

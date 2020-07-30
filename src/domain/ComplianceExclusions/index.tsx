@@ -123,7 +123,13 @@ export class ComplianceExclusions extends React.Component<any, any> {
         ];
         this.deleteExclusionRef = React.createRef();
         this.editExclusionRef = React.createRef();
+        this.fileExportHandleClick = this.fileExportHandleClick.bind(this);
     }
+
+    fileExportHandleClick() {
+        var toggle = this.state.fileExportActive === 'active' ? '' : 'active';
+        this.setState({fileExportActive: toggle});
+    };
 
     onClickDeleteExclusion = (e: any) => {
         this.deleteExclusionRef.current.toggle();
@@ -198,11 +204,12 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="rousourceGroup">
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
-                                        <option>Select Platform</option>
+                                        <option value="" selected>Select Platform</option>
+                                        <option value="All">All</option>
+                                        <option value="AWS">AWS</option>
+                                        <option value="Azure">Azure</option>
+                                        <option value="Gcp">Gcp</option>
+                                        <option value="Kubernetes">Kubernetes</option>
                                     </select>
                                 </div>
                             </div>
@@ -213,11 +220,12 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="resources">
-                                        <option>Select Ruleset</option>
-                                        <option>Select Ruleset</option>
-                                        <option>Select Ruleset</option>
-                                        <option>Select Ruleset</option>
-                                        <option>Select Ruleset</option>
+                                        <option value="">Select Ruleset</option>
+                                        <option value="All">All</option>
+                                        <option value="AWS-Test">AWS-Test</option>
+                                        <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                        <option value="AzureCheckUp">Azure CheckUp</option>
+                                        <option value="GcpCheckUp">GCP CheckUp</option>
                                     </select>
                                 </div>
                             </div>
@@ -228,11 +236,8 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                     <i className="fa fa-info-circle"></i>
                                     </label>
                                     <select className="form-control" id="timeRange">
-                                        <option>Select Organizational Unit</option>
-                                        <option>Select Organizational Unit</option>
-                                        <option>Select Organizational Unit</option>
-                                        <option>Select Organizational Unit</option>
-                                        <option>Select Organizational Unit</option>
+                                        <option value="">Select Organizational Unit</option>
+                                        <option value="Synectiks">Synectiks</option>
                                     </select>
                                 </div>
                             </div>
@@ -277,10 +282,21 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-3">
-                                    <div className="d-block text-right width-100">
-                                        <a href="#" className="white-button m-r-0 file-export">
+                                    <div className="d-inline-block text-right width-100 file-export">
+                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
                                             <img src={fileExportIcon} alt="" />
                                         </a>
+                                        
+                                        <div className={`file-export-toggle ${this.state.fileExportActive}`}>
+                                            <ul>
+                                                <li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                                </li>
+                                                <li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                                </li>
+                                            </ul>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>

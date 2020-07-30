@@ -153,8 +153,42 @@
       }
     }
     .file-export{
-      padding: 5px 10px 4px !important;
-      min-width: auto;
+      position: relative;
+      a{
+          padding: 5px 10px 4px !important;
+          min-width: auto;
+      }
+      .file-export-toggle{
+          display: none;
+          position: absolute;
+          right: 0px;
+          top: 35px;
+          z-index: 1;
+          background-color: #e6e6e6;
+          width: 230px;
+          padding: 5px;
+          text-align: left;
+          &.active{
+              display: block;
+          }
+          ul{
+              padding: 0;
+              margin: 0;
+              list-style: none;
+              li{
+                  font-size: 12px;
+                  line-height: 20px;
+                  color: #3B4859;
+                  font-weight: 500;
+                  display: block;
+                  padding-bottom: 3px;
+                  img{
+                      max-width: 20px;
+                      height: auto;
+                  }
+              }
+          }
+      }
     }
   }
 }
