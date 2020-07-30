@@ -6,7 +6,8 @@ export class EditExclusionPopup extends React.Component<any, any> {
         super(props);
         this.state = {
             modal: false,
-
+            cloudAccount: false,
+            Entity: false,
         };
     }
 
@@ -16,12 +17,26 @@ export class EditExclusionPopup extends React.Component<any, any> {
         });
     };
 
+    onChangeOpenCloudData(e:any){
+        const value = e.target.checked;
+        this.setState({
+            cloudAccount: value
+        })
+    }
+
+    onChangeOpenEntityData(e:any){
+        const value = e.target.checked;
+        this.setState({
+            Entity: value
+        })
+    }
+
     render() {
         const state = this.state;
         return (
             <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Exclusion</ModalHeader>
-                <ModalBody style={{height: 'calc(74vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
+                <ModalBody style={{ height: 'calc(74vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="form-group">
                         <label htmlFor="rulesetGroup" className="d-block">
                             Ruleset&nbsp;&nbsp;&nbsp;
@@ -50,19 +65,19 @@ export class EditExclusionPopup extends React.Component<any, any> {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="checkbox" className="checkbox" checked /> Excluded by Cloud Account
-                        <div className="d-block select-rule">
+                        <input type="checkbox" onChange={(e) => { this.onChangeOpenCloudData(e) }} className="checkbox" checked={this.state.cloudAccount} /> Excluded by Cloud Account
+                        {this.state.cloudAccount == true && <div className="d-block select-rule">
                             <select className="form-control d-block" id="ruleGroup">
                                 <option>Select Account</option>
                                 <option>AWS (0123456)</option>
                                 <option>AWS (0123456789)</option>
                                 <option>AWS (0123456323232)</option>
                             </select>
-                        </div>
+                        </div>}
                     </div>
                     <div className="form-group">
-                        <input type="checkbox" className="checkbox" checked /> Excluded by Entity
-                        <div className="d-block select-rule">
+                        <input type="checkbox" className="checkbox" onChange={(e) => { this.onChangeOpenEntityData(e)}} checked={this.state.Entity} /> Excluded by Entity
+                       {this.state.Entity == true && <div className="d-block select-rule">
                             <div className="d-inline-block width-50">
                                 <div className="d-inline-block radio p-r-10">
                                     <input type="radio" />
@@ -80,8 +95,8 @@ export class EditExclusionPopup extends React.Component<any, any> {
                                     <label htmlFor="rulesetGroup" className="d-block">Entity ID</label>
                                     <input type="text" className="input-group-text d-block" placeholder="" />
                                 </div>
-                            </div>                            
-                        </div>
+                            </div>
+                        </div>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="commentsGroup" className="d-block">
