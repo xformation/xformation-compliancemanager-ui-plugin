@@ -173,12 +173,19 @@ export class ComplianceRulesets extends React.Component<any, any> {
         ];
         this.rulesetRef = React.createRef();
         this.assessmentRef = React.createRef();
-        this.assessmentHandleClick = this.assessmentHandleClick.bind(this);
     }
 
-    assessmentHandleClick() {
-        var toggle = this.state.assessmentActive === 'active' ? '' : 'active';
-        this.setState({assessmentActive: toggle});
+    assessmentHandleClick(index: any) {
+        const { ruleSetData } = this.state;
+        for (let i = 0; i < ruleSetData.length; i++) {
+            if (i == index) {
+                ruleSetData[i].menuStatusOpen = !ruleSetData[i].menuStatusOpen;
+            }
+        }
+        console.log(ruleSetData);
+        this.setState({
+            ruleSetData
+        })
     };
 
     componentDidMount() {
@@ -216,17 +223,17 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
                                     <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.mainTitle}</strong>
                                     <div className="d-inline-block float-right width-auto assessment-toggle-main">
-                                        <a href="#" className="gray-button min-width-inherit m-r-0" onClick={this.assessmentHandleClick}>
+                                        <a href="#" className="gray-button min-width-inherit m-r-0" onClick={() => this.assessmentHandleClick(i)}>
                                             <i className="fa fa-ellipsis-v"></i>
                                         </a>
-                                        <div className={`assessment-toggle ${this.state.assessmentActive}`}>
+                                        {data.menuStatusOpen == true && <div>
                                             <a href="#" className="d-inline-block">
                                                 <img src={runSettingisIcon} alt="" />
                                             </a>
                                             <a href="#" className="d-inline-block">
                                                 <img src={runHandIcon} alt="" />
                                             </a>
-                                        </div>
+                                        </div>}
                                     </div>
                                 </div>
                                 <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
