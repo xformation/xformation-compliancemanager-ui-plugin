@@ -1,4 +1,9 @@
-import { Dashboard, ComplianceExclusions, ComplianceRulesets } from "./ui";
+import {
+  Dashboard,
+  ComplianceExclusions,
+  ComplianceRulesets,
+  ComplianceRemediation
+} from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
 // import { loadPluginCss } from '@grafana/runtime';
@@ -14,4 +19,10 @@ export function loadPluginCss() {
 
 loadPluginCss();
 
-export { ConfigCtrl, Dashboard, ComplianceExclusions, ComplianceRulesets };
+export {
+  ConfigCtrl,
+  Dashboard,
+  ComplianceExclusions,
+  ComplianceRulesets,
+  ComplianceRemediation
+};

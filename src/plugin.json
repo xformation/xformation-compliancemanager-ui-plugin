@@ -37,6 +37,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "ComplianceRulesets"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceRemediation",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceRemediation"
     }
   ],
   "dependencies": {
