@@ -123,7 +123,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                     <div className="common-container filter-container">
                         <div className="common-container results-container">
                             <div className="row">
-                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="rousourceGroup">
                                         Cloud Accounts&nbsp;&nbsp;&nbsp;
@@ -137,7 +137,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="resources">
                                             Ruleset&nbsp;&nbsp;&nbsp;
@@ -153,7 +153,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="rousourceGroup">
                                         Triggered By&nbsp;&nbsp;&nbsp;
@@ -168,7 +168,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="timeRange">
                                         Time Period&nbsp;&nbsp;&nbsp;
@@ -183,7 +183,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group clear-filters">
                                         <label htmlFor="clearFilter">
                                             <span>Clear All Filters</span>

@@ -38,7 +38,6 @@
     }
     .modal-body{
       padding: 0px 10px;
-      border-bottom: 1px dashed #a2c0d4;
       p{
         font-style: italic;
       }
@@ -89,6 +88,7 @@
       padding: 20px 15px 0px;
       background: none;
       border: none;
+      border-top: 1px dashed #a2c0d4;
       .blue-button{
         border-radius: 7px!important;
       }

@@ -17,7 +17,26 @@ export class Accounts extends React.Component<any,any>{
                     </div>
                 </div>
             </div>
-            <div className="d-block text-center">
+            <div className="compliance-account-box">
+                <h5>
+                    <div className="pointer-label">
+                        <input type="checkbox" className="checkbox" /> Accounts
+                    </div>
+                </h5>
+                <ul>
+                    <li>
+                        <div className="pointer-label">
+                            <input type="checkbox" className="checkbox" /> AWS (67121322432)
+                        </div>
+                    </li>
+                    <li>
+                        <div className="pointer-label">
+                            <input type="checkbox" className="checkbox" /> AWS (2324354555)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div className="d-block text-center next">
                 <button className="blue-button m-r-0 m-b-0">Next</button>
             </div>
         </div>
