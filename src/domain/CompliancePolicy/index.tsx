@@ -3,8 +3,8 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
 import runHandIcon from '../../img/run-hand-icon.png';
 import runSettingisIcon from '../../img/run-settingis-icon.png';
-import { NewRulSetPopup } from './newRuleSetPopup';
-import { AssessmentPopup } from './assessmentPopup';
+// import { NewRulSetPopup } from './newRuleSetPopup';
+// import { AssessmentPopup } from './assessmentPopup';
 
 export class CompliancePolicy extends React.Component<any, any> {
     breadCrumbs: any;
