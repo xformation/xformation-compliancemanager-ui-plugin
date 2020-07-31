@@ -126,16 +126,14 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                 <div className="col-lg-3 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="rousourceGroup">
-                                            Platform&nbsp;&nbsp;&nbsp;
+                                        Cloud Accounts&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
                                         </label>
                                         <select className="form-control" id="rousourceGroup">
-                                            <option value="" selected>Select Platform</option>
-                                            <option value="All">All</option>
-                                            <option value="AWS">AWS</option>
-                                            <option value="Azure">Azure</option>
-                                            <option value="Gcp">Gcp</option>
-                                            <option value="Kubernetes">Kubernetes</option>
+                                            <option value="" selected>Select Cloud Accounts</option>
+                                            <option value="All">All Accounts</option>
+                                            <option value="AWS">AWS(123456)</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -157,13 +155,31 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                 </div>
                                 <div className="col-lg-3 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
+                                        <label htmlFor="rousourceGroup">
+                                        Triggered By&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                        </label>
+                                        <select className="form-control" id="rousourceGroup">
+                                            <option value="" selected>Select Trigered By</option>
+                                            <option value="All">All</option>
+                                            <option value="Policy">Policy</option>
+                                            <option value="Manual">Manual</option>
+                                            <option value="System">System</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                    <div className="form-group filter-control-group">
                                         <label htmlFor="timeRange">
-                                            Organizational Unit&nbsp;&nbsp;&nbsp;
+                                        Time Period&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
                                         </label>
                                         <select className="form-control" id="timeRange">
-                                            <option value="">Select Organizational Unit</option>
-                                            <option value="Synectiks">Synectiks</option>
+                                            <option value="">Select Time Period</option>
+                                            <option value="4 Hours">4 Hours</option>
+                                            <option value="24 Hours">24 Hours</option>
+                                            <option value="7 Hours">7 Hours</option>
+                                            <option value="custom">Custom</option>
                                         </select>
                                     </div>
                                 </div>
