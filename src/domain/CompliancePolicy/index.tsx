@@ -1,76 +1,57 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
-import runHandIcon from '../../img/run-hand-icon.png';
-import runSettingisIcon from '../../img/run-settingis-icon.png';
-// import { NewRulSetPopup } from './newRuleSetPopup';
-// import { AssessmentPopup } from './assessmentPopup';
+import { AddOrganizationalUnitPolicyPopup } from './addOrganizationalUnitPolicyPopup';
+import { CloudAccountPolicyPopup } from './cloudAccountPolicyPopup';
 
 export class CompliancePolicy extends React.Component<any, any> {
     breadCrumbs: any;
-    
+    cloudAccountPolicyRef: any;
+    addOrganizationalUnitPolicyRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
             searchKey: '',
             totalPages: '',
             currentPage: 0,
-            perPageLimit: 6,
+            perPageLimit: 3,
             ruleSetData: [
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'AWS CCPA Framework',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'AWS CIS Foundations',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'AWS CloudGuard',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'AWS CIS Foundations',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'AWS CCPA Framework',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                }
+                    mainTitle: 'AWS CloudGuard',
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                },
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                },
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                },
             ],
             
         };
@@ -80,10 +61,12 @@ export class CompliancePolicy extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | COMPLIANCE RULESETS",
+                label: "Compiiance | Compliance Rulesets",
                 isCurrentPage: true
             }
         ];
+        this.cloudAccountPolicyRef = React.createRef();
+        this.addOrganizationalUnitPolicyRef = React.createRef();
         
     }
 
@@ -108,9 +91,31 @@ export class CompliancePolicy extends React.Component<any, any> {
                 if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
                     const data = ruleSetData[i];
                     retData.push(
-                        <div className="d-block width-100 assessment-box">
-                            <div className="d-block width-100 assessment-heading">
-                                
+                        <div className="d-block width-100 framework-box">
+                            <div className="d-inline-block framework-box-heading">
+                                <div className="d-inline-block heading-img"><img src={amazonLogo} alt="" /></div>
+                                <strong className="d-inline-block">{data.mainTitle}</strong>
+                            </div>
+                            <div className="d-block width-100 framework-inner">
+                                <table className="framework-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div className="pointer-label">
+                                                    <input type="checkbox" className="checkbox" />
+                                                    Organizational Units / Cloud Accounts
+                                                </div>
+                                            </th>
+                                            <th>Notifications</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>No Policies</td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     );
@@ -187,6 +192,15 @@ export class CompliancePolicy extends React.Component<any, any> {
                 break;
         }
     }
+
+    onClickCloudAccountPolicy = (e: any) => {
+        this.cloudAccountPolicyRef.current.toggle();
+    };
+    onClickAddOrganizationalUnitPolicy = (e: any) => {
+        this.addOrganizationalUnitPolicyRef.current.toggle();
+    };
+
+    
 
     render() {
         const { perPageLimit, ruleSetData } = this.state;
@@ -278,12 +292,12 @@ export class CompliancePolicy extends React.Component<any, any> {
                     <div className="common-container">
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
-                                <div className="d-inline-block width-50">
+                                <div className="d-inline-block width-50 heading-left">
                                     {ruleSetData.length > 0 && <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>}
                                 </div>
-                                <div className="d-inline-block width-50 text-right">
-                                    <a className="blue-button">Add Cloud Account Policy</a>
-                                    <a className="blue-button m-r-0">Add Organizational Unit Policy</a>
+                                <div className="d-inline-block width-50 text-right heading-right">
+                                    <a onClick={this.onClickCloudAccountPolicy} className="blue-button">Add Cloud Account Policy</a>
+                                    <a onClick={this.onClickAddOrganizationalUnitPolicy} className="blue-button m-r-0">Add Organizational Unit Policy</a>
                                 </div>
                             </div>
                             
@@ -312,8 +326,10 @@ export class CompliancePolicy extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                {/* <AssessmentPopup ref={this.assessmentRef} />
-                <NewRulSetPopup ref={this.rulesetRef} /> */}
+                cloudAccountPolicyRef
+                <CloudAccountPolicyPopup ref={this.cloudAccountPolicyRef} />
+                <AddOrganizationalUnitPolicyPopup ref={this.addOrganizationalUnitPolicyRef} />
+                
             </div>
         );
     }

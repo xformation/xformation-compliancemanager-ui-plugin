@@ -3,7 +3,8 @@ import {
   ComplianceExclusions,
   ComplianceRulesets,
   ComplianceRemediation,
-  ComplianceAssessmentHistory
+  ComplianceAssessmentHistory,
+  CompliancePolicy
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -26,5 +27,6 @@ export {
   ComplianceExclusions,
   ComplianceRulesets,
   ComplianceRemediation,
-  ComplianceAssessmentHistory
+  ComplianceAssessmentHistory,
+  CompliancePolicy
 };
