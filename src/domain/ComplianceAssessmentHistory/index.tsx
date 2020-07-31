@@ -1,0 +1,210 @@
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { config } from '../../config';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+
+export class ComplianceAssessmentHistory extends React.Component<any, any> {
+    breadCrumbs: any;
+    deleteExclusionRef: any;
+    editExclusionRef: any;
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            searchKey: '',
+            historyData: [{
+                date: 'Jul 20, 2020 04:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '64%',
+                failedTest: '97',
+                excludedTest: '0',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 05:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '76%',
+                failedTest: '66',
+                excludedTest: '6',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 06:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '34%',
+                failedTest: '44',
+                excludedTest: '3',
+                trigger: 'System'
+            }],
+            historyduplicatedata: [{
+                date: 'Jul 20, 2020 04:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '64%',
+                failedTest: '97',
+                excludedTest: '0',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 05:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '76%',
+                failedTest: '66',
+                excludedTest: '6',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 06:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '34%',
+                failedTest: '44',
+                excludedTest: '3',
+                trigger: 'System'
+            }]
+        };
+        this.breadCrumbs = [
+            {
+                label: "Home",
+                route: `/`
+            },
+            {
+                label: "Compliance | Assessment History",
+                isCurrentPage: true
+            }
+        ];
+
+    }
+
+    createExclusionTable = () => {
+        const { historyData } = this.state;
+        const retData = [];
+        for (let i = 0; i < historyData.length; i++) {
+            const history = this.state.historyData[i];
+            retData.push(
+                <tr className="">
+                    <td className="">
+                        <div className="pointer-label">
+                            {/* <input type="checkbox" className="checkbox" /> */}
+                            {history.date}
+                        </div>
+                    </td>
+                    <td>{history.ruleName}</td>
+                    <td>{history.environment}</td>
+                    <td>{history.result}</td>
+                    <td>{history.failedTest}</td>
+                    <td>{history.excludedTest}</td>
+                    <td>{history.trigger}</td>
+                    <td>
+                        <div className="d-flex">
+                            <button className="btn btn-link">
+                                <i className="fa fa-info-circle"></i>
+                            </button>
+                            {/* <button onClick={this.onClickDeleteExclusion} className="btn btn-link">
+                                <i className="fa fa-trash"></i>
+                            </button> */}
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
+        return retData;
+    }
+
+
+    render() {
+        return (
+            <div className="compliancemanager-dashboard-container">
+                <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | ASSESSMENT HISTORY" />
+                <div className="compliancemanager-page-container">
+                    <div className="common-container filter-container">
+                        <div className="common-container results-container">
+                            <div className="row">
+                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                    <div className="form-group filter-control-group">
+                                        <label htmlFor="rousourceGroup">
+                                            Platform&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                        </label>
+                                        <select className="form-control" id="rousourceGroup">
+                                            <option value="" selected>Select Platform</option>
+                                            <option value="All">All</option>
+                                            <option value="AWS">AWS</option>
+                                            <option value="Azure">Azure</option>
+                                            <option value="Gcp">Gcp</option>
+                                            <option value="Kubernetes">Kubernetes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                    <div className="form-group filter-control-group">
+                                        <label htmlFor="resources">
+                                            Ruleset&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                        </label>
+                                        <select className="form-control" id="resources">
+                                            <option value="">Select Ruleset</option>
+                                            <option value="All">All</option>
+                                            <option value="AWS-Test">AWS-Test</option>
+                                            <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                            <option value="AzureCheckUp">Azure CheckUp</option>
+                                            <option value="GcpCheckUp">GCP CheckUp</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                    <div className="form-group filter-control-group">
+                                        <label htmlFor="timeRange">
+                                            Organizational Unit&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                        </label>
+                                        <select className="form-control" id="timeRange">
+                                            <option value="">Select Organizational Unit</option>
+                                            <option value="Synectiks">Synectiks</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-3 col-md-4 col-sm-12">
+                                    <div className="form-group filter-control-group clear-filters">
+                                        <label htmlFor="clearFilter">
+                                            <span>Clear All Filters</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="common-container results-container">
+                            <div className="exclusion-details">
+                                <div className="container-inner">
+                                    <table className="exclusion-data-table">
+                                        <tbody>
+                                            <tr className="exclusion-data-table-header">
+                                                <th>
+                                                    <div className="pointer-label">
+                                                        Date
+                                                </div>
+                                                </th>
+                                                <th>Rule Name</th>
+                                                <th>Environment</th>
+                                                <th>Result</th>
+                                                <th># Failed Tests</th>
+                                                <th># Excluded Tests</th>
+                                                <th>Triggered By</th>
+                                                <th>Details</th>
+                                            </tr>
+                                            {this.createExclusionTable()}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        );
+    }
+};

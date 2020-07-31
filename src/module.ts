@@ -2,7 +2,8 @@ import {
   Dashboard,
   ComplianceExclusions,
   ComplianceRulesets,
-  ComplianceRemediation
+  ComplianceRemediation,
+  ComplianceAssessmentHistory
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -24,5 +25,6 @@ export {
   Dashboard,
   ComplianceExclusions,
   ComplianceRulesets,
-  ComplianceRemediation
+  ComplianceRemediation,
+  ComplianceAssessmentHistory
 };
