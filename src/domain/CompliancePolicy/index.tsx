@@ -15,44 +15,132 @@ export class CompliancePolicy extends React.Component<any, any> {
             totalPages: '',
             currentPage: 0,
             perPageLimit: 3,
-            ruleSetData: [
+            policyData: [
                 {
                     mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications',
+                   
                 },
                 {
                     mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
                 {
                     mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
                 },
             ],
+            duplicatepolicyData:[
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications',
+                   
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CCPA Framework',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CloudGuard',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+                {
+                    mainTitle: 'AWS CIS Foundations',
+                    title1: 'Organizational Units / Cloud Accounts',
+                    title2:'Notifications'
+                },
+            ]
             
         };
         this.breadCrumbs = [
@@ -61,7 +149,7 @@ export class CompliancePolicy extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Compliance Rulesets",
+                label: "Compliance | Compliance Policy",
                 isCurrentPage: true
             }
         ];
@@ -71,7 +159,7 @@ export class CompliancePolicy extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        this.calculateTotalPages(this.state.ruleSetData);
+        this.calculateTotalPages(this.state.policyData);
     };
 
     calculateTotalPages = (displayData: any) => {
@@ -82,14 +170,14 @@ export class CompliancePolicy extends React.Component<any, any> {
         });
     };
 
-    displayRuleSetData = () => {
-        const { ruleSetData, perPageLimit, currentPage } = this.state;
+    displaypolicyData = () => {
+        const { policyData, perPageLimit, currentPage } = this.state;
         const retData = [];
-        const length = ruleSetData.length;
+        const length = policyData.length;
         if (length > 0) {
             for (let i = 0; i < length; i++) {
                 if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
-                    const data = ruleSetData[i];
+                    const data = policyData[i];
                     retData.push(
                         <div className="d-block width-100 framework-box">
                             <div className="d-inline-block framework-box-heading">
@@ -103,10 +191,10 @@ export class CompliancePolicy extends React.Component<any, any> {
                                             <th>
                                                 <div className="pointer-label">
                                                     <input type="checkbox" className="checkbox" />
-                                                    Organizational Units / Cloud Accounts
+                                                    {data.title1}
                                                 </div>
                                             </th>
-                                            <th>Notifications</th>
+                                            <th>{data.title2}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -133,16 +221,16 @@ export class CompliancePolicy extends React.Component<any, any> {
         this.setState({
             searchKey: value,
         });
-        const { duplicateruleSetData } = this.state;
+        const { duplicatepolicyData } = this.state;
         var searchResult = [];
-        for (let i = 0; i < duplicateruleSetData.length; i++) {
-            if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicateruleSetData[i]);
+        for (let i = 0; i < duplicatepolicyData.length; i++) {
+            if (duplicatepolicyData[i].mainTitle.indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicatepolicyData[i]);
             }
         }
         this.calculateTotalPages(searchResult);
         this.setState({
-            ruleSetData: searchResult,
+            policyData: searchResult,
             currentPage: 0
         });
     }
@@ -203,10 +291,10 @@ export class CompliancePolicy extends React.Component<any, any> {
     
 
     render() {
-        const { perPageLimit, ruleSetData } = this.state;
+        const { perPageLimit, policyData } = this.state;
         return (
             <div className="compliancemanager-dashboard-container">
-                <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
+                <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE POLICY" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
                         <div className="row">
@@ -293,7 +381,7 @@ export class CompliancePolicy extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50 heading-left">
-                                    {ruleSetData.length > 0 && <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>}
+                                    {policyData.length > 0 && <h3>Showing {perPageLimit} of {policyData.length} results</h3>}
                                 </div>
                                 <div className="d-inline-block width-50 text-right heading-right">
                                     <a onClick={this.onClickCloudAccountPolicy} className="blue-button">Add Cloud Account Policy</a>
@@ -301,7 +389,7 @@ export class CompliancePolicy extends React.Component<any, any> {
                                 </div>
                             </div>
                             
-                            {ruleSetData.length > 0 && 
+                            {policyData.length > 0 && 
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
                                     <div className="col-lg-12 col-md-12 col-sm-12">
@@ -317,10 +405,10 @@ export class CompliancePolicy extends React.Component<any, any> {
                             }
                             
                             <div className="d-block width-100">
-                                {this.displayRuleSetData()}
+                                {this.displaypolicyData()}
                             </div>
 
-                            {ruleSetData.length > 0 && <div className="d-block width-100 text-right pagination">
+                            {policyData.length > 0 && <div className="d-block width-100 text-right pagination">
                                 {this.peginationOfBox()}
                             </div>}
                         </div>
