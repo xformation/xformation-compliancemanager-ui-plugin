@@ -32,7 +32,7 @@ export class CloudAccountPolicyPopup extends React.Component<any, any> {
         this.setState({
             modal: !this.state.modal,
         });
-    };
+    }
 
     render() {
         const { modal } = this.state;

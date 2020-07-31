@@ -74,9 +74,7 @@ export class Accounts extends React.Component<any, any>{
                         {this.displaAaccountsData()}
                     </ul>
                 </div>
-                <div className="d-block text-center next">
-                    <button className="blue-button m-r-0 m-b-0">Next</button>
-                </div>
+               
             </div>
         );
     }

@@ -43,6 +43,7 @@ export class Wizard extends React.Component<any, any>{
     };
 
     render() {
+        const{currentStep} = this.state;
         return (
             <div>
                 <div className="wizard-step-line-container">
@@ -50,6 +51,9 @@ export class Wizard extends React.Component<any, any>{
                 </div>
                 <div className="wizard-step-component-container">
                     {this.createStepContainer()}
+                    {/* <div className="d-block text-center "> */}
+                        <button onClick={e => this.onClickStepButton(currentStep+1)} className="d-block next text-center blue-button m-r-0 m-b-0">Next</button>
+                    {/* </div> */}
                 </div>
             </div>
         );

@@ -76,12 +76,11 @@ export class Notification extends React.Component<any, any>{
                     </h5>
                     <ul>
                         {this.displaNotificationsData()}
-
                     </ul>
                 </div>
-                <div className="d-block text-center next">
+                {/* <div className="d-block text-center next">
                     <button className="blue-button m-r-0 m-b-0">Save</button>
-                </div>
+                </div> */}
             </div>
         );
     }
