@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Accounts } from './accounts';
 import { Rulesets } from './rulesets';
 import { Notification } from './notification';
+import { Wizard } from './Wizard';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class CloudAccountPolicyPopup extends React.Component<any, any> {
@@ -10,15 +11,22 @@ export class CloudAccountPolicyPopup extends React.Component<any, any> {
         super(props);
         this.state = {
             modal: false,
-            activeTab: 0
         };
+        this.steps = [
+            {
+                name: "Accounts",
+                component: <Accounts />
+            },
+            {
+                name: "Rulesets",
+                component: <Rulesets />
+            },
+            {
+                name: "Notification",
+                component: <Notification />
+            }
+        ];
     }
-
-    setActiveTab = (activeTab: any) => {
-        this.setState({
-            activeTab
-        });
-    };
 
     toggle = () => {
         this.setState({
@@ -27,35 +35,12 @@ export class CloudAccountPolicyPopup extends React.Component<any, any> {
     };
 
     render() {
-        const { activeTab, modal } = this.state;
+        const { modal } = this.state;
         return (
             <Modal isOpen={modal} toggle={this.toggle} className="modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Policy</ModalHeader>
                 <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
-                    <div className="">
-                        <ul>
-                            <li className={activeTab === 0 ? "active-tab" : ''} onClick={e => this.setActiveTab(0)}>
-                                <a href="#">Accounts</a>
-                            </li>
-                            <li className={activeTab === 1 ? "active-tab" : ''} onClick={e => this.setActiveTab(1)}>
-                                <a href="#">Rulesets</a>
-                            </li>
-                            <li className={activeTab === 2 ? "active-tab" : ''} onClick={e => this.setActiveTab(2)}>
-                                <a href="#">Notification</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="">
-                        {
-                            activeTab === 0 && <Accounts />
-                        }
-                        {
-                            activeTab === 1 && <Rulesets />
-                        }
-                        {
-                            activeTab === 2 && <Notification />
-                        }
-                    </div>
+                    <Wizard steps={this.steps} />
                 </ModalBody>
             </Modal>
         );
