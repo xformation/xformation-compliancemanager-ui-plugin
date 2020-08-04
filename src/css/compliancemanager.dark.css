@@ -314,6 +314,13 @@ a:hover {
   padding-bottom: 15px;
 }
 
+@media (max-width: 992px) {
+  .breadcrumbs-container .breadcrumbs {
+    float: none;
+    padding-top: 5px;
+  }
+}
+
 .filter-container .filter-control-group {
   max-width: 250px;
   padding-left: 0px;

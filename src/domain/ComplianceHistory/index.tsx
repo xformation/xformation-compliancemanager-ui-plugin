@@ -200,14 +200,14 @@ export class ComplianceHistory extends React.Component<any, any> {
                                                 <span className="d-inline-block">1</span> RELEVENT
                                             </div>
                                             <div className="d-inline-block p-r-5 tasted-box">
-                                                <span className="d-inline-block">1</span> NON COMPLAINT
+                                                <span className="d-inline-block non-complaint">1</span> NON COMPLAINT
                                             </div>
                                         </div>
                                         <div className="d-inline-block credential-bottom-text">
                                             Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 col-md-3 col-sm-12">
+                                    <div className="col-lg-2 col-md-3 col-sm-12 high-expand">
                                         <div className="high">HIGH</div>
                                         <div className="expand">Expand</div>
                                     </div>
