@@ -58,6 +58,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "CompliancePolicy"
+    },
+    {
+      "type": "page",
+      "name": "ComplianceHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ComplianceHistory"
     }
   ],
   "dependencies": {

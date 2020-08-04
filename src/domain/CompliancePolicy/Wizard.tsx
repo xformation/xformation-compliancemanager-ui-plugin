@@ -53,8 +53,8 @@ export class Wizard extends React.Component<any, any>{
                 <div className="wizard-step-component-container">
                     {this.createStepContainer()}
                     <div className="d-block text-center next">
-                    {currentStep < steps.length-1 && <button onClick={e => this.onClickStepButton(currentStep + 1)} className="next text-center blue-button m-r-0 m-b-0">Next</button>}
-                    {currentStep >= steps.length-1 &&<button className="blue-button m-r-0 m-b-0">Next</button>}
+                        {currentStep < steps.length-1 && <button onClick={e => this.onClickStepButton(currentStep + 1)} className="blue-button m-r-0 m-b-0">Next</button>}
+                        {currentStep >= steps.length-1 &&<button className="blue-button m-r-0 m-b-0">Next</button>}
                     </div>
                 </div>
             </div>
