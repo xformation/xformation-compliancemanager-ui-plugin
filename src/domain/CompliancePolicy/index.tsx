@@ -414,7 +414,6 @@ export class CompliancePolicy extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                cloudAccountPolicyRef
                 <CloudAccountPolicyPopup ref={this.cloudAccountPolicyRef} />
                 <AddOrganizationalUnitPolicyPopup ref={this.addOrganizationalUnitPolicyRef} />
                 

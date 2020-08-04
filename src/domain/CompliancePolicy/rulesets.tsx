@@ -6,16 +6,52 @@ export class Rulesets extends React.Component<any, any>{
         this.state = {
             searchKey: '',
             ruleSetData: [
-                { title: 'AWS CCPA Framework' },
-                { title: 'AWS CIS Foundation' },
-                { title: 'AWS CloudGuard Best Practice' },
-                { title: 'AWS CloudGuard ChecklUp' }
+                {
+                    title: 'Ruleset',
+                    checkValueStatus: false,
+                    subData: [
+                        {
+                            title: 'AWS CCPA Framework',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CIS Foundation',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CloudGuard Best Practice',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CloudGuard ChecklUp',
+                            checkStatus: false
+                        },
+                    ],
+                },
             ],
             duplicateruleSetData: [
-                { title: 'AWS CCPA Framework' },
-                { title: 'AWS CIS Foundation' },
-                { title: 'AWS CloudGuard Best Practice' },
-                { title: 'AWS CloudGuard ChecklUp' }
+                {
+                    title: 'Ruleset',
+                    checkValueStatus: false,
+                    subData: [
+                        {
+                            title: 'AWS CCPA Framework',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CIS Foundation',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CloudGuard Best Practice',
+                            checkStatus: false
+                        },
+                        {
+                            title: 'AWS CloudGuard ChecklUp',
+                            checkStatus: false
+                        },
+                    ],
+                },
             ],
         };
     }
@@ -24,15 +60,67 @@ export class Rulesets extends React.Component<any, any>{
         let retData = [];
         for (let i = 0; i < this.state.ruleSetData.length; i++) {
             let responseData = this.state.ruleSetData[i];
+            const subFolders = responseData.subData;
+            const subJSX = [];
+            for (let j = 0; j < subFolders.length; j++) {
+                const data = subFolders[j];
+                subJSX.push(
+                    <li>
+                        <div className="pointer-label">
+                            <input type="checkbox" checked={data.checkStatus} className="checkbox" onClick={() => this.onClickChildCheckbox(i, j)} />{data.title}
+                        </div>
+                    </li>
+                );
+            }
             retData.push(
-                <li>
-                    <div className="pointer-label">
-                        <input type="checkbox" className="checkbox" />{responseData.title}
-                    </div>
-                </li>
+                <div>
+                    <h5>
+                        <div className="pointer-label">
+                            <input type="checkbox" checked={responseData.checkValueStatus} className="checkbox" onChange={(e) => { this.onChangeParentCheckbox(e, i) }} /> {responseData.title}
+                        </div>
+                    </h5>
+                    <ul>
+                        {subJSX}
+                    </ul>
+                </div>
             );
         }
         return retData;
+    }
+
+    onChangeParentCheckbox = (e: any, index: any) => {
+        const { ruleSetData } = this.state;
+        const parentCheckbox = ruleSetData[index];
+        const checked = e.target.checked;
+        for (let j = 0; j < parentCheckbox.subData.length; j++) {
+            parentCheckbox.subData[j].checkStatus = checked;
+            parentCheckbox.checkValueStatus = checked;
+        }
+        this.setState({
+            ruleSetData
+        })
+    }
+
+    onClickChildCheckbox = (parentIndex: any, childIndex: any) => {
+        let countCheckedCheckbox = 0;
+        const { ruleSetData } = this.state;
+        const parentCheckbox = ruleSetData[parentIndex];
+        parentCheckbox.subData[childIndex].checkStatus = !parentCheckbox.subData[childIndex].checkStatus;
+        for (let j = 0; j < parentCheckbox.subData.length; j++) {
+            if (parentCheckbox.subData[j].checkStatus == true) {
+                countCheckedCheckbox++;
+            } else {
+                countCheckedCheckbox--;
+            }
+        }
+        if (countCheckedCheckbox == parentCheckbox.subData.length) {
+            parentCheckbox.checkValueStatus = true;
+        } else {
+            parentCheckbox.checkValueStatus = false;
+        }
+        this.setState({
+            ruleSetData
+        })
     }
 
     onSearchChange = (e: any) => {
@@ -42,10 +130,16 @@ export class Rulesets extends React.Component<any, any>{
         });
         const { duplicateruleSetData } = this.state;
         var searchResult = [];
+        var Result = [];
         for (let i = 0; i < duplicateruleSetData.length; i++) {
-            if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicateruleSetData[i]);
+            let data = duplicateruleSetData[i];
+            for (let j = 0; j < data.subData.length; j++) {
+                let subData = data.subData[j];
+                if (subData.title.indexOf(value) !== -1 || value === '') {
+                    Result.push({ 'title': subData.title, 'checkStatus': subData.checkStatus });
+                }
             }
+            searchResult.push({ 'title': data.title, 'checkValueStatus': data.checkValueStatus, subData: Result });
         }
         this.setState({
             ruleSetData: searchResult,
@@ -69,14 +163,8 @@ export class Rulesets extends React.Component<any, any>{
                     </div>
                 </div>
                 <div className="compliance-account-box">
-                    <h5>
-                        <div className="pointer-label">
-                            <input type="checkbox" className="checkbox" /> Ruleset
-                        </div>
-                    </h5>
-                    <ul>
-                        {this.displaRulesetData()}
-                    </ul>
+                    {this.displaRulesetData()}
+
                 </div>
                 {/* <div className="d-block text-center next">
                     <button className="blue-button m-r-0 m-b-0">Next</button>
