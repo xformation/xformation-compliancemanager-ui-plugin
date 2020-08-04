@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { config } from '../../config';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+// import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Progress } from 'reactstrap';
+import { Pie } from 'react-chartjs-2';
 
 export class ComplianceHistory extends React.Component<any, any> {
     breadCrumbs: any;
@@ -84,7 +87,33 @@ export class ComplianceHistory extends React.Component<any, any> {
                     menuStatusOpen: false,
                 },
             ],
-            
+            datasets: [
+                {
+                    labels: ['lam user', 'S3 Buge', 'Cloud'],
+                },
+                {
+                    label: '',
+                    backgroundColor: [
+                        '#E31335',
+                        '#15C64C',
+                        '#3C495A',
+                    ],
+                    data: [25, 30, 80]
+                }
+            ],
+            singleChartDataSets: [
+                {
+                    labels: ['High'],
+                },
+                {
+                    label: '',
+                    backgroundColor: [
+                        '#E31335',
+                    ],
+                    data: [100]
+                }
+            ]
+
         };
         this.breadCrumbs = [
             {
@@ -243,6 +272,7 @@ export class ComplianceHistory extends React.Component<any, any> {
 
     render() {
         const { perPageLimit, ruleSetData } = this.state;
+        const now = 60;
         return (
             <div className="compliancemanager-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | ASSESSMENT HISTORY" />
@@ -267,13 +297,33 @@ export class ComplianceHistory extends React.Component<any, any> {
                                     <div className="d-block heading">
                                         <strong>Test Score</strong>
                                     </div>
-                                    <div className="d-block chart-inner"></div>
+                                    <div className="d-block chart-inner">
+                                        <div className="text-center">{now}%</div>
+                                        <Progress color="success" value={now} />
+                                    </div>
                                 </div>
                                 <div className="d-inline-block chart-box">
                                     <div className="d-block heading">
                                         <strong>Failed Tests by Rule Serverity</strong>
                                     </div>
-                                    <div className="d-block chart-inner"></div>
+                                    <div className="d-block chart-inner">
+                                        <Pie
+                                            data={this.state.singleChartDataSets}
+                                            width={100}
+                                            height={50}
+                                            options={{
+                                                title: {
+                                                    display: true,
+                                                    text: '',
+                                                    fontSize: 20
+                                                },
+                                                legend: {
+                                                    display: true,
+                                                    position: 'right'
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                                 <div className="d-inline-block chart-box green-chart">
                                     <div className="d-block heading">
@@ -285,7 +335,24 @@ export class ComplianceHistory extends React.Component<any, any> {
                                     <div className="d-block heading">
                                         <strong>Tested Entities</strong>
                                     </div>
-                                    <div className="d-block chart-inner"></div>
+                                    <div className="d-block chart-inner">
+                                        <Pie
+                                            data={this.state.datasets}
+                                            width={100}
+                                            height={50}
+                                            options={{
+                                                title: {
+                                                    display: true,
+                                                    text: 'Average Rainfall per month',
+                                                    fontSize: 20
+                                                },
+                                                legend: {
+                                                    display: true,
+                                                    position: 'right'
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div className="d-inline-block float-right results-right-chart">
