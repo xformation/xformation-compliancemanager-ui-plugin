@@ -14,92 +14,58 @@ export class ComplianceHistory extends React.Component<any, any> {
             searchKey: '',
             totalPages: '',
             currentPage: 0,
-            perPageLimit: 6,
-            ruleSetData: [
+            perPageLimit: 2,
+            historyData: [
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Failed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Passed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
                 },
                 {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                }, {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Failed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
                 },
             ],
-            datasets: [
+            duplicateHistoryData: [
                 {
-                    labels: ['lam user', 'S3 Buge', 'Cloud'],
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Failed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
                 },
                 {
-                    label: '',
-                    backgroundColor: [
-                        '#E31335',
-                        '#15C64C',
-                        '#3C495A',
-                    ],
-                    data: [25, 30, 80]
-                }
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Passed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
+                },
+                {
+                    mainTitle: 'Credentials report was generated in the last 24 hours',
+                    status: 'Failed',
+                    step1: 'TASTED',
+                    step2: 'RELEVENT',
+                    step3: 'NON COMPLAINT',
+                    detail: 'Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12',
+                },
             ],
 
         };
@@ -121,35 +87,22 @@ export class ComplianceHistory extends React.Component<any, any> {
         this.setState({
             searchKey: value,
         });
-        const { duplicateruleSetData } = this.state;
+        const { duplicateHistoryData } = this.state;
         var searchResult = [];
-        for (let i = 0; i < duplicateruleSetData.length; i++) {
-            if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicateruleSetData[i]);
+        for (let i = 0; i < duplicateHistoryData.length; i++) {
+            if (duplicateHistoryData[i].status.indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicateHistoryData[i]);
             }
         }
         this.calculateTotalPages(searchResult);
         this.setState({
-            ruleSetData: searchResult,
+            historyData: searchResult,
             currentPage: 0
         });
     }
 
-    assessmentHandleClick(index: any) {
-        const { ruleSetData } = this.state;
-        for (let i = 0; i < ruleSetData.length; i++) {
-            if (i == index) {
-                ruleSetData[i].menuStatusOpen = !ruleSetData[i].menuStatusOpen;
-            }
-        }
-        console.log(ruleSetData);
-        this.setState({
-            ruleSetData
-        })
-    };
-
     componentDidMount() {
-        this.calculateTotalPages(this.state.ruleSetData);
+        this.calculateTotalPages(this.state.historyData);
     };
 
     calculateTotalPages = (displayData: any) => {
@@ -160,39 +113,39 @@ export class ComplianceHistory extends React.Component<any, any> {
         });
     };
 
-    displayRuleSetData = () => {
-        const { ruleSetData, perPageLimit, currentPage } = this.state;
+    displayHistoryData = () => {
+        const { historyData, perPageLimit, currentPage } = this.state;
         const retData = [];
-        const length = ruleSetData.length;
+        const length = historyData.length;
         if (length > 0) {
             for (let i = 0; i < length; i++) {
                 if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
-                    const data = ruleSetData[i];
+                    const data = historyData[i];
                     retData.push(
                         <div className="d-block width-100 p-b-15 credentials-box failed">
-                            <div className="heading d-inline-block">Failed</div>
+                            <div className="heading d-inline-block">{data.status}</div>
                             <div className="d-block width-100 p-t-15 p-r-15 p-b-5 p-l-15 credential">
                                 <div className="row">
                                     <div className="col-lg-10 col-md-9 col-sm-12">
                                         <div className="d-block width-100 credential-text">
-                                            Credentials report was generated in the last 24 hours
+                                            {data.mainTitle}
                                         </div>
                                         <p className="d-block width-100">
                                             I am should have creadentialReportGeneratedTime after (-24, 'hours')
                                         </p>
                                         <div className="d-block width-100 tasted-boxes">
                                             <div className="d-inline-block p-r-5 tasted-box">
-                                                <span className="d-inline-block">1</span> TASTED
+                                                <span className="d-inline-block">1</span> {data.step1}
                                             </div>
                                             <div className="d-inline-block p-r-5 tasted-box">
-                                                <span className="d-inline-block">1</span> RELEVENT
+                                                <span className="d-inline-block">1</span> {data.step2}
                                             </div>
                                             <div className="d-inline-block p-r-5 tasted-box">
-                                                <span className="d-inline-block non-complaint">1</span> NON COMPLAINT
+                                                <span className="d-inline-block non-complaint">1</span> {data.step3}
                                             </div>
                                         </div>
                                         <div className="d-inline-block credential-bottom-text">
-                                            Prerequisite for CIS AWS Credentials Sections 1.1, 1.2, 1.3, 1.4, 1.12
+                                           {data.detail}
                                         </div>
                                     </div>
                                     <div className="col-lg-2 col-md-3 col-sm-12 high-expand">
@@ -213,7 +166,7 @@ export class ComplianceHistory extends React.Component<any, any> {
     }
 
     peginationOfBox() {
-        const { currentPage, totalPages, ruleSetData } = this.state;
+        const { currentPage, totalPages } = this.state;
         let rows = [];
         for (let i = 0; i < totalPages; i++) {
             console.log(currentPage);
@@ -311,7 +264,7 @@ export class ComplianceHistory extends React.Component<any, any> {
     };
 
     render() {
-        const { perPageLimit, ruleSetData } = this.state;
+        const { perPageLimit, historyData } = this.state;
         const now = 60;
         return (
             <div className="compliancemanager-dashboard-container">
@@ -413,7 +366,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <strong>Distribution by Geolocation</strong>
                                     </div>
                                     <div className="d-block map-inner">
-                                    <div><iframe width="100%" height="600"  scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+                                        <div><iframe width="100%" height="600" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
                                     </div>
                                 </div>
                             </div>
@@ -494,9 +447,9 @@ export class ComplianceHistory extends React.Component<any, any> {
                             <h3>Showing 2 of 10 results</h3>
                         </div>
                         <div className="d-block width-100 p-t-20">
-                            {this.displayRuleSetData()}
+                            {this.displayHistoryData()}
                         </div>
-                        {ruleSetData.length > 0 && <div className="d-block width-100 text-right pagination">
+                        {historyData.length > 0 && <div className="d-block width-100 text-right pagination">
                             {this.peginationOfBox()}
                         </div>}
                     </div>
