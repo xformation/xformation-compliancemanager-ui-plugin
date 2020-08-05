@@ -182,11 +182,36 @@
       .heading{
         background-color: #E31335;
       }
-      
+      .credential{
+        .credential-text{
+          .tasted-boxes{
+            .tasted-box{
+              span{
+                &.non-complaint{
+                  background-color: #E31335;
+                }
+              }
+            }
+          }
+        }
+      }
     }
     &.passed{
       .heading{
         background-color: #15C64C;
+      }
+      .credential{
+        .credential-text{
+          .tasted-boxes{
+            .tasted-box{
+              span{
+                &.non-complaint{
+                  background-color: #15C64C;
+                }
+              }
+            }
+          }
+        }
       }
     }
     .credential{
@@ -228,9 +253,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            &.non-complaint{
-              background-color: #E31335;
-            }
+            
           }
         }
       }

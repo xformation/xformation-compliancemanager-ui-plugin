@@ -2182,7 +2182,27 @@ a:hover {
   background-color: #e31335;
 }
 
+.filter-container
+  .credentials-box.failed
+  .credential
+  .credential-text
+  .tasted-boxes
+  .tasted-box
+  span.non-complaint {
+  background-color: #e31335;
+}
+
 .filter-container .credentials-box.passed .heading {
+  background-color: #15c64c;
+}
+
+.filter-container
+  .credentials-box.passed
+  .credential
+  .credential-text
+  .tasted-boxes
+  .tasted-box
+  span.non-complaint {
   background-color: #15c64c;
 }
 
@@ -2226,14 +2246,6 @@ a:hover {
   position: absolute;
   left: 0;
   top: 0;
-}
-.filter-container
-  .credentials-box
-  .credential
-  .tasted-boxes
-  .tasted-box
-  span.non-complaint {
-  background-color: #e31335;
 }
 .filter-container .credentials-box .credential .credential-bottom-text {
   color: #3c495a;
