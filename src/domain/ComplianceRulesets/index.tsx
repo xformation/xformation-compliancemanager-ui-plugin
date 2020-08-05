@@ -178,6 +178,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
         ];
         this.rulesetRef = React.createRef();
         this.assessmentRef = React.createRef();
+        this.exclusionRef = React.createRef();
+        this.remediationRef = React.createRef();
     }
 
     assessmentHandleClick(index: any) {
