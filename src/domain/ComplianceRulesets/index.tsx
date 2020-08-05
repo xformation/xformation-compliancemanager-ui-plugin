@@ -5,11 +5,16 @@ import runHandIcon from '../../img/run-hand-icon.png';
 import runSettingisIcon from '../../img/run-settingis-icon.png';
 import { NewRulSetPopup } from './newRuleSetPopup';
 import { AssessmentPopup } from './assessmentPopup';
+import { CreateRemediationPopup } from './createRemediationPopup';
+import { CreateExclusionPopup } from './createExclusionPopup';
+
 
 export class ComplianceRulesets extends React.Component<any, any> {
     breadCrumbs: any;
     rulesetRef: any;
     assessmentRef: any;
+    remediationRef: any;
+    exclusionRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -208,6 +213,14 @@ export class ComplianceRulesets extends React.Component<any, any> {
         this.assessmentRef.current.toggle();
     };
 
+    onClickonClickopenExclusionPopup = (e: any) => {
+        this.exclusionRef.current.toggle();
+    };
+
+    onClickonClickopenRemediationPopup = (e: any) => {
+        this.remediationRef.current.toggle();
+    };
+
     displayRuleSetData = () => {
         const { ruleSetData, perPageLimit, currentPage } = this.state;
         const retData = [];
@@ -227,10 +240,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                             <i className="fa fa-ellipsis-v"></i>
                                         </a>
                                         {data.menuStatusOpen == true && <div className="assessment-toggle">
-                                            <a href="#" className="d-inline-block">
+                                            <a onClick={this.onClickonClickopenRemediationPopup} className="d-inline-block">
                                                 <img src={runSettingisIcon} alt="" />
                                             </a>
-                                            <a href="#" className="d-inline-block">
+                                            <a onClick={this.onClickonClickopenExclusionPopup} className="d-inline-block">
                                                 <img src={runHandIcon} alt="" />
                                             </a>
                                         </div>}
@@ -413,13 +426,13 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50">
-                                    {ruleSetData.length > 0 && <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>}
+                                    <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
                                 </div>
                             </div>
-                            {ruleSetData.length > 0 && <div className="d-block width-100 p-t-15 p-b-20 search-box">
+                           <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6">
                                         <div className="d-inline-block form-group search-control-group">
@@ -436,7 +449,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                         </div>
                                     </div>
                                 </div>
-                            </div>}
+                            </div>
                             <div className="d-block width-100">
                                 <div className="row">
                                     {this.displayRuleSetData()}
@@ -451,6 +464,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 </div>
                 <AssessmentPopup ref={this.assessmentRef} />
                 <NewRulSetPopup ref={this.rulesetRef} />
+                <CreateRemediationPopup ref={this.remediationRef} />
+                <CreateExclusionPopup ref={this.exclusionRef} />
             </div>
         );
     }
