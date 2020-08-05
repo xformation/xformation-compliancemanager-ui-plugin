@@ -63,7 +63,7 @@
     }
   }
   .results-right-chart{
-    width: 53%;
+    width: 55%;
     .map-box{
       width: 100%;
       overflow: hidden;
@@ -179,16 +179,19 @@
         font-size: 11px;
         line-height: 14px;
         font-weight: 500;
+        margin-bottom: 12px;
+        margin-top: 5px;
       }
       .tasted-boxes{
         .tasted-box{
           background-color: #D9E4F2;
           position: relative;
-          padding-left: 40px;
+          padding-left: 45px;
           color: #3C495A;
           font-size: 14px;
           line-height: 36px;
           width: 205px;
+          margin-right: 10px;
           span{
             background-color: #3C495A;
             color: #FFFFFF;
@@ -196,12 +199,50 @@
             width: 36px;
             text-align: center;
             font-size: 12px;
-            line-height: 34px;
+            line-height: 36px;
             font-weight: 400;
             position: absolute;
             left: 0;
             top: 0;
+            &.non-complaint{
+              background-color: #E31335;
+            }
           }
+        }
+      }
+      .credential-bottom-text{
+        color: #3C495A;
+        background-color: #D9E4F2;
+        font-size: 11px;
+        line-height: 16px;
+        font-weight: 400;
+        padding: 0 50px 0 10px;
+      }
+      .high-expand{
+        text-align: right;
+        .high{
+          display: inline-block;
+          background-color: #FF8F00;
+          width: 86px;
+          height: 36px;
+          color: #3C495A;
+          font-size: 14px;
+          line-height: 36px;
+          font-weight: 400;
+          margin-bottom: 10px;
+          margin-top: 5px;
+          text-align: center;
+        }
+        .expand{
+          display: inline-block;
+          background-color: #D9E4F2;
+          width: 86px;
+          height: 36px;
+          color: #3C495A;
+          font-size: 14px;
+          line-height: 36px;
+          font-weight: 400;
+          text-align: center;
         }
       }
     }
@@ -290,3 +331,70 @@
 }
 
 
+@media only screen and (max-width: 1200px) {
+  .results-container{
+    .results-left-chart{
+      width: 100%;
+    }
+    .results-right-chart{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  .filter-container{
+    .credentials-box{
+      .credential{
+        .tasted-boxes{
+          .tasted-box{
+            font-size: 12px;
+            width: 31%;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+  .filter-container{
+    .credentials-box{
+      .credential{
+        .tasted-boxes{
+          .tasted-box{
+            font-size: 10px;
+            width: 46%;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    .filter-control-group{
+      padding-bottom: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .results-container{
+    .results-left-chart{
+      .chart-box{
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+      }
+    }
+  }
+  .filter-container{
+    .filter-control-group{
+      padding-bottom: 10px;
+    }
+    .credentials-box{
+      .credential{
+        .high-expand{
+          text-align: left;
+        }
+        .credential-bottom-text{
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}
