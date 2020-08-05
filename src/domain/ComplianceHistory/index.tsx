@@ -4,7 +4,7 @@ import { config } from '../../config';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 // import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Progress } from 'reactstrap';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
 
 export class ComplianceHistory extends React.Component<any, any> {
     breadCrumbs: any;
@@ -101,18 +101,6 @@ export class ComplianceHistory extends React.Component<any, any> {
                     data: [25, 30, 80]
                 }
             ],
-            singleChartDataSets: [
-                {
-                    labels: ['High'],
-                },
-                {
-                    label: '',
-                    backgroundColor: [
-                        '#E31335',
-                    ],
-                    data: [100]
-                }
-            ]
 
         };
         this.breadCrumbs = [
@@ -270,6 +258,58 @@ export class ComplianceHistory extends React.Component<any, any> {
         }
     }
 
+    data = {
+        labels: ['Lam', 'Cloud', 'Security',
+            'KMS'],
+        datasets: [
+            {
+                label: '',
+                backgroundColor: 'rgba(60, 73, 90, 1)',
+                borderColor: 'rgba(60, 73, 90, 1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(60, 73, 90, 1)',
+                hoverBorderColor: 'rgba(60, 73, 90, 1)',
+                data: [9, 20, -8, -15]
+            }
+        ]
+    };
+
+    singleChartdata = {
+        labels: [
+            'High',
+        ],
+        datasets: [{
+            data: [100],
+            backgroundColor: [
+                '#E31335',
+            ],
+            hoverBackgroundColor: [
+                '#E31335',
+            ]
+        }]
+    };
+
+    piedata = {
+        labels: [
+            'S3 Buge',
+            'Cloud',
+            'lamUser'
+        ],
+        datasets: [{
+            data: [15, 17, 90],
+            backgroundColor: [
+                '#E31335',
+                '#15C64C',
+                '#3C495A'
+            ],
+            hoverBackgroundColor: [
+                '#E31335',
+                '#15C64C',
+                '#3C495A'
+            ]
+        }]
+    };
+
     render() {
         const { perPageLimit, ruleSetData } = this.state;
         const now = 60;
@@ -308,28 +348,47 @@ export class ComplianceHistory extends React.Component<any, any> {
                                     </div>
                                     <div className="d-block chart-inner">
                                         <Pie
-                                            data={this.state.singleChartDataSets}
-                                            width={100}
-                                            height={50}
+                                            data={this.singleChartdata}
                                             options={{
-                                                title: {
-                                                    display: true,
-                                                    text: '',
-                                                    fontSize: 20
-                                                },
                                                 legend: {
                                                     display: true,
                                                     position: 'right'
                                                 }
-                                            }}
-                                        />
+                                            }} />
                                     </div>
                                 </div>
                                 <div className="d-inline-block chart-box green-chart">
                                     <div className="d-block heading">
                                         <strong>Entitles by Type, Pass Vs Fail</strong>
                                     </div>
-                                    <div className="d-block chart-inner"></div>
+                                    <div className="d-block chart-inner">
+                                        <Bar
+                                            data={this.data}
+                                            width={100}
+                                            height={100}
+                                            options={{
+                                                maintainAspectRatio: false,
+                                                legend: {
+                                                    display: false,
+                                                    position: 'right'
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            fontColor: '#3C495A',
+                                                            fontSize: 12
+                                                        },
+                                                    }],
+                                                    xAxes: [{
+                                                        ticks: {
+                                                            fontColor: '#ffff',
+                                                            fontSize: 12
+                                                        },
+                                                    }]
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                                 <div className="d-inline-block chart-box">
                                     <div className="d-block heading">
@@ -337,15 +396,8 @@ export class ComplianceHistory extends React.Component<any, any> {
                                     </div>
                                     <div className="d-block chart-inner">
                                         <Pie
-                                            data={this.state.datasets}
-                                            width={100}
-                                            height={50}
+                                            data={this.piedata}
                                             options={{
-                                                title: {
-                                                    display: true,
-                                                    text: 'Average Rainfall per month',
-                                                    fontSize: 20
-                                                },
                                                 legend: {
                                                     display: true,
                                                     position: 'right'

@@ -2187,6 +2187,21 @@ a:hover {
   top: 0;
 }
 
+.filter-container .progress-bar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #007bff;
+  transition: width 0.6s ease;
+}
+
 .filter-container .pagination ul {
   list-style: none;
   padding: 0;
