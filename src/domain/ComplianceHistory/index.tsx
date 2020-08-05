@@ -338,7 +338,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <strong>Test Score</strong>
                                     </div>
                                     <div className="d-block chart-inner">
-                                        <div className="text-center">{now}%</div>
+                                        <div className="text-center progress-text">{now}% 4/12 passed tests (5 excluded)</div>
                                         <Progress color="success" value={now} />
                                     </div>
                                 </div>
@@ -413,7 +413,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <strong>Distribution by Geolocation</strong>
                                     </div>
                                     <div className="d-block map-inner">
-                                    <div><iframe width="100%" height="600"  scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+                                    <iframe width="100%" height="290" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                                     </div>
                                 </div>
                             </div>

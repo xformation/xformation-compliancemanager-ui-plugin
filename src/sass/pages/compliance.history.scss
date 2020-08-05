@@ -46,8 +46,32 @@
       }
       .chart-inner{
         background: #F0F3F7;
-        padding: 10px 0;
+        padding: 10px;
         height: 120px;
+        overflow: hidden;
+        position: relative;
+        .progress-text{
+          font-size: 11px;
+          color: #3C495A;
+          line-height: 18px;
+          padding-top: 25px;
+          padding-bottom: 5px;
+        }
+        .progress{
+          background-color: #3C495A;
+          border-radius: 6px;
+          height: 13px;
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          .progress-bar{
+            background-color: #15C64C;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 13px;
+          }
+        }
       }
       &.green-chart{
         .heading{
@@ -81,7 +105,7 @@
       }
       .map-inner{
         background: #F0F3F7;
-        padding: 10px 0;
+        padding: 0;
         height: 290px;
       }
     }
@@ -355,6 +379,15 @@
   }
 }
 @media only screen and (max-width: 992px) {
+  .results-container{
+    .results-left-chart{
+      .chart-box{
+        .chart-inner{
+          height: 145px;
+        }
+      }
+    }
+  }
   .filter-container{
     .credentials-box{
       .credential{
@@ -379,6 +412,9 @@
         width: 100%;
         margin-left: 0%;
         margin-right: 0%;
+        .chart-inner{
+          height: auto;
+        }
       }
     }
   }
