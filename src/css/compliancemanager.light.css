@@ -2185,7 +2185,6 @@ a:hover {
 .filter-container
   .credentials-box.failed
   .credential
-  .credential-text
   .tasted-boxes
   .tasted-box
   span.non-complaint {
@@ -2199,7 +2198,6 @@ a:hover {
 .filter-container
   .credentials-box.passed
   .credential
-  .credential-text
   .tasted-boxes
   .tasted-box
   span.non-complaint {

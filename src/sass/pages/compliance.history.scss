@@ -35,7 +35,7 @@
       border-radius: 3px;
       .heading{
         padding: 7px 10px;
-        background-color: rgba(129, 170, 225, 0.2);
+        background-color: $compliance-heading-background-color;
         border-bottom: 1px solid #F0F3F7;
         strong{
           font-size: 13px;
@@ -94,7 +94,7 @@
       border-radius: 3px;
       .heading{
         padding: 7px 10px;
-        background-color: rgba(129, 170, 225, 0.2);
+        background-color: $compliance-heading-background-color;
         border-bottom: 1px solid #F0F3F7;
         strong{
           font-size: 13px;
@@ -183,13 +183,11 @@
         background-color: #E31335;
       }
       .credential{
-        .credential-text{
-          .tasted-boxes{
-            .tasted-box{
-              span{
-                &.non-complaint{
-                  background-color: #E31335;
-                }
+        .tasted-boxes{
+          .tasted-box{
+            span{
+              &.non-complaint{
+                background-color: #E31335;
               }
             }
           }
@@ -201,13 +199,11 @@
         background-color: #15C64C;
       }
       .credential{
-        .credential-text{
-          .tasted-boxes{
-            .tasted-box{
-              span{
-                &.non-complaint{
-                  background-color: #15C64C;
-                }
+        .tasted-boxes{
+          .tasted-box{
+            span{
+              &.non-complaint{
+                background-color: #15C64C;
               }
             }
           }

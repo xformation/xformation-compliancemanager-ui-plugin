@@ -2035,7 +2035,7 @@ a:hover {
 }
 .results-container .results-left-chart .chart-box .heading {
   padding: 7px 10px;
-  background-color: rgba(129, 170, 225, 0.2);
+  background-color: #81aae1;
   border-bottom: 1px solid #f0f3f7;
 }
 .results-container .results-left-chart .chart-box .heading strong {
@@ -2098,7 +2098,7 @@ a:hover {
 }
 .results-container .results-right-chart .map-box .heading {
   padding: 7px 10px;
-  background-color: rgba(129, 170, 225, 0.2);
+  background-color: #81aae1;
   border-bottom: 1px solid #f0f3f7;
 }
 .results-container .results-right-chart .map-box .heading strong {
@@ -2185,7 +2185,6 @@ a:hover {
 .filter-container
   .credentials-box.failed
   .credential
-  .credential-text
   .tasted-boxes
   .tasted-box
   span.non-complaint {
@@ -2199,7 +2198,6 @@ a:hover {
 .filter-container
   .credentials-box.passed
   .credential
-  .credential-text
   .tasted-boxes
   .tasted-box
   span.non-complaint {
