@@ -121,7 +121,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                 if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
                     const data = historyData[i];
                     retData.push(
-                        <div className={data.status=='Failed'?"d-block width-100 p-b-15 credentials-box failed":"d-block width-100 p-b-15 credentials-box passed"}>
+                        <div className={data.status == 'Failed' ? "d-block width-100 p-b-15 credentials-box failed" : "d-block width-100 p-b-15 credentials-box passed"}>
                             <div className="heading d-inline-block">{data.status}</div>
                             <div className="d-block width-100 p-t-15 p-r-15 p-b-5 p-l-15 credential">
                                 <div className="row">
@@ -263,7 +263,7 @@ export class ComplianceHistory extends React.Component<any, any> {
     };
 
     render() {
-        const { perPageLimit, historyData } = this.state;
+        const { historyData } = this.state;
         const now = 60;
         return (
             <div className="compliancemanager-dashboard-container">
@@ -365,7 +365,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <strong>Distribution by Geolocation</strong>
                                     </div>
                                     <div className="d-block map-inner">
-                                    <iframe width="100%" height="290" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                                        <iframe width="100%" height="290" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=usa+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                                     </div>
                                 </div>
                             </div>

@@ -12,6 +12,8 @@ export class Dashboard extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
+            settingsActive: false,
+            fileExporActive: false,
             dashboardData: [{
                 title: 'AWS Network Alerts',
                 awsdata: 'AWS (657907747545)',
@@ -73,7 +75,7 @@ export class Dashboard extends React.Component<any, any> {
                 color: 'yellow-green',
             },
             ],
-            settingsToggle:true
+            settingsToggle: true
         };
         this.breadCrumbs = [
             {
@@ -85,22 +87,22 @@ export class Dashboard extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
-        
+
         this.assessmentRef = React.createRef();
         this.assetssmentRef = React.createRef();
         this.settingsHandleClick = this.settingsHandleClick.bind(this);
         this.fileExportHandleClick = this.fileExportHandleClick.bind(this);
-        
+
     }
 
     settingsHandleClick() {
-        var toggle = this.state.settingsActive === 'active' ? '' : 'active';
-        this.setState({settingsActive: toggle});
+        let openStatus = !this.state.settingsActive;
+        this.setState({ settingsActive: openStatus });
     };
 
     fileExportHandleClick() {
-        var toggle = this.state.fileExportActive === 'active' ? '' : 'active';
-        this.setState({fileExportActive: toggle});
+        var toggle = !this.state.fileExporActive;
+        this.setState({ fileExporActive: toggle });
     };
 
     onClickonClickRunAssessment = (e: any) => {
@@ -135,9 +137,9 @@ export class Dashboard extends React.Component<any, any> {
         return retData;
     }
 
-    
+
     render() {
-        const state = this.state;
+        const {settingsActive, fileExporActive} = this.state;
         return (
             <div className="compliancemanager-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
@@ -209,8 +211,8 @@ export class Dashboard extends React.Component<any, any> {
                                         <a href="#" className="white-button" onClick={this.settingsHandleClick}>
                                             <img src={settingsIcon} alt="" />
                                         </a>
-                                        
-                                        <div className={`settings-toggle ${this.state.settingsActive}`}>
+
+                                        {settingsActive && <div className="">
                                             <ul>
                                                 <li>
                                                     <span className="red">Red </span>
@@ -234,15 +236,15 @@ export class Dashboard extends React.Component<any, any> {
                                                     <span>100%</span>
                                                 </li>
                                             </ul>
-                                        </div> 
+                                        </div>}
                                     </div>
 
                                     <div className="d-inline-block file-export">
                                         <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
                                             <img src={fileExportIcon} alt="" />
                                         </a>
-                                        
-                                        <div className={`file-export-toggle ${this.state.fileExportActive}`}>
+
+                                       {fileExporActive && <div className=''>
                                             <ul>
                                                 <li>
                                                     <img src={fileExportIcon} alt="" /> Export to CSV - All Result
@@ -251,8 +253,8 @@ export class Dashboard extends React.Component<any, any> {
                                                     <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
                                                 </li>
                                             </ul>
-                                        </div> 
-                                    </div>                                    
+                                        </div>}
+                                    </div>
                                 </div>
                             </div>
                         </div>

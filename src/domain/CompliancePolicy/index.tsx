@@ -381,7 +381,7 @@ export class CompliancePolicy extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50 heading-left">
-                                    {policyData.length > 0 && <h3>Showing {perPageLimit} of {policyData.length} results</h3>}
+                                  <h3>Showing {perPageLimit} of {policyData.length} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right heading-right">
                                     <a onClick={this.onClickCloudAccountPolicy} className="blue-button">Add Cloud Account Policy</a>
@@ -389,7 +389,6 @@ export class CompliancePolicy extends React.Component<any, any> {
                                 </div>
                             </div>
                             
-                            {policyData.length > 0 && 
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
                                     <div className="col-lg-12 col-md-12 col-sm-12">
@@ -402,7 +401,6 @@ export class CompliancePolicy extends React.Component<any, any> {
                                     </div>
                                 </div>
                             </div>
-                            }
                             
                             <div className="d-block width-100">
                                 {this.displaypolicyData()}
