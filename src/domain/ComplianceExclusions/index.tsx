@@ -192,7 +192,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-exclusions-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | EXCLUSIONS" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">

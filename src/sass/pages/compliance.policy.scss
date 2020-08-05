@@ -1,76 +1,3 @@
-.filter-container {    
-    .filter-control-group {
-        max-width: 250px;
-        padding-left: 0px;
-        &.clear-filters {
-            margin-top: 23px;
-            position: relative;
-            padding-bottom: 0;
-            label {
-                &:after{
-                    top: 0;
-                    left: 0;
-                    width: 35px;
-                    height: 35px;
-                    content: "";
-                    background-color: #f0f3f7;
-                    z-index: 0;
-                    position: absolute;
-                    border-radius: 3px;
-                }
-                span {
-                    display: inline-block;
-                    padding-left: 45px;
-                    color: $filter-container-label-text-color;
-                    vertical-align: middle;
-                    padding-top: 0;
-                    cursor: pointer;
-                    position: relative;
-                    line-height: 35px;
-                    &:before {
-                        content: "";
-                        width: 1px;
-                        height: 18px;
-                        position: absolute;
-                        top: 9px;
-                        left: 17px;
-                        background: #333;
-                        opacity: 1;
-                        transform: rotate(-45deg);
-                        cursor: pointer;
-                        z-index: 1;
-                    }
-                    &:after {
-                        content: "";
-                        width: 1px;
-                        height: 18px;
-                        position: absolute;
-                        top: 9px;
-                        left: 17px;
-                        background: #333;
-                        opacity: 1;
-                        transform: rotate(45deg);
-                        cursor: pointer;
-                        z-index: 1;
-                    }
-                }
-            }
-        }
-        .form-control{
-            background-color: #f0f3f7 !important;
-            border: none !important;
-            font-size: 12px;
-            cursor: pointer;
-            height: 35px;
-        }
-        label{
-            color: $filter-container-label-text-color;
-            padding-bottom: 3px;
-            font-size: 12px;
-        }
-    }
-}
-
 .assessment-boxes{
     .heading{
         border-bottom: 1px solid #D9E4F2;
@@ -285,6 +212,7 @@
     line-height: 20px;
     font-weight: 600;
 }
+
 .modal-container{
     .modal-body{
         .compliance-account{
@@ -375,14 +303,6 @@
             .blue-button{
                 border-radius: 8px!important;
             }
-        }
-    }
-}
-
-@media (max-width: 1200px){
-    .filter-container{
-        .assessments{
-            float: left;
         }
     }
 }

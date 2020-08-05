@@ -321,6 +321,7 @@ a:hover {
   }
 }
 
+/*********************************** Filters Container *********************************/
 .filter-container .filter-control-group {
   max-width: 250px;
   padding-left: 0px;
@@ -390,18 +391,27 @@ a:hover {
   font-size: 12px;
 }
 
-.filter-container .assessments {
+@media (max-width: 1200px) {
+  .filter-container .assessments {
+    float: left;
+  }
+}
+
+.compliance-dashboard-container .filter-container .assessments {
   margin-top: 23px;
 }
-.filter-container .assessments .settings {
+.compliance-dashboard-container .filter-container .assessments .settings {
   position: relative;
 }
-.filter-container .assessments .settings a {
+.compliance-dashboard-container .filter-container .assessments .settings a {
   padding: 5px 10px 4px !important;
   min-width: auto;
 }
-.filter-container .assessments .settings .settings-toggle {
-  display: none;
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .settings
+  .settings-toggle {
   position: absolute;
   right: 10px;
   top: 35px;
@@ -411,15 +421,23 @@ a:hover {
   padding: 5px;
   text-align: right;
 }
-.filter-container .assessments .settings .settings-toggle.active {
-  display: block;
-}
-.filter-container .assessments .settings .settings-toggle ul {
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .settings
+  .settings-toggle
+  ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.filter-container .assessments .settings .settings-toggle ul li {
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .settings
+  .settings-toggle
+  ul
+  li {
   font-size: 12px;
   line-height: 18px;
   color: #3b4859;
@@ -427,15 +445,18 @@ a:hover {
   display: block;
   padding-bottom: 3px;
 }
-.filter-container .assessments .file-export {
+.compliance-dashboard-container .filter-container .assessments .file-export {
   position: relative;
 }
-.filter-container .assessments .file-export a {
+.compliance-dashboard-container .filter-container .assessments .file-export a {
   padding: 5px 10px 4px !important;
   min-width: auto;
 }
-.filter-container .assessments .file-export .file-export-toggle {
-  display: none;
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .file-export
+  .file-export-toggle {
   position: absolute;
   right: 0px;
   top: 35px;
@@ -444,15 +465,23 @@ a:hover {
   width: 230px;
   padding: 5px;
 }
-.filter-container .assessments .file-export .file-export-toggle.active {
-  display: block;
-}
-.filter-container .assessments .file-export .file-export-toggle ul {
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .file-export
+  .file-export-toggle
+  ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.filter-container .assessments .file-export .file-export-toggle ul li {
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .file-export
+  .file-export-toggle
+  ul
+  li {
   font-size: 12px;
   line-height: 20px;
   color: #3b4859;
@@ -460,178 +489,65 @@ a:hover {
   display: block;
   padding-bottom: 3px;
 }
-.filter-container .assessments .file-export .file-export-toggle ul li img {
+.compliance-dashboard-container
+  .filter-container
+  .assessments
+  .file-export
+  .file-export-toggle
+  ul
+  li
+  img {
   max-width: 20px;
   height: auto;
 }
 
-.compliance-main-box {
+.compliance-dashboard-container .compliance-main-box {
   overflow: hidden;
   box-shadow: 0px 1px 5px #00000029;
   border-radius: 3px;
   margin-bottom: 30px;
   cursor: pointer;
 }
-.compliance-main-box .heading {
+.compliance-dashboard-container .compliance-main-box .heading {
   padding: 7px 10px;
   background-color: rgba(129, 170, 225, 0.2);
   box-shadow: 0px 1px 0px #00000029;
 }
-.compliance-main-box .heading strong {
+.compliance-dashboard-container .compliance-main-box .heading strong {
   font-size: 13px;
   line-height: 20px;
   color: #3b4859;
   font-weight: 500;
 }
-.compliance-main-box .heading i {
+.compliance-dashboard-container .compliance-main-box .heading i {
   font-size: 18px;
   line-height: 20px;
   color: #3b4859;
   font-weight: 500;
 }
-.compliance-main-box .compliance-inner {
+.compliance-dashboard-container .compliance-main-box .compliance-inner {
   background: #f0f3f7;
   padding: 30px 0;
 }
-.compliance-main-box .compliance-inner p {
+.compliance-dashboard-container .compliance-main-box .compliance-inner p {
   font-size: 14px;
   line-height: 20px;
   color: #3b4859;
   font-weight: 500;
   margin-bottom: 7px;
 }
-.compliance-main-box .compliance-inner span {
+.compliance-dashboard-container .compliance-main-box .compliance-inner span {
   font-size: 36px;
   line-height: 40px;
   font-weight: 500;
 }
-.compliance-main-box .compliance-inner a {
+.compliance-dashboard-container .compliance-main-box .compliance-inner a {
   font-size: 13px;
   line-height: 40px;
   font-weight: 500;
   color: #3b4859;
 }
 
-@media (max-width: 1200px) {
-  .filter-container .assessments {
-    float: left;
-  }
-}
-
-.filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group.clear-filters {
-  margin-top: 23px;
-  position: relative;
-  padding-bottom: 0;
-}
-.filter-container .filter-control-group.clear-filters label:after {
-  top: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  content: "";
-  background-color: #f0f3f7;
-  z-index: 0;
-  position: absolute;
-  border-radius: 3px;
-}
-.filter-container .filter-control-group.clear-filters label span {
-  display: inline-block;
-  padding-left: 45px;
-  color: #3b4859;
-  vertical-align: middle;
-  padding-top: 0;
-  cursor: pointer;
-  position: relative;
-  line-height: 35px;
-}
-.filter-container .filter-control-group.clear-filters label span:before {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(-45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group.clear-filters label span:after {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #3b4859;
-  padding-bottom: 3px;
-  font-size: 12px;
-}
-
-.filter-container .search-control-group {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 10px;
-  width: 450px;
-}
-.filter-container .search-control-group .input-group-text {
-  max-width: 100%;
-  text-align: left;
-  padding-left: 35px;
-  width: 100%;
-  border: 1px solid #8392a7;
-  background-color: #ffffff;
-  font-size: 13px;
-  color: #8998ac;
-  font-weight: 400;
-  height: 36px;
-}
-.filter-container .search-control-group button {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  width: 36px;
-  height: 36px;
-}
-
-.filter-container .table-data-label {
-  margin-top: 20px;
-  border-bottom: solid 1px #eff2f7;
-}
-.filter-container .table-data-label span {
-  font-size: 16px;
-  font-family: Montserrat;
-  color: #3b4859;
-  padding-top: 40px;
-}
-.filter-container .table-data-label .blue-button {
-  float: right;
-}
-
 .results-container .heading {
   border-bottom: 1px solid #d9e4f2;
 }
@@ -770,120 +686,6 @@ a:hover {
   }
 }
 
-.filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group.clear-filters {
-  margin-top: 23px;
-  position: relative;
-  padding-bottom: 0;
-}
-.filter-container .filter-control-group.clear-filters label:after {
-  top: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  content: "";
-  background-color: #f0f3f7;
-  z-index: 0;
-  position: absolute;
-  border-radius: 3px;
-}
-.filter-container .filter-control-group.clear-filters label span {
-  display: inline-block;
-  padding-left: 45px;
-  color: #3b4859;
-  vertical-align: middle;
-  padding-top: 0;
-  cursor: pointer;
-  position: relative;
-  line-height: 35px;
-}
-.filter-container .filter-control-group.clear-filters label span:before {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(-45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group.clear-filters label span:after {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #3b4859;
-  padding-bottom: 3px;
-  font-size: 12px;
-}
-
-.filter-container .search-control-group {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 10px;
-  width: 450px;
-}
-.filter-container .search-control-group .input-group-text {
-  max-width: 100%;
-  text-align: left;
-  padding-left: 35px;
-  width: 100%;
-  border: 1px solid #8392a7;
-  background-color: #ffffff;
-  font-size: 13px;
-  color: #8998ac;
-  font-weight: 400;
-  height: 36px;
-}
-.filter-container .search-control-group button {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  width: 36px;
-  height: 36px;
-}
-
-.filter-container .table-data-label {
-  margin-top: 20px;
-  border-bottom: solid 1px #eff2f7;
-}
-.filter-container .table-data-label span {
-  font-size: 16px;
-  font-family: Montserrat;
-  color: #3b4859;
-  padding-top: 40px;
-}
-.filter-container .table-data-label .blue-button {
-  float: right;
-}
-
 .results-container .heading {
   border-bottom: 1px solid #d9e4f2;
 }
@@ -1020,75 +822,6 @@ a:hover {
   .results-container .search-box .search-control-group {
     width: 100%;
   }
-}
-
-.filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group.clear-filters {
-  margin-top: 23px;
-  position: relative;
-  padding-bottom: 0;
-}
-.filter-container .filter-control-group.clear-filters label:after {
-  top: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  content: "";
-  background-color: #f0f3f7;
-  z-index: 0;
-  position: absolute;
-  border-radius: 3px;
-}
-.filter-container .filter-control-group.clear-filters label span {
-  display: inline-block;
-  padding-left: 45px;
-  color: #3b4859;
-  vertical-align: middle;
-  padding-top: 0;
-  cursor: pointer;
-  position: relative;
-  line-height: 35px;
-}
-.filter-container .filter-control-group.clear-filters label span:before {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(-45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group.clear-filters label span:after {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #3b4859;
-  padding-bottom: 3px;
-  font-size: 12px;
 }
 
 .assessment-boxes .heading {
@@ -1143,6 +876,7 @@ a:hover {
   box-shadow: 0px 1px 5px #00000029;
   border-radius: 3px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 .assessment-boxes .assessment-box .assessment-heading {
   padding: 3px 3px 3px 10px;
@@ -1327,12 +1061,6 @@ a:hover {
   font-weight: 600;
 }
 
-@media (max-width: 1200px) {
-  .filter-container .assessments {
-    float: left;
-  }
-}
-
 @media (max-width: 767px) {
   .assessment-boxes .heading h3 {
     font-size: 12px;
@@ -1340,75 +1068,6 @@ a:hover {
   .assessment-boxes .search-box .search-control-group {
     width: 100%;
   }
-}
-
-.filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group.clear-filters {
-  margin-top: 23px;
-  position: relative;
-  padding-bottom: 0;
-}
-.filter-container .filter-control-group.clear-filters label:after {
-  top: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  content: "";
-  background-color: #f0f3f7;
-  z-index: 0;
-  position: absolute;
-  border-radius: 3px;
-}
-.filter-container .filter-control-group.clear-filters label span {
-  display: inline-block;
-  padding-left: 45px;
-  color: #3b4859;
-  vertical-align: middle;
-  padding-top: 0;
-  cursor: pointer;
-  position: relative;
-  line-height: 35px;
-}
-.filter-container .filter-control-group.clear-filters label span:before {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(-45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group.clear-filters label span:after {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #3b4859;
-  padding-bottom: 3px;
-  font-size: 12px;
 }
 
 .assessment-boxes .heading {
@@ -1749,12 +1408,6 @@ a:hover {
   border-radius: 8px !important;
 }
 
-@media (max-width: 1200px) {
-  .filter-container .assessments {
-    float: left;
-  }
-}
-
 @media (max-width: 767px) {
   .assessment-boxes .heading .heading-left {
     width: 100%;
@@ -1775,89 +1428,6 @@ a:hover {
   .assessment-boxes .framework-box .framework-inner .framework-table {
     width: 1000px;
   }
-}
-
-.filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group.clear-filters {
-  margin-top: 23px;
-  position: relative;
-  padding-bottom: 0;
-}
-.filter-container .filter-control-group.clear-filters label:after {
-  top: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  content: "";
-  background-color: #f0f3f7;
-  z-index: 0;
-  position: absolute;
-  border-radius: 3px;
-}
-.filter-container .filter-control-group.clear-filters label span {
-  display: inline-block;
-  padding-left: 45px;
-  color: #3b4859;
-  vertical-align: middle;
-  padding-top: 0;
-  cursor: pointer;
-  position: relative;
-  line-height: 35px;
-}
-.filter-container .filter-control-group.clear-filters label span:before {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(-45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group.clear-filters label span:after {
-  content: "";
-  width: 1px;
-  height: 18px;
-  position: absolute;
-  top: 9px;
-  left: 17px;
-  background: #333;
-  opacity: 1;
-  transform: rotate(45deg);
-  cursor: pointer;
-  z-index: 1;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #3b4859;
-  padding-bottom: 3px;
-  font-size: 12px;
-}
-
-.filter-container .table-data-label {
-  margin-top: 20px;
-  border-bottom: solid 1px #eff2f7;
-}
-.filter-container .table-data-label span {
-  font-size: 16px;
-  font-family: Montserrat;
-  color: #3b4859;
-  padding-top: 40px;
-}
-.filter-container .table-data-label .blue-button {
-  float: right;
 }
 
 .results-container .heading {

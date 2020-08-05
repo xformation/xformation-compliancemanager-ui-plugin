@@ -353,7 +353,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
     render() {
         const { perPageLimit, ruleSetData } = this.state;
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-rulesets-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">

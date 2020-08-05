@@ -114,15 +114,13 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
         return retData;
     }
 
-
     render() {
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-assessmenthistory-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | ASSESSMENT HISTORY" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
-                        <div className="common-container results-container">
-                            <div className="row">
+                        <div className="row">
                                 <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
                                     <div className="form-group filter-control-group">
                                         <label htmlFor="rousourceGroup">
@@ -191,33 +189,33 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="common-container results-container">
-                            <div className="exclusion-details">
-                                <div className="container-inner">
-                                    <table className="exclusion-data-table">
-                                        <tbody>
-                                            <tr className="exclusion-data-table-header">
-                                                <th>
-                                                    <div className="pointer-label">
-                                                        Date
-                                                </div>
-                                                </th>
-                                                <th>Rule Name</th>
-                                                <th>Environment</th>
-                                                <th>Result</th>
-                                                <th># Failed Tests</th>
-                                                <th># Excluded Tests</th>
-                                                <th>Triggered By</th>
-                                                <th>Details</th>
-                                            </tr>
-                                            {this.createExclusionTable()}
-                                        </tbody>
-                                    </table>
-                                </div>
+                    </div>
+                    <div className="common-container results-container">
+                        <div className="exclusion-details">
+                            <div className="container-inner">
+                                <table className="exclusion-data-table">
+                                    <tbody>
+                                        <tr className="exclusion-data-table-header">
+                                            <th>
+                                                <div className="pointer-label">
+                                                    Date
+                                            </div>
+                                            </th>
+                                            <th>Rule Name</th>
+                                            <th>Environment</th>
+                                            <th>Result</th>
+                                            <th># Failed Tests</th>
+                                            <th># Excluded Tests</th>
+                                            <th>Triggered By</th>
+                                            <th>Details</th>
+                                        </tr>
+                                        {this.createExclusionTable()}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
 

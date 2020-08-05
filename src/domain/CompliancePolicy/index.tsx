@@ -293,7 +293,7 @@ export class CompliancePolicy extends React.Component<any, any> {
     render() {
         const { perPageLimit, policyData } = this.state;
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-policy-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE POLICY" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">

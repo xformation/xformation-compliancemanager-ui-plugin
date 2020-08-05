@@ -266,7 +266,7 @@ export class ComplianceHistory extends React.Component<any, any> {
         const { historyData } = this.state;
         const now = 60;
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-history-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | ASSESSMENT HISTORY" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container results-container">

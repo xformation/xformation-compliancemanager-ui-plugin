@@ -141,7 +141,7 @@ export class Dashboard extends React.Component<any, any> {
     render() {
         const {settingsActive, fileExporActive} = this.state;
         return (
-            <div className="compliancemanager-dashboard-container">
+            <div className="compliance-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
@@ -212,7 +212,7 @@ export class Dashboard extends React.Component<any, any> {
                                             <img src={settingsIcon} alt="" />
                                         </a>
 
-                                        {settingsActive && <div className="">
+                                        {settingsActive && <div className="settings-toggle">
                                             <ul>
                                                 <li>
                                                     <span className="red">Red </span>
@@ -244,7 +244,7 @@ export class Dashboard extends React.Component<any, any> {
                                             <img src={fileExportIcon} alt="" />
                                         </a>
 
-                                       {fileExporActive && <div className=''>
+                                       {fileExporActive && <div className="file-export-toggle">
                                             <ul>
                                                 <li>
                                                     <img src={fileExportIcon} alt="" /> Export to CSV - All Result
