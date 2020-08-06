@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { config } from '../../config';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class AssessmentPopup extends React.Component<any, any> {
@@ -64,7 +66,9 @@ export class AssessmentPopup extends React.Component<any, any> {
                 </ModalBody>
                 <ModalFooter>
                     <div className="d-block text-center">
-                        <button className="blue-button m-r-0 m-b-0">RUN</button>
+                        <Link to={`${config.basePath}/compliancehistory`} className="blue-button m-r-0 m-b-0">
+                            RUN
+                        </Link>
                     </div>
                 </ModalFooter>
             </Modal>

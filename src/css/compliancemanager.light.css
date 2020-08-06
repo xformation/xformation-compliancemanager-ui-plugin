@@ -1526,6 +1526,9 @@ a:hover {
   padding: 8px 10px 8px 10px;
   color: #3b4859;
 }
+.exclusion-details .container-inner .exclusion-data-table tr td.result-text {
+  color: #3b7cff;
+}
 .exclusion-details .container-inner .exclusion-data-table tr:nth-child(even) {
   background-color: #f8f9fb;
 }

@@ -94,18 +94,15 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                     </td>
                     <td>{history.ruleName}</td>
                     <td>{history.environment}</td>
-                    <td>{history.result}</td>
+                    <td className="result-text">{history.result}</td>
                     <td>{history.failedTest}</td>
                     <td>{history.excludedTest}</td>
                     <td>{history.trigger}</td>
                     <td>
                         <div className="d-flex">
-                            <button className="btn btn-link">
+                            <Link to={`${config.basePath}/compliancehistory`} className="btn btn-link">
                                 <i className="fa fa-info-circle"></i>
-                            </button>
-                            {/* <button onClick={this.onClickDeleteExclusion} className="btn btn-link">
-                                <i className="fa fa-trash"></i>
-                            </button> */}
+                            </Link>                            
                         </div>
                     </td>
                 </tr>
