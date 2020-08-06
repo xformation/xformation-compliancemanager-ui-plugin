@@ -137,6 +137,8 @@ export class Rulesets extends React.Component<any, any>{
                 let subData = data.subData[j];
                 if (subData.title.indexOf(value) !== -1 || value === '') {
                     Result.push({ 'title': subData.title, 'checkStatus': subData.checkStatus });
+                } else if (subData.title.toLowerCase().indexOf(value) !== -1 || value === '') {
+                    Result.push({ 'title': subData.title, 'checkStatus': subData.checkStatus });
                 }
             }
             searchResult.push({ 'title': data.title, 'checkValueStatus': data.checkValueStatus, subData: Result });

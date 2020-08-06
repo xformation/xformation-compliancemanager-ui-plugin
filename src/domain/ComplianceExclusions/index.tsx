@@ -128,7 +128,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
 
     fileExportHandleClick() {
         var toggle = this.state.fileExportActive === 'active' ? '' : 'active';
-        this.setState({fileExportActive: toggle});
+        this.setState({ fileExportActive: toggle });
     };
 
     onClickDeleteExclusion = (e: any) => {
@@ -183,6 +183,8 @@ export class ComplianceExclusions extends React.Component<any, any> {
         for (let i = 0; i < duplicatedata.length; i++) {
             if (duplicatedata[i].ruleName.indexOf(value) !== -1 || value === '') {
                 searchResult.push(duplicatedata[i]);
+            } else if (duplicatedata[i].ruleName.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicatedata[i]);
             }
         }
         this.setState({
@@ -191,6 +193,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
     }
 
     render() {
+        const {exclusionData, perPageLimit} = this.state;
         return (
             <div className="compliance-exclusions-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | EXCLUSIONS" />
@@ -256,7 +259,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="d-block width-100">
-                                        <h3>Showing 6 of 6 results</h3>
+                                        <h3>Showing {exclusionData.length} of {exclusionData.length} results</h3>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
@@ -286,7 +289,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                         <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
                                             <img src={fileExportIcon} alt="" />
                                         </a>
-                                        
+
                                         <div className={`file-export-toggle ${this.state.fileExportActive}`}>
                                             <ul>
                                                 <li>
@@ -296,12 +299,12 @@ export class ComplianceExclusions extends React.Component<any, any> {
                                                     <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
                                                 </li>
                                             </ul>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div className="exclusion-details">
                             <div className="container-inner">
                                 <table className="exclusion-data-table">

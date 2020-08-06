@@ -183,6 +183,8 @@ export class ComplianceRemediation extends React.Component<any, any> {
         for (let i = 0; i < duplicatedata.length; i++) {
             if (duplicatedata[i].ruleName.indexOf(value) !== -1 || value === '') {
                 searchResult.push(duplicatedata[i]);
+            } else if (duplicatedata[i].ruleName.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicatedata[i]);
             }
         }
         this.setState({
@@ -191,6 +193,7 @@ export class ComplianceRemediation extends React.Component<any, any> {
     }
 
     render() {
+        const {remediationData} = this.state;
         return (
             <div className="compliance-remediation-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | Remediation" />
@@ -256,7 +259,7 @@ export class ComplianceRemediation extends React.Component<any, any> {
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="d-block width-100">
-                                        <h3>Showing 6 of 6 results</h3>
+                                        <h3>Showing {remediationData.length} of {remediationData.length} results</h3>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">

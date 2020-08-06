@@ -295,6 +295,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
         for (let i = 0; i < duplicateruleSetData.length; i++) {
             if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
                 searchResult.push(duplicateruleSetData[i]);
+            } else if (duplicateruleSetData[i].title.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicateruleSetData[i]);
             }
         }
         this.calculateTotalPages(searchResult);
@@ -428,13 +430,13 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50">
-                                    <h3>Showing {perPageLimit} of {ruleSetData.length} results</h3>
+                                    <h3>Showing {ruleSetData.length} of {perPageLimit} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
                                 </div>
                             </div>
-                           <div className="d-block width-100 p-t-15 p-b-20 search-box">
+                            <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6">
                                         <div className="d-inline-block form-group search-control-group">

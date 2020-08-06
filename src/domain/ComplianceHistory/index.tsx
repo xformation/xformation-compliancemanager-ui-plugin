@@ -91,6 +91,8 @@ export class ComplianceHistory extends React.Component<any, any> {
         for (let i = 0; i < duplicateHistoryData.length; i++) {
             if (duplicateHistoryData[i].status.indexOf(value) !== -1 || value === '') {
                 searchResult.push(duplicateHistoryData[i]);
+            } else if (duplicateHistoryData[i].status.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(duplicateHistoryData[i]);
             }
         }
         this.calculateTotalPages(searchResult);
@@ -263,7 +265,7 @@ export class ComplianceHistory extends React.Component<any, any> {
     };
 
     render() {
-        const { historyData } = this.state;
+        const { historyData, perPageLimit } = this.state;
         const now = 60;
         return (
             <div className="compliance-history-container">
@@ -443,7 +445,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                             </div>
                         </div>
                         <div className="d-block width-100 p-t-20 showing-showing-text">
-                            <h3>Showing 2 of 10 results</h3>
+                            <h3>Showing {historyData.length} of {perPageLimit} results</h3>
                         </div>
                         <div className="d-block width-100 p-t-20">
                             {this.displayHistoryData()}
