@@ -26,7 +26,7 @@ export class AssessmentPopup extends React.Component<any, any> {
                     <p>You are about to run all displayed assessments. This could take a few minutes. Are you sure?</p>
                 </ModalBody>
                 <ModalFooter>
-                    <div className="d-block text-center">
+                    <div className="d-block text-center" onClick={this.toggle}>
                         <Link to={`${config.basePath}/complianceassessmenthistory`} className="blue-button m-r-0 m-b-0">
                             RUN
                         </Link>
