@@ -93,8 +93,13 @@
         td{
           padding: 8px 10px 8px 10px;
           color: #3b4859;
+          a{
+            display: block;
+          }
           &.result-text{
-            color: #3B7CFF;
+            a{
+              color: #3B7CFF;
+            }
           }
         }
         &:nth-child(even){

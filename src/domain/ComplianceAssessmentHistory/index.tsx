@@ -88,16 +88,15 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                 <tr className="">
                     <td className="">
                         <div className="pointer-label">
-                            {/* <input type="checkbox" className="checkbox" /> */}
-                            {history.date}
+                            <Link to={`${config.basePath}/compliancehistory`}>{history.date}</Link>
                         </div>
                     </td>
-                    <td>{history.ruleName}</td>
-                    <td>{history.environment}</td>
-                    <td className="result-text">{history.result}</td>
-                    <td>{history.failedTest}</td>
-                    <td>{history.excludedTest}</td>
-                    <td>{history.trigger}</td>
+                    <td><Link to={`${config.basePath}/compliancehistory`}>{history.ruleName}</Link></td>
+                    <td><Link to={`${config.basePath}/compliancehistory`}>{history.environment}</Link></td>
+                    <td className="result-text"><Link to={`${config.basePath}/compliancehistory`}>{history.result}</Link></td>
+                    <td><Link to={`${config.basePath}/compliancehistory`}>{history.failedTest}</Link></td>
+                    <td><Link to={`${config.basePath}/compliancehistory`}>{history.excludedTest}</Link></td>
+                    <td><Link to={`${config.basePath}/compliancehistory`}>{history.trigger}</Link></td>
                     <td>
                         <div className="d-flex">
                             <Link to={`${config.basePath}/compliancehistory`} className="btn btn-link">
