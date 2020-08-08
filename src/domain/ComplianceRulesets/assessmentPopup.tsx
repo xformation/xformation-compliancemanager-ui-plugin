@@ -65,7 +65,7 @@ export class AssessmentPopup extends React.Component<any, any> {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <div className="d-block text-center">
+                    <div className="d-block text-center" onClick={()=>this.setState({modal: !this.state.modal})}>
                         <Link to={`${config.basePath}/compliancehistory`} className="blue-button m-r-0 m-b-0">
                             RUN
                         </Link>
