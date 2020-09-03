@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export class Utils {
+export default class Utils {
   static postReq(url: any, data: any, callback: any) {
     console.log("Req: " + url + "\n" + data);
     axios
@@ -17,16 +17,11 @@ export class Utils {
   static getReq(url: any) {
     return new Promise((resolve, reject) => {
       axios
-        .get(url, {
-          headers: {
-            "Access-Control-Allow-Origin": "*"
-          },
-          crossdomain: true
-        })
-        .then(response => {
+        .get(url)
+        .then((response: any) => {
           resolve(response);
         })
-        .catch(error => {
+        .catch((error: any) => {
           console.log("GET Err: ", error);
           reject(error);
         });

@@ -4,6 +4,7 @@ import amazonLogo from '../../img/amazon-logo.png';
 import runHandIcon from '../../img/run-hand-icon.png';
 import runSettingisIcon from '../../img/run-settingis-icon.png';
 import { NewRulSetPopup } from './newRuleSetPopup';
+import { NewPolicyPopup } from './newPolicyPopup';
 import { AssessmentPopup } from './assessmentPopup';
 import { CreateRemediationPopup } from './createRemediationPopup';
 import { CreateExclusionPopup } from './createExclusionPopup';
@@ -12,6 +13,7 @@ import { CreateExclusionPopup } from './createExclusionPopup';
 export class ComplianceRulesets extends React.Component<any, any> {
     breadCrumbs: any;
     rulesetRef: any;
+    policyRef: any;
     assessmentRef: any;
     remediationRef: any;
     exclusionRef: any;
@@ -177,6 +179,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
             }
         ];
         this.rulesetRef = React.createRef();
+        this.policyRef = React.createRef();
         this.assessmentRef = React.createRef();
         this.exclusionRef = React.createRef();
         this.remediationRef = React.createRef();
@@ -210,6 +213,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
     onClickonClickRunRuleset = (e: any) => {
         this.rulesetRef.current.toggle();
     };
+
+    addNewPolicy = (e: any) => {
+        this.policyRef.current.toggle();
+    }
 
     onClickonClickRunAssessment = (e: any) => {
         this.assessmentRef.current.toggle();
@@ -435,6 +442,9 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
                                 </div>
+                                <div className="d-inline-block width-50 text-right">
+                                    <a onClick={this.addNewPolicy} className="blue-button m-r-0">ADD POLICY</a>
+                                </div>
                             </div>
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">
                                 <div className="row">
@@ -468,6 +478,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 </div>
                 <AssessmentPopup ref={this.assessmentRef} />
                 <NewRulSetPopup ref={this.rulesetRef} />
+                <NewPolicyPopup ref={this.policyRef} />
                 <CreateRemediationPopup ref={this.remediationRef} />
                 <CreateExclusionPopup ref={this.exclusionRef} />
             </div>

@@ -6,13 +6,15 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const entBaseClsPkg = "com.synectiks.cms.entities.";
 
-export class NewRulSetPopup extends React.Component<any, any> {
+export class NewPolicyPopup extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
         this.state = {
 			modal: false,
 			entities: [],
+			rules: [],
+			selRules: [],
 			searchable: false
         };
     }
@@ -31,6 +33,13 @@ export class NewRulSetPopup extends React.Component<any, any> {
 				});
 			});
 		console.log("entities: ", this.state.entities);
+		Utils.getReq(config.LIST_RULES)
+			.then((response: any) => {
+				this.setState({
+					rules: response.data
+				});
+			});
+		console.log("Rules: ", this.state.rules);
 	};
 
 	onChange(e: any) {
@@ -54,6 +63,24 @@ export class NewRulSetPopup extends React.Component<any, any> {
 		});
 	}
 
+	onRuleChange(e: any) {
+		const chkd = e.target.checked;
+		const id = e.target.id;
+		const rules = this.state.selRules;
+		if (chkd) {
+			if (!rules.contains(id)) {
+				rules.push(id);
+			}
+		} else {
+			if (rules.contains(id)) {
+				rules.remove(id);
+			}
+		}
+		this.setState({
+			selRules: rules
+		});
+	}
+
 	submit() {
 		const data: any = {};
 		if (this.state.name) {
@@ -68,17 +95,17 @@ export class NewRulSetPopup extends React.Component<any, any> {
 			alert("Entity is mandatory.");
 			return;
 		}
-		if (this.state.checks) {
+		if (this.state.selRules) {
 			data.checks = [];
-			data.checks.push(this.state.checks);
+			data.rules.push(this.state.selRules);
 		} else {
-			alert("Checks is mandatory.");
+			alert("Rules are mandatory.");
 			return;
 		}
 		data.searchable = this.state.searchable;
 		data.description = this.state.description;
 		alert('Payload: ' +  data);
-		Utils.postReq(config.POST_RULE, data, this.responseHandler)
+		Utils.postReq(config.POST_POLICY, data, this.responseHandler)
 	}
 
 	responseHandler(res: any, err: any) {
@@ -125,9 +152,21 @@ export class NewRulSetPopup extends React.Component<any, any> {
 							))}
                         </select>
 						<div className="form-group">
-							<label htmlFor="checks" className="d-block">Check*</label>
-							<input id="checks" type="text" value={this.state.checks} onChange={this.onChange}
-								className="input-group-text d-block" placeholder="Rule check" />
+							<label className="d-block">Select Rules*</label>
+							<table>
+								<tbody>
+									{this.state.rules.map((rule: any) => (
+										<tr>
+											<td>
+												<input id={rule.id} type="checkbox" defaultChecked={false} onChange={this.onRuleChange}
+													className="input-group-text d-block" value={rule.id} />
+											</td>
+											<td>{rule.name}</td>
+											<td>{rule.checks}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
 						</div>
                     </div>
                 </ModalBody>

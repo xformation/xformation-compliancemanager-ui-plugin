@@ -11,5 +11,7 @@ export const config = {
   GET_FOLDER_TREE: `${catalogSrvUrl}/listFolderTree`,
   PERMS_LIST_ALL: `${securitySrvUrl}/security/permissions/listAll`,
   GET_ENTITIES_LIST: `${searchSrvUrl}/search/getIndexes`,
-  POST_RULE: `${policySrvUrl}/rule/create`
+  POST_RULE: `${policySrvUrl}/rule/create`,
+  POST_POLICY: `${policySrvUrl}/policy/create`,
+  LIST_RULES: `${policySrvUrl}/rule/findAll`
 };
