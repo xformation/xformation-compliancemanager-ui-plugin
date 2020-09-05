@@ -13,9 +13,12 @@ export class NewPolicyPopup extends React.Component<any, any> {
         this.state = {
 			modal: false,
 			entities: [],
-			rules: [],
 			selRules: [],
-			searchable: false
+			rules: [],
+			reqObj: {
+				searchable: false,
+				rules: [],
+			}
         };
     }
 
@@ -42,75 +45,66 @@ export class NewPolicyPopup extends React.Component<any, any> {
 		console.log("Rules: ", this.state.rules);
 	};
 
-	onChange(e: any) {
+	onChange = (e: any) => {
+		const data: any = this.state.reqObj;
 		const val = e.target.value;
 		const id = e.target.id;
 		if (val) {
-			this.setState({
-				[id]: val
-			});
+			data[id] = val;
 		} else {
-			this.setState({
-				[id]: ''
-			});
+			data[id] = '';
 		}
-	}
-
-	onChkChange() {
-		const toggle = !this.state.searchable;
 		this.setState({
-			searchable: toggle
+			reqObj: data
 		});
 	}
 
-	onRuleChange(e: any) {
+	onChkChange = () => {
+		const data: any = this.state.reqObj;
+		data.searchable = !data.searchable;
+		this.setState({
+			reqObj: data
+		});
+	}
+
+	onRuleChange = (e: any) => {
 		const chkd = e.target.checked;
 		const id = e.target.id;
 		const rules = this.state.selRules;
-		if (chkd) {
-			if (!rules.contains(id)) {
-				rules.push(id);
-			}
-		} else {
-			if (rules.contains(id)) {
-				rules.remove(id);
-			}
+		const indx = rules.indexOf(id);
+		if (chkd && indx == -1) {
+			rules.push(id);
+		} else if (indx >= 0) {
+			rules.splice(indx);
 		}
 		this.setState({
 			selRules: rules
 		});
 	}
 
-	submit() {
-		const data: any = {};
-		if (this.state.name) {
-			data.name = this.state.name;
-		} else {
+	submit = () => {
+		const data: any = this.state.reqObj;
+		if (Utils.isNullEmpty(data.name)) {
 			alert("Name is mandatory.");
 			return;
 		}
-		if (this.state.entity) {
-			data.entity = this.state.entity;
-		} else {
+		if (Utils.isNullEmpty(data.entity)) {
 			alert("Entity is mandatory.");
 			return;
 		}
 		if (this.state.selRules) {
-			data.checks = [];
-			data.rules.push(this.state.selRules);
+			data.rules = this.state.selRules;
 		} else {
 			alert("Rules are mandatory.");
 			return;
 		}
-		data.searchable = this.state.searchable;
-		data.description = this.state.description;
-		alert('Payload: ' +  data);
+		alert('Payload: ' +  JSON.stringify(data));
 		Utils.postReq(config.POST_POLICY, data, this.responseHandler)
 	}
 
-	responseHandler(res: any, err: any) {
+	responseHandler = (res: any, err: any) => {
 		if (res) {
-			alert("Rule saved successfully by id: " + res.id);
+			alert("Rule saved successfully by id: " + res.data.id);
 		} else {
 			alert(err);
 		}

@@ -27,4 +27,13 @@ export default class Utils {
         });
     });
   }
+
+  static isNullEmpty(input: string) {
+    if (input) {
+      if (input.trim.length === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

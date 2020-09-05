@@ -13,7 +13,10 @@ export class NewRulSetPopup extends React.Component<any, any> {
         this.state = {
 			modal: false,
 			entities: [],
-			searchable: false
+			reqObj: {
+				searchable: false,
+				checks: []
+			}
         };
     }
 
@@ -33,61 +36,57 @@ export class NewRulSetPopup extends React.Component<any, any> {
 		console.log("entities: ", this.state.entities);
 	};
 
-	onChange(e: any) {
+	onChange = (e: any) => {
+		const data: any = this.state.reqObj;
 		const val = e.target.value;
 		const id = e.target.id;
 		if (val) {
-			this.setState({
-				[id]: val
-			});
+			data[id] = val;
 		} else {
-			this.setState({
-				[id]: ''
-			});
+			data[id] = '';
 		}
-	}
-
-	onChkChange() {
-		const toggle = !this.state.searchable;
 		this.setState({
-			searchable: toggle
+			reqObj: data
 		});
-	}
+	};
 
-	submit() {
-		const data: any = {};
-		if (this.state.name) {
-			data.name = this.state.name;
-		} else {
+	onChkChange = () => {
+		const data: any = this.state.reqObj;
+		data.searchable = !data.searchable;
+		this.setState({
+			reqObj: data
+		});
+	};
+
+
+	submit = () => {
+		console.log("state: " + JSON.stringify(this.state.reqObj));
+		const data: any = this.state.reqObj;
+		if (Utils.isNullEmpty(data.name)) {
 			alert("Name is mandatory.");
 			return;
 		}
-		if (this.state.entity) {
-			data.entity = this.state.entity;
-		} else {
+		if (Utils.isNullEmpty(data.entity)) {
 			alert("Entity is mandatory.");
 			return;
 		}
-		if (this.state.checks) {
-			data.checks = [];
-			data.checks.push(this.state.checks);
-		} else {
+		if (Utils.isNullEmpty(data.checks)) {
 			alert("Checks is mandatory.");
 			return;
+		} else {
+			data.checks = [ data.checks ];
 		}
-		data.searchable = this.state.searchable;
-		data.description = this.state.description;
-		alert('Payload: ' +  data);
+		alert('Payload: ' +  JSON.stringify(data));
 		Utils.postReq(config.POST_RULE, data, this.responseHandler)
-	}
+	};
 
-	responseHandler(res: any, err: any) {
+	responseHandler = (res: any, err: any) => {
 		if (res) {
-			alert("Rule saved successfully by id: " + res.id);
+			alert("Rule saved successfully by id: " + res.data.id);
 		} else {
 			alert(err);
 		}
-	}
+	};
 
     render() {
         const state = this.state;
