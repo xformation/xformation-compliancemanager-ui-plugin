@@ -12,7 +12,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
         super(props);
         this.state = {
 			modal: false,
-			entities: [],
+			entities: props.entities,
 			reqObj: {
 				searchable: false,
 				checks: []
@@ -27,13 +27,13 @@ export class NewRulSetPopup extends React.Component<any, any> {
     };
 
     componentDidMount() {
-		Utils.getReq(config.GET_ENTITIES_LIST)
-			.then((response: any) => {
-				this.setState({
-					entities: response.data
-				});
-			});
-		console.log("entities: ", this.state.entities);
+		// Utils.getReq(config.GET_ENTITIES_LIST)
+		// 	.then((response: any) => {
+		// 		this.setState({
+		// 			entities: response.data
+		// 		});
+		// 	});
+		// console.log("entities: ", this.state.entities);
 	};
 
 	onChange = (e: any) => {

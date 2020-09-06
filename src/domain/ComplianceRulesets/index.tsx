@@ -8,6 +8,8 @@ import { NewPolicyPopup } from './newPolicyPopup';
 import { AssessmentPopup } from './assessmentPopup';
 import { CreateRemediationPopup } from './createRemediationPopup';
 import { CreateExclusionPopup } from './createExclusionPopup';
+import { config } from '../../config';
+import Utils from '../../utils';
 
 
 export class ComplianceRulesets extends React.Component<any, any> {
@@ -24,149 +26,9 @@ export class ComplianceRulesets extends React.Component<any, any> {
             totalPages: '',
             currentPage: 0,
             perPageLimit: 6,
-            ruleSetData: [
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: '',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                }, {
-                    mainTitle: 'RUN ASSESSMENT',
-                    subTitle: 'CIS',
-                    title: 'AWS CIS Foundation',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-                {
-                    mainTitle: 'RUN ASSESSMENT',
-                    title: 'AWS CCPA Framework',
-                    no_of_rule: '33 Rules | No Policies',
-                    company_name: 'California Consumer Privacy Act.',
-                    reference: 'https"//oag.ca.gov/privacy/ccpa',
-                    menuStatusOpen: false,
-                },
-            ],
-            duplicateruleSetData: [{
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: '',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            }, {
-                mainTitle: 'RUN ASSESSMENT',
-                subTitle: 'CIS',
-                title: 'AWS CIS Foundation',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-            },
-            {
-                mainTitle: 'RUN ASSESSMENT',
-                title: 'AWS CCPA Framework',
-                no_of_rule: '33 Rules | No Policies',
-                company_name: 'California Consumer Privacy Act.',
-                reference: 'https"//oag.ca.gov/privacy/ccpa',
-                menuStatusOpen: false,
-
-            }]
+			entities: [],
+            rules: [],
+            searchRules: []
         };
         this.breadCrumbs = [
             {
@@ -186,28 +48,44 @@ export class ComplianceRulesets extends React.Component<any, any> {
     }
 
     assessmentHandleClick(index: any) {
-        const { ruleSetData } = this.state;
-        for (let i = 0; i < ruleSetData.length; i++) {
-            if (i == index) {
-                ruleSetData[i].menuStatusOpen = !ruleSetData[i].menuStatusOpen;
-            }
-        }
-        console.log(ruleSetData);
-        this.setState({
-            ruleSetData
-        })
+        // const { rules } = this.state;
+        // for (let i = 0; i < rules.length; i++) {
+        //     if (i == index) {
+        //         rules[i].menuStatusOpen = !ruleSetData[i].menuStatusOpen;
+        //     }
+        // }
+        // console.log(ruleSetData);
+        // this.setState({
+        //     ruleSetData
+        // })
     };
 
     componentDidMount() {
+		Utils.getReq(config.GET_ENTITIES_LIST)
+			.then((response: any) => {
+				this.setState({
+					entities: response.data
+				});
+			});
+		console.log("entities: ", this.state.entities);
+		Utils.getReq(config.LIST_RULES)
+			.then((response: any) => {
+				this.setState({
+					rules: response.data
+				});
+                this.calculateTotalPages(this.state.rules);
+			});
         this.calculateTotalPages(this.state.ruleSetData);
     };
 
     calculateTotalPages = (displayData: any) => {
-        const { perPageLimit } = this.state;
-        let indexOfLastData = Math.ceil(displayData.length / perPageLimit);
-        this.setState({
-            totalPages: indexOfLastData,
-        });
+        if (displayData) {
+            const { perPageLimit } = this.state;
+            let indexOfLastData = Math.ceil(displayData.length / perPageLimit);
+            this.setState({
+                totalPages: indexOfLastData,
+            });
+        }
     };
 
     onClickonClickRunRuleset = (e: any) => {
@@ -231,57 +109,15 @@ export class ComplianceRulesets extends React.Component<any, any> {
     };
 
     displayRuleSetData = () => {
-        const { ruleSetData, perPageLimit, currentPage } = this.state;
+        const { rules, perPageLimit, currentPage } = this.state;
         const retData = [];
-        const length = ruleSetData.length;
+        const length = (rules) ? rules.length : 0;
         if (length > 0) {
             for (let i = 0; i < length; i++) {
                 if (i >= currentPage * perPageLimit && i <= (currentPage * perPageLimit + (perPageLimit - 1))) {
-                    const data = ruleSetData[i];
+                    const data = rules[i];
                     retData.push(
-                        <div className="col-lg-4 col-md-6 col-sm-12" >
-                            <div className="d-block width-100 assessment-box">
-                                <div className="d-block width-100 assessment-heading">
-                                    <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
-                                    <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.mainTitle}</strong>
-                                    <div className="d-inline-block float-right width-auto assessment-toggle-main">
-                                        <a href="#" className="gray-button min-width-inherit m-r-0" onClick={() => this.assessmentHandleClick(i)}>
-                                            <i className="fa fa-ellipsis-v"></i>
-                                        </a>
-                                        {data.menuStatusOpen == true && <div className="assessment-toggle">
-                                            <a onClick={this.onClickonClickopenRemediationPopup} className="d-inline-block">
-                                                <img src={runSettingisIcon} alt="" />
-                                            </a>
-                                            <a onClick={this.onClickonClickopenExclusionPopup} className="d-inline-block">
-                                                <img src={runHandIcon} alt="" />
-                                            </a>
-                                        </div>}
-                                    </div>
-                                </div>
-                                <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
-                                    <div className="d-block width-100 p-b-15">
-                                        <div className="d-inline-block width-50">
-                                            <strong className="d-block cat-sub-name">{data.subTitle}</strong>
-                                        </div>
-                                        <div className="d-inline-block width-50 text-right">
-                                            <img src={amazonLogo} alt="" />
-                                        </div>
-                                    </div>
-                                    <div className="d-block width-100 p-b-5 cat-name">
-                                        {data.title}
-                                    </div>
-                                    <div className="d-block width-100 p-b-10 rules-policies-text">
-                                        {data.no_of_rule}
-                                    </div>
-                                    <div className="d-block width-100 p-b-5 privacy-text">
-                                        {data.company_name}
-                                    </div>
-                                    <div className="d-block width-100 reference-text">
-                                        For additional reference:<a href="#">{data.reference}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        this.getDataRow(data, i)
                     );
                 }
             }
@@ -292,42 +128,100 @@ export class ComplianceRulesets extends React.Component<any, any> {
         return retData;
     }
 
+    getDataRow = (data: any, indx: any) => {
+        console.log("Rule object:");
+        console.log(data);
+        return (
+            <div className="col-lg-4 col-md-6 col-sm-12" >
+                <div className="d-block width-100 assessment-box">
+                    <div className="d-block width-100 assessment-heading">
+                        <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
+                        <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.name}</strong>
+                        <div className="d-inline-block float-right width-auto assessment-toggle-main">
+                            <a href="#" className="gray-button min-width-inherit m-r-0" onClick={() => this.assessmentHandleClick(indx)}>
+                                <i className="fa fa-ellipsis-v"></i>
+                            </a>
+                            {/* {data.menuStatusOpen == true && <div className="assessment-toggle">
+                                <a onClick={this.onClickonClickopenRemediationPopup} className="d-inline-block">
+                                    <img src={runSettingisIcon} alt="" />
+                                </a>
+                                <a onClick={this.onClickonClickopenExclusionPopup} className="d-inline-block">
+                                    <img src={runHandIcon} alt="" />
+                                </a>
+                            </div>} */}
+                        </div>
+                    </div>
+                    <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
+                        <div className="d-block width-100 p-b-15">
+                            <div className="d-inline-block width-50">
+                                <strong className="d-block cat-sub-name">{data.description}</strong>
+                            </div>
+                            <div className="d-inline-block width-50 text-right">
+                                <img src={amazonLogo} alt="" />
+                            </div>
+                        </div>
+                        <div className="d-block width-100 p-b-5 cat-name">
+                            {data.entity}
+                        </div>
+                        <div className="d-block width-100 p-b-10 rules-policies-text">
+                            {data.checks.length}
+                        </div>
+                        {
+                            data.checks.map((item: any) => {
+                                <div className="d-block width-100 p-b-5 privacy-text">
+                                    {item}
+                                </div>
+                            })
+                        }
+                        <div className="d-block width-100 p-b-10 rules-policies-text">
+                            Searchable: {data.searchable}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     onSearchChange = (e: any) => {
         const { value } = e.target;
         this.setState({
             searchKey: value,
         });
-        const { duplicateruleSetData } = this.state;
+        const { rules } = this.state;
         var searchResult = [];
-        for (let i = 0; i < duplicateruleSetData.length; i++) {
-            if (duplicateruleSetData[i].title.indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicateruleSetData[i]);
-            } else if (duplicateruleSetData[i].title.toLowerCase().indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicateruleSetData[i]);
+        for (let i = 0; i < rules.length; i++) {
+            if (rules[i].name.indexOf(value) !== -1 || value === '') {
+                searchResult.push(rules[i]);
+            } else if (rules[i].name.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(rules[i]);
             }
         }
         this.calculateTotalPages(searchResult);
         this.setState({
-            ruleSetData: searchResult,
+            searchRules: searchResult,
             currentPage: 0
         });
     }
 
     peginationOfBox() {
-        const { currentPage, totalPages, ruleSetData } = this.state;
+        const { currentPage, totalPages, rules } = this.state;
         let rows = [];
         for (let i = 0; i < totalPages; i++) {
             console.log(currentPage);
-            rows.push(<li className="" key={i}><a className={currentPage === i ? 'active' : 'deactive'} href="#" onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
+            rows.push(<li className="" key={i}>
+                <a className={currentPage === i ? 'active' : 'deactive'} href="#" 
+                onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
         }
         return (
             <ul>
                 <li className="previous">
-                    <a className={currentPage === 0 ? 'desable' : 'enable'} href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
+                    <a className={currentPage === 0 ? 'desable' : 'enable'} 
+                    href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
                 </li>
                 {rows}
                 <li className="next">
-                    <a className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'} href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
+                    <a className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'} 
+                    href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
                 </li>
             </ul>
         );
@@ -360,7 +254,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
     }
 
     render() {
-        const { perPageLimit, ruleSetData } = this.state;
+        const { perPageLimit, rules } = this.state;
         return (
             <div className="compliance-rulesets-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
@@ -437,7 +331,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                         <div className="assessment-boxes">
                             <div className="d-block width-100 heading">
                                 <div className="d-inline-block width-50">
-                                    <h3>Showing {ruleSetData.length} of {perPageLimit} results</h3>
+                                    <h3>Showing {rules.length} of {perPageLimit} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
@@ -470,15 +364,15 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 </div>
                             </div>
 
-                            {ruleSetData.length > 0 && <div className="d-block width-100 text-right pagination">
+                            {rules.length > 0 && <div className="d-block width-100 text-right pagination">
                                 {this.peginationOfBox()}
                             </div>}
                         </div>
                     </div>
                 </div>
                 <AssessmentPopup ref={this.assessmentRef} />
-                <NewRulSetPopup ref={this.rulesetRef} />
-                <NewPolicyPopup ref={this.policyRef} />
+                <NewRulSetPopup ref={this.rulesetRef} entities={this.state.entities}/>
+                <NewPolicyPopup ref={this.policyRef} entities={this.state.entities} rules={this.state.rules}/>
                 <CreateRemediationPopup ref={this.remediationRef} />
                 <CreateExclusionPopup ref={this.exclusionRef} />
             </div>

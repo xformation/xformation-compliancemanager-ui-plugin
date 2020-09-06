@@ -12,9 +12,9 @@ export class NewPolicyPopup extends React.Component<any, any> {
         super(props);
         this.state = {
 			modal: false,
-			entities: [],
+			entities: props.entities,
 			selRules: [],
-			rules: [],
+			rules: props.rules,
 			reqObj: {
 				searchable: false,
 				rules: [],
@@ -29,20 +29,20 @@ export class NewPolicyPopup extends React.Component<any, any> {
     };
 
     componentDidMount() {
-		Utils.getReq(config.GET_ENTITIES_LIST)
-			.then((response: any) => {
-				this.setState({
-					entities: response.data
-				});
-			});
-		console.log("entities: ", this.state.entities);
-		Utils.getReq(config.LIST_RULES)
-			.then((response: any) => {
-				this.setState({
-					rules: response.data
-				});
-			});
-		console.log("Rules: ", this.state.rules);
+		// Utils.getReq(config.GET_ENTITIES_LIST)
+		// 	.then((response: any) => {
+		// 		this.setState({
+		// 			entities: response.data
+		// 		});
+		// 	});
+		// console.log("entities: ", this.state.entities);
+		// Utils.getReq(config.LIST_RULES)
+		// 	.then((response: any) => {
+		// 		this.setState({
+		// 			rules: response.data
+		// 		});
+		// 	});
+		// console.log("Rules: ", this.state.rules);
 	};
 
 	onChange = (e: any) => {
