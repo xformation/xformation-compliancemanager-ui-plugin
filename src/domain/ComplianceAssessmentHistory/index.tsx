@@ -54,7 +54,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                     renderCallback: (value: any) => {
                         let strClass = "fa fa-info-circle";
                         return <td>
-                            <div className="d-flex">
+                            <div className="d-inline-block">
                                 <Link to={`${config.basePath}/compliancehistory`} className="btn btn-link">
                                     <i className={strClass}></i>
                                 </Link>
@@ -93,65 +93,65 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                 }
             ],
         };
-        this.perPageLimit = 3,
-            this.checkboxValue = false,
-            this.state = {
-                searchKey: '',
-                historyData: [{
-                    date: 'Jul 20, 2020 04:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '64%',
-                    failedTest: '97',
-                    excludedTest: '0',
-                    trigger: 'Manual'
-                },
-                {
-                    date: 'Jul 20, 2020 05:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '76%',
-                    failedTest: '66',
-                    excludedTest: '6',
-                    trigger: 'Manual'
-                },
-                {
-                    date: 'Jul 20, 2020 06:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '34%',
-                    failedTest: '44',
-                    excludedTest: '3',
-                    trigger: 'System'
-                }],
-                historyduplicatedata: [{
-                    date: 'Jul 20, 2020 04:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '64%',
-                    failedTest: '97',
-                    excludedTest: '0',
-                    trigger: 'Manual'
-                },
-                {
-                    date: 'Jul 20, 2020 05:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '76%',
-                    failedTest: '66',
-                    excludedTest: '6',
-                    trigger: 'Manual'
-                },
-                {
-                    date: 'Jul 20, 2020 06:00 PM',
-                    ruleName: 'AWS CCPA Framework',
-                    environment: 'AWS (657907747545), Mumbai',
-                    result: '34%',
-                    failedTest: '44',
-                    excludedTest: '3',
-                    trigger: 'System'
-                }]
-            };
+        this.perPageLimit = 6,
+        this.checkboxValue = false,
+        this.state = {
+            searchKey: '',
+            historyData: [{
+                date: 'Jul 20, 2020 04:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '64%',
+                failedTest: '97',
+                excludedTest: '0',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 05:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '76%',
+                failedTest: '66',
+                excludedTest: '6',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 06:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '34%',
+                failedTest: '44',
+                excludedTest: '3',
+                trigger: 'System'
+            }],
+            historyduplicatedata: [{
+                date: 'Jul 20, 2020 04:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '64%',
+                failedTest: '97',
+                excludedTest: '0',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 05:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '76%',
+                failedTest: '66',
+                excludedTest: '6',
+                trigger: 'Manual'
+            },
+            {
+                date: 'Jul 20, 2020 06:00 PM',
+                ruleName: 'AWS CCPA Framework',
+                environment: 'AWS (657907747545), Mumbai',
+                result: '34%',
+                failedTest: '44',
+                excludedTest: '3',
+                trigger: 'System'
+            }],
+        };
         this.breadCrumbs = [
             {
                 label: "Home",
@@ -278,7 +278,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                         {/* <div className="exclusion-details">
                             <div className="container-inner"> */}
                         <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
-                            tableClasses={{ table: "container-inner", tableParent: "exclusion-details", parentClass: "results-container" }} searchKey="ruleName" showingLine="Latest Assessment History(Showing %start% to %end% of %total% Assessment History)" />
+                            tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleName" showingLine="Showing %start% to %end% of %total% Assessment History" />
 
                         {/* <table className="exclusion-data-table">
                                     <tbody>
