@@ -334,16 +334,9 @@ export class Table extends React.Component<any, any> {
         }
         return (
             <div className={`${tableClasses.parentClass} custom-table`}>
-                <div className="multiselect">
-                    <div className="select-label" onClick={this.toggleColumnSelect}>
-                        Select columns
-                    </div>
-                    <div style={{ display: showSelect ? "" : "none" }} className="options">
-                        {this.renderColumns()}
-                    </div>
-                </div>
+                
                 <div className="row">
-                    <div className="col-lg-8 col-md-8 col-sm-12">
+                    <div className="col-lg-9 col-sm-12">
                         <div className="d-inline-block showing">{showingLine}</div>
                         <div className="d-inline-block showby">
                             <label className="d-inline-block">Show</label>
@@ -352,8 +345,16 @@ export class Table extends React.Component<any, any> {
                             </select>
                             <span className="d-inline-block">entries per page</span>
                         </div>
+                        <div className="d-inline-block multiselect">
+                            <div className="form-control select-label" onClick={this.toggleColumnSelect}>
+                                Select columns <i className="fa fa-chevron-down float-right"></i>
+                            </div>
+                            <div style={{ display: showSelect ? "" : "none" }} className="options">
+                                {this.renderColumns()}
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12 text-right">
+                    <div className="col-lg-3 col-sm-12 text-right">
                         <div className="d-inline-block form-group filter-search-control">
                             <form>
                                 <input type="text" className="input-group-text" onChange={this.onSearchChange} value={this.state.searchKey} />
