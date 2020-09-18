@@ -110,9 +110,9 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 }],
         };
         this.perPageLimit = 6,
-            this.checkboxValue = true,
-            this.state = {
-            };
+        this.checkboxValue = true,
+        this.state = {
+        };
         this.breadCrumbs = [
             {
                 label: "Home",
@@ -259,13 +259,26 @@ export class ComplianceExclusions extends React.Component<any, any> {
                     <div className="common-container results-container">
                         <div className="d-block width-100 heading">
                             <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100">
-                                        {/* <h3>Showing {exclusionData.length} of {exclusionData.length} results</h3> */}
+                                <div className="col-lg-12 col-md-12 col-sm-12 text-right">
+                                    <div className="d-inline-block p-r-10 search-box">
+                                        <div className="d-block text-right file-export">
+                                            <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                                                <img src={fileExportIcon} alt="" />
+                                            </a>
+
+                                            <div className={`file-export-toggle ${this.state.fileExportActive}`}>
+                                                <ul>
+                                                    <li>
+                                                        <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                                    </li>
+                                                    <li>
+                                                        <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100 text-right exclusion-button">
+                                    <div className="d-inline-block exclusion-button">
                                         <a onClick={this.onClickEditExclusion} className="blue-button m-r-0">
                                             CREATE NEW EXCLUSION
                                         </a>
@@ -274,42 +287,9 @@ export class ComplianceExclusions extends React.Component<any, any> {
                             </div>
                         </div>
 
-                        <div className="d-block width-100 p-t-15 p-b-20 search-box">
-                            <div className="row">
-                                {/* <div className="col-lg-6 col-md-6 col-sm-9">
-                                    <div className="d-inline-block form-group search-control-group">
-                                        <form>
-                                            <input type="text" onChange={this.onSearchChange} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
-                                            <button>
-                                                <i className="fa fa-search"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div> */}
-                                <div className="col-lg-6 col-md-6 col-sm-3">
-                                    <div className="d-inline-block text-right width-100 file-export">
-                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
-                                            <img src={fileExportIcon} alt="" />
-                                        </a>
-
-                                        <div className={`file-export-toggle ${this.state.fileExportActive}`}>
-                                            <ul>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
-                                                </li>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="exclusion-details">
+                        <div className="d-block p-t-20 exclusion-details">
                             <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
-                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Latest Exclusions(Showing %start% to %end% of %total% Exclusions)" />
+                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" />
 
                             {/* <div className="container-inner">
                                 <table className="exclusion-data-table">
