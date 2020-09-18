@@ -141,59 +141,6 @@ export class ComplianceExclusions extends React.Component<any, any> {
         this.editExclusionRef.current.toggle();
     };
 
-    // createExclusionTable = () => {
-    //     const { exclusionData } = this.state;
-    //     const retData = [];
-    //     for (let i = 0; i < exclusionData.length; i++) {
-    //         const exclusions = this.state.exclusionData[i];
-    //         retData.push(
-    //             <tr className="">
-    //                 <td className="">
-    //                     <div className="pointer-label">
-    //                         <input type="checkbox" className="checkbox" />
-    //                         {exclusions.ruleSet}
-    //                     </div>
-    //                 </td>
-    //                 <td>{exclusions.ruleName}</td>
-    //                 <td>{exclusions.cloudAmount}</td>
-    //                 <td>{exclusions.entityName}</td>
-    //                 <td>{exclusions.entityId}</td>
-    //                 <td>{exclusions.comments}</td>
-    //                 <td>
-    //                     <div className="d-flex">
-    //                         <button onClick={this.onClickEditExclusion} className="btn btn-link">
-    //                             <i className="fa fa-edit"></i>
-    //                         </button>
-    //                         <button onClick={this.onClickDeleteExclusion} className="btn btn-link">
-    //                             <i className="fa fa-trash"></i>
-    //                         </button>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         );
-    //     }
-    //     return retData;
-    // }
-
-    // onSearchChange = (e: any) => {
-    //     const { value } = e.target;
-    //     this.setState({
-    //         searchKey: value,
-    //     });
-    //     const { duplicatedata } = this.state;
-    //     var searchResult = [];
-    //     for (let i = 0; i < duplicatedata.length; i++) {
-    //         if (duplicatedata[i].ruleName.indexOf(value) !== -1 || value === '') {
-    //             searchResult.push(duplicatedata[i]);
-    //         } else if (duplicatedata[i].ruleName.toLowerCase().indexOf(value) !== -1 || value === '') {
-    //             searchResult.push(duplicatedata[i]);
-    //         }
-    //     }
-    //     this.setState({
-    //         exclusionData: searchResult,
-    //     });
-    // }
-
     render() {
         const { exclusionData, perPageLimit } = this.state;
         return (
@@ -290,29 +237,6 @@ export class ComplianceExclusions extends React.Component<any, any> {
                         <div className="d-block p-t-20 exclusion-details">
                             <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
                                 tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" />
-
-                            {/* <div className="container-inner">
-                                <table className="exclusion-data-table">
-                                    <tbody>
-                                        <tr className="exclusion-data-table-header">
-                                            <th>
-                                                <div className="pointer-label">
-                                                    <input type="checkbox" className="checkbox" />
-                                                    Ruleset
-                                                </div>
-                                            </th>
-                                            <th>Rule Name</th>
-                                            <th>Cloud Account</th>
-                                            <th>Entity Name</th>
-                                            <th>Entity ID</th>
-                                            <th>Commnets</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        {this.createExclusionTable()}
-                                    </tbody>
-
-                                </table>
-                            </div> */}
                         </div>
                     </div>
                 </div>
