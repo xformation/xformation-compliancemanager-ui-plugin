@@ -64,7 +64,7 @@ export class Table extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        this.calculateTotalPages(this.state.displayData);
+        this.calculateTotalPages(this.state.data);
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
@@ -84,6 +84,7 @@ export class Table extends React.Component<any, any> {
                 visibleCheckbox: this.props.visiblecheckboxStatus,
                 showSelect: false
             });
+            this.calculateTotalPages(this.props.valueFromData.data);
         }
     }
 
@@ -96,10 +97,10 @@ export class Table extends React.Component<any, any> {
     }
 
     tableHeader() {
-        const { sortType, sortKey, columns, visibleCheckbox } = this.state;
+        const { sortType, sortKey, columns, visibleCheckbox, displayData } = this.state;
         const length = columns.length;
         const retData = [];
-        if (visibleCheckbox == true) {
+        if (visibleCheckbox == true && displayData.length > 0) {
             retData.push(<th><input type="checkbox" checked={this.state.isAllChecked} onChange={this.checkAllAlerts} className="checkbox" /></th>);
         }
         for (let i = 0; i < length; i++) {
@@ -163,22 +164,24 @@ export class Table extends React.Component<any, any> {
     }
 
     peginationOfTable() {
-        const { currentPage, totalPages } = this.state;
+        const { currentPage, totalPages, displayData, perPageLimit } = this.state;
         let rows = [];
-        for (let i = 0; i < totalPages; i++) {
-            rows.push(<li className="page-item" key={i}><a className={currentPage === i ? 'page-link active' : 'page-link deactive'} href="#" onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
+        if (displayData.length > 0) {
+            for (let i = 0; i < totalPages; i++) {
+                rows.push(<li className="page-item" key={i}><a className={currentPage === i ? 'page-link active' : 'page-link deactive'} href="#" onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
+            }
+            return (
+                <ul>
+                    <li className="page-item previous">
+                        <a className={currentPage === 0 ? 'page-link desable' : 'page-link enable'} href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
+                    </li>
+                    {rows}
+                    <li className="page-item next">
+                        <a className={currentPage === this.state.totalPages - 1 ? 'page-link desable' : 'page-link enable'} href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
+                    </li>
+                </ul>
+            );
         }
-        return (
-            <ul>
-                <li className="page-item previous">
-                    <a className={currentPage === 0 ? 'page-link desable' : 'page-link enable'} href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
-                </li>
-                {rows}
-                <li className="page-item next">
-                    <a className={currentPage === this.state.totalPages - 1 ? 'page-link desable' : 'page-link enable'} href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
-                </li>
-            </ul>
-        );
     }
 
     navigatePage(target: any, e: any, i: any = null) {
@@ -276,7 +279,7 @@ export class Table extends React.Component<any, any> {
             sortKey: sortkey
         });
         e.preventDefault();
-        const data = this.props.valueFromData.data;
+        const data = this.state.data;
         if (sortVal === sortEnum.ASCENDING) {
             data.sort((a: any, b: any) => a[sortkey].localeCompare(b[sortkey]))
         } else if (sortVal === sortEnum.DESCENDING) {
@@ -334,9 +337,16 @@ export class Table extends React.Component<any, any> {
         }
         return (
             <div className={`${tableClasses.parentClass} custom-table`}>
-                
+                <div className="multiselect">
+                    <div className="select-label" onClick={this.toggleColumnSelect}>
+                        Select columns
+                    </div>
+                    <div style={{ display: showSelect ? "" : "none" }} className="options">
+                        {this.renderColumns()}
+                    </div>
+                </div>
                 <div className="row">
-                    <div className="col-lg-9 col-sm-12">
+                    <div className="col-lg-8 col-md-8 col-sm-12">
                         <div className="d-inline-block showing">{showingLine}</div>
                         <div className="d-inline-block showby">
                             <label className="d-inline-block">Show</label>
@@ -345,16 +355,8 @@ export class Table extends React.Component<any, any> {
                             </select>
                             <span className="d-inline-block">entries per page</span>
                         </div>
-                        <div className="d-inline-block multiselect">
-                            <div className="form-control select-label" onClick={this.toggleColumnSelect}>
-                                Select columns <i className="fa fa-chevron-down float-right"></i>
-                            </div>
-                            <div style={{ display: showSelect ? "" : "none" }} className="options">
-                                {this.renderColumns()}
-                            </div>
-                        </div>
                     </div>
-                    <div className="col-lg-3 col-sm-12 text-right">
+                    <div className="col-lg-4 col-md-4 col-sm-12 text-right">
                         <div className="d-inline-block form-group filter-search-control">
                             <form>
                                 <input type="text" className="input-group-text" onChange={this.onSearchChange} value={this.state.searchKey} />
