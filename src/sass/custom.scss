@@ -406,32 +406,7 @@ a {
         font-weight: 500;
         padding-left: 15px;
     }
-  }
-  @media only screen and (max-width: 1200px) and (min-width: 1050px) {
-    .showing{
-        font-size: 11px;
-    }
-    .showby{
-        padding-left: 10px;
-        margin-left: 10px;
-        label{
-            font-size: 11px;
-            padding-right: 10px;
-        } 
-        span{
-            font-size: 11px;
-            padding-left: 10px;
-        }
-    }
-  }
-  @media only screen and (max-width: 1050px) and (min-width: 320px) {
-    .showby{
-        border-left: none;
-        padding-left: 0px;
-        margin-left: 0px; 
-    }
-  }
-  
+  } 
   
   .filter-search-control {
     position: relative;
@@ -465,13 +440,69 @@ a {
         }
     }
   }
-  @media (max-width: 767px){
+
+  @media only screen and (max-width: 1200px) and (min-width: 768px) {
+    .showing{
+        float: left;
+        width: 40%;
+        font-size: 11px;
+    }
+    .showby{
+        border-left: none;
+        padding-left: 0px;
+        margin-left: 0px; 
+        width: 60%;
+        float: right;
+        text-align: right;
+        font-size: 11px;
+        label{
+            font-size: 11px;  
+        }
+        span{
+            font-size: 11px;  
+        }
+        .form-control{
+            font-size: 11px;
+        }
+    }
+
+    .filter-search-control{
+        float: right;
+        margin-top: 15px;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) and (min-width: 320px) {
+    .showing{
+        float: left;
+        width: 100%;
+        font-size: 11px;
+    }
+    .showby{
+        border-left: none;
+        padding-left: 0px;
+        margin-left: 0px; 
+        width: 100%;
+        float: left;
+        text-align: left;
+        font-size: 11px;
+        label{
+            font-size: 11px;  
+        }
+        span{
+            font-size: 11px;  
+        }
+        .form-control{
+            font-size: 11px;
+        }
+    }
+
     .filter-search-control{
         float: left;
         margin-top: 15px;
     }
   }
-  
+
   .pagination{
     ul{
       list-style: none;
