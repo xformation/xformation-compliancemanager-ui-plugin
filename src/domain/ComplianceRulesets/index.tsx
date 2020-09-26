@@ -334,10 +334,12 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                     <h3>Showing {rules.length} of {perPageLimit} results</h3>
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
-                                    <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0">ADD RULESET</a>
+                                    <a onClick={this.addNewPolicy} className="blue-button m-b-0">ADD POLICY</a>
+                                    <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0 m-b-0">ADD RULESET</a>
+                                    
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
-                                    <a onClick={this.addNewPolicy} className="blue-button m-r-0">ADD POLICY</a>
+                                    
                                 </div>
                             </div>
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">

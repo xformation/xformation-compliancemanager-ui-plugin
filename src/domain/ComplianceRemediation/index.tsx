@@ -298,7 +298,7 @@ export class ComplianceRemediation extends React.Component<any, any> {
                                     </div>
                                     <div className="d-inline-block exclusion-button">
                                         <a onClick={this.onClickEditRemediation} className="blue-button m-r-0">
-                                            CREATE NEW EXCLUSION
+                                            CREATE NEW REMEDIATION
                                         </a>
                                     </div>
                                 </div>
