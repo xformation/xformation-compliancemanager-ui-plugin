@@ -632,7 +632,6 @@ a:hover {
   overflow-x: scroll;
 }
 .exclusion-details .container-inner .exclusion-data-table {
-  width: 1280px;
   background-color: #ffffff;
   font-size: 13px;
 }
@@ -770,7 +769,6 @@ a:hover {
   overflow-x: scroll;
 }
 .exclusion-details .container-inner .exclusion-data-table {
-  width: 1280px;
   background-color: #ffffff;
   font-size: 13px;
 }
@@ -832,9 +830,6 @@ a:hover {
   overflow-x: scroll;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-.exclusion-details .container-inner .exclusion-data-table {
-  width: 1280px;
 }
 .exclusion-details .container-inner .exclusion-data-table thead tr {
   background-color: #ffffff;
@@ -1621,9 +1616,6 @@ a:hover {
   overflow-x: scroll;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-.exclusion-details .container-inner .exclusion-data-table {
-  width: 1280px;
 }
 .exclusion-details .container-inner .exclusion-data-table thead tr {
   background-color: #ffffff;
