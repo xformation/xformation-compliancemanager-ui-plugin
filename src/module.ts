@@ -5,7 +5,8 @@ import {
   ComplianceRemediation,
   ComplianceAssessmentHistory,
   ComplianceHistory,
-  CompliancePolicy
+  CompliancePolicy,
+  GslBuilder
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -30,5 +31,6 @@ export {
   ComplianceRemediation,
   ComplianceAssessmentHistory,
   ComplianceHistory,
-  CompliancePolicy
+  CompliancePolicy,
+  GslBuilder
 };

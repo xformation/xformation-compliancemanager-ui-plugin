@@ -65,6 +65,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "ComplianceHistory"
+    },
+    {
+      "type": "page",
+      "name": "GslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "GslBuilder"
     }
   ],
   "dependencies": {
