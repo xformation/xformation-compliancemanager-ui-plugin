@@ -2186,6 +2186,7 @@ a:hover {
   font-size: 15px;
   line-height: 18px;
   font-weight: 500;
+  color: #3b4859;
 }
 
 .gsl-editor-items .item-content {
@@ -2200,6 +2201,7 @@ a:hover {
 .gsl-editor-items .item-content .items h4 {
   font-weight: 500;
   margin-bottom: 15px;
+  color: #3b4859;
 }
 .gsl-editor-items .item-content .items ul {
   list-style: none;

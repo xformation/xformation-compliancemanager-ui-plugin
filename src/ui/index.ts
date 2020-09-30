@@ -6,3 +6,4 @@ export * from "./ComplianceAssesmentHistory";
 export * from "./ComplianceHistory";
 export * from "./CompliancePolicy";
 export * from "./GslBuilder";
+export * from "./ApiGateway";

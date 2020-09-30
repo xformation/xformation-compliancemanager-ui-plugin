@@ -6,7 +6,8 @@ import {
   ComplianceAssessmentHistory,
   ComplianceHistory,
   CompliancePolicy,
-  GslBuilder
+  GslBuilder,
+  ApiGateway
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -32,5 +33,6 @@ export {
   ComplianceAssessmentHistory,
   ComplianceHistory,
   CompliancePolicy,
-  GslBuilder
+  GslBuilder,
+  ApiGateway
 };

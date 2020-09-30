@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { config } from '../../config';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import awsLogo from '../../img/amazon-logo.png';
 import microsoftAzureLogo from '../../img/microsoftazure.png';
@@ -134,10 +136,10 @@ export class GslBuilder extends React.Component<any, any> {
                                     <h4>Networking & Content Delivery</h4>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <Link to={`${config.basePath}/apigateway`}>
                                                 <span><img src={ApiGateway} alt="" /></span>
                                                 <p>ApiGateway</p>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
                                             <a href="#">

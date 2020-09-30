@@ -72,6 +72,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "GslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "ApiGateway",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ApiGateway"
     }
   ],
   "dependencies": {

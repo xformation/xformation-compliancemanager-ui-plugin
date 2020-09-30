@@ -2109,7 +2109,7 @@ a:hover {
 .gsl-editor-logos h3 {
   display: block;
   font-size: 16px;
-  color: #3b4859;
+  color: #ffffff;
   font-weight: 600;
   line-height: 20px;
   margin-bottom: 10px;
@@ -2175,7 +2175,7 @@ a:hover {
 .gsl-editor-radio ul li label {
   padding-left: 7px;
   vertical-align: top;
-  color: #3b4859;
+  color: #ffffff;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -2186,6 +2186,7 @@ a:hover {
   font-size: 15px;
   line-height: 18px;
   font-weight: 500;
+  color: #ffffff;
 }
 
 .gsl-editor-items .item-content {
@@ -2200,6 +2201,7 @@ a:hover {
 .gsl-editor-items .item-content .items h4 {
   font-weight: 500;
   margin-bottom: 15px;
+  color: #3b4859;
 }
 .gsl-editor-items .item-content .items ul {
   list-style: none;
