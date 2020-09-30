@@ -79,6 +79,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "ApiGateway"
+    },
+    {
+      "type": "page",
+      "name": "EditorGslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "EditorGslBuilder"
     }
   ],
   "dependencies": {
