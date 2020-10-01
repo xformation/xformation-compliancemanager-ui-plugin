@@ -93,6 +93,20 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "Result"
+    },
+    {
+      "type": "page",
+      "name": "ClearHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ClearHistory"
+    },
+    {
+      "type": "page",
+      "name": "Script",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Script"
     }
   ],
   "dependencies": {

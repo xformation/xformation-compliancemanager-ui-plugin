@@ -9,3 +9,5 @@ export * from "./GslBuilder";
 export * from "./ApiGateway";
 export * from "./EditorGslBuilder";
 export * from "./Result";
+export * from "./ClearHistory";
+export * from "./Script";

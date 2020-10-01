@@ -9,7 +9,9 @@ import {
   GslBuilder,
   ApiGateway,
   EditorGslBuilder,
-  Result
+  Result,
+  ClearHistory,
+  Script
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -38,5 +40,7 @@ export {
   GslBuilder,
   ApiGateway,
   EditorGslBuilder,
-  Result
+  Result,
+  ClearHistory,
+  Script
 };

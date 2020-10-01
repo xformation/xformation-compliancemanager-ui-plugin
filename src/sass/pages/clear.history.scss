@@ -1,4 +1,4 @@
-.result-page-container{
+.clearhistory-page-container{
     .gsl-editor-logos{
         padding-bottom: 20px;
         h3{
@@ -211,72 +211,10 @@
                     }
                 }
             }
+            font-size: 12px;
+
         }
     }    
-
-    .tests-histoty{
-        padding-top: 30px;
-        display: block;
-        .histoty-heading{
-            padding: 0 15px;
-            h4{
-                display: inline-block;
-                font-size: 16px;
-                line-height: 20px;
-                color: $gslbuilder-content-color;
-                font-weight: 400;
-            }
-            a{
-                font-size: 12px;
-                font-weight: 400;
-                line-height: 20px;
-                color: #18ceff;
-            }
-        }
-        .histoty-box{
-            display: block;
-            background-color: #f8f9fb;
-            box-shadow: 0px 1px 5px #00000029;
-            border-radius: 5px;
-            margin-bottom: 8px;
-            padding: 10px 15px;
-            .histoty-logo{
-                display: block;
-                width: 90%;
-                padding-top: 5px;
-                img{
-                    max-width: 100%;
-                    height: auto;
-                }
-            }
-            .histoty-text{
-                display: block;
-                .time{
-                    display: block;
-                    font-size: 11px;
-                    line-height: 14px;
-                    color: #3B4859;
-                    font-weight: 400;
-                }
-                .text{
-                    display: block;
-                    font-size: 12px;
-                    line-height: 16px;
-                    color: #3B4859;
-                    font-weight: 400;
-                }
-            }
-            .play{
-                margin-top: 5px;
-                padding: 0;
-                border: none;
-                background-color: transparent;
-                color: #2a9ce7;
-                font-size: 30px;
-                line-height: 34px;
-            }
-        }
-    }
 
     .context-preview-box{
         h4{
@@ -368,17 +306,6 @@
                         width: 100%;
                         text-align: left;
                     }
-                }
-            }
-        }
-        .tests-histoty{
-            .histoty-box{
-                .histoty-text{
-                    padding-top: 15px;
-                }
-                .play{
-                    padding-top: 15px;
-                    float: left;
                 }
             }
         }
