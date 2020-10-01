@@ -8,7 +8,8 @@ import {
   CompliancePolicy,
   GslBuilder,
   ApiGateway,
-  EditorGslBuilder
+  EditorGslBuilder,
+  Result
 } from "./ui";
 import { ConfigCtrl } from "./ConfigCtrl";
 
@@ -36,5 +37,6 @@ export {
   CompliancePolicy,
   GslBuilder,
   ApiGateway,
-  EditorGslBuilder
+  EditorGslBuilder,
+  Result
 };

@@ -8,3 +8,4 @@ export * from "./CompliancePolicy";
 export * from "./GslBuilder";
 export * from "./ApiGateway";
 export * from "./EditorGslBuilder";
+export * from "./Result";

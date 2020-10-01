@@ -86,6 +86,13 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "EditorGslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "Result",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Result"
     }
   ],
   "dependencies": {
