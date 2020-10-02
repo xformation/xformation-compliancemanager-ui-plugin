@@ -109,7 +109,7 @@ export class ApiGateway extends React.Component<any, any> {
                                         </div>
                                     </div>
                                     <div className="col-md-3 col-sm-3">
-                                        <div className="p-t-20 form-group">
+                                        <div className="form-group filter-control-group">
                                             <a href="#" className="blue-button m-r-0 m-b-0 runtest-button">
                                                 <i className="fa fa-play-circle"></i> RUN TEST
                                             </a>
