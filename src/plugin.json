@@ -65,6 +65,48 @@
       "addToNav": false,
       "defaultNav": false,
       "component": "ComplianceHistory"
+    },
+    {
+      "type": "page",
+      "name": "GslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "GslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "ApiGateway",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ApiGateway"
+    },
+    {
+      "type": "page",
+      "name": "EditorGslBuilder",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "EditorGslBuilder"
+    },
+    {
+      "type": "page",
+      "name": "Result",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Result"
+    },
+    {
+      "type": "page",
+      "name": "ClearHistory",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "ClearHistory"
+    },
+    {
+      "type": "page",
+      "name": "Script",
+      "addToNav": false,
+      "defaultNav": false,
+      "component": "Script"
     }
   ],
   "dependencies": {

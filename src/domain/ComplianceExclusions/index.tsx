@@ -5,111 +5,113 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { DeleteExclusionPopup } from './deleteExclusionPopup';
 import { EditExclusionPopup } from './editExclusionPopup';
 import fileExportIcon from '../../img/file-export.png';
+import Table from './../../components/table';
 
 export class ComplianceExclusions extends React.Component<any, any> {
     breadCrumbs: any;
     deleteExclusionRef: any;
     editExclusionRef: any;
+    tableValue: any;
+    perPageLimit: any;
+    checkboxValue: any;
     constructor(props: any) {
         super(props);
+        this.tableValue = {
+            columns: [
+                {
+                    label: 'Ruleset',
+                    key: 'ruleSet'
+                },
+                {
+                    label: 'Rule Name',
+                    key: 'ruleName'
+                },
+                {
+                    label: 'Cloud Account',
+                    key: 'cloudAmount'
+                },
+                {
+                    label: 'Entity Name',
+                    key: 'entityName'
+                },
+                {
+                    label: 'Entity ID',
+                    key: 'entityId'
+                },
+                {
+                    label: 'Commnets',
+                    key: 'comments'
+                },
+                {
+                    label: 'Action',
+                    key: 'action',
+                    renderCallback: (value: any) => {
+                        return <td>
+                            <div className="d-flex">
+                                <button onClick={this.onClickEditExclusion} className="btn btn-link">
+                                    <i className="fa fa-edit"></i>
+                                </button>
+                                <button onClick={this.onClickDeleteExclusion} className="btn btn-link">
+                                    <i className="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    }
+                },
+            ],
+            data: [
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.0',
+                    ruleName: 'Avoid the use of the root account',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '',
+                    comments: 'Password policy excluded.',
+                },
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.1',
+                    ruleName: 'Prod_DB_SYN15',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '',
+                    comments: 'Password policy excluded.',
+                },
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.2',
+                    ruleName: 'Dev_L3Switch',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '12345',
+                    comments: 'Password policy excluded.',
+                },
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.3',
+                    ruleName: 'Dev-SYN-SYN13',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '',
+                    comments: 'Password policy excluded.',
+                },
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.4',
+                    ruleName: 'Dev_SYN_SYN12',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '',
+                    comments: 'Password policy excluded.',
+                },
+                {
+                    ruleSet: 'AWS CIS Foundation v.1.0.5',
+                    ruleName: 'Prod_DB_SYN28',
+                    cloudAmount: 'AWS (657907747545)',
+                    entityName: 'Account Summary',
+                    entityId: '',
+                    comments: 'Password policy excluded.',
+                }],
+        };
+        this.perPageLimit = 6,
+        this.checkboxValue = true,
         this.state = {
-            searchKey: '',
-            exclusionData: [{
-                ruleSet: 'AWS CIS Foundation v.1.0.0',
-                ruleName: 'Avoid the use of the root account',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.1',
-                ruleName: 'Prod_DB_SYN15',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.2',
-                ruleName: 'Dev_L3Switch',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '12345',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.3',
-                ruleName: 'Dev-SYN-SYN13',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.4',
-                ruleName: 'Dev_SYN_SYN12',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.5',
-                ruleName: 'Prod_DB_SYN28',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            }],
-            duplicatedata: [{
-                ruleSet: 'AWS CIS Foundation v.1.0.0',
-                ruleName: 'Avoid the use of the root account',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.1',
-                ruleName: 'Prod_DB_SYN15',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.2',
-                ruleName: 'Dev_L3Switch',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '12345',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.3',
-                ruleName: 'Dev-SYN-SYN13',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.4',
-                ruleName: 'Dev_SYN_SYN12',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            },
-            {
-                ruleSet: 'AWS CIS Foundation v.1.0.5',
-                ruleName: 'Prod_DB_SYN28',
-                cloudAmount: 'AWS (657907747545)',
-                entityName: 'Account Summary',
-                entityId: '',
-                comments: 'Password policy excluded.',
-            }]
         };
         this.breadCrumbs = [
             {
@@ -139,61 +141,8 @@ export class ComplianceExclusions extends React.Component<any, any> {
         this.editExclusionRef.current.toggle();
     };
 
-    createExclusionTable = () => {
-        const { exclusionData } = this.state;
-        const retData = [];
-        for (let i = 0; i < exclusionData.length; i++) {
-            const exclusions = this.state.exclusionData[i];
-            retData.push(
-                <tr className="">
-                    <td className="">
-                        <div className="pointer-label">
-                            <input type="checkbox" className="checkbox" />
-                            {exclusions.ruleSet}
-                        </div>
-                    </td>
-                    <td>{exclusions.ruleName}</td>
-                    <td>{exclusions.cloudAmount}</td>
-                    <td>{exclusions.entityName}</td>
-                    <td>{exclusions.entityId}</td>
-                    <td>{exclusions.comments}</td>
-                    <td>
-                        <div className="d-flex">
-                            <button onClick={this.onClickEditExclusion} className="btn btn-link">
-                                <i className="fa fa-edit"></i>
-                            </button>
-                            <button onClick={this.onClickDeleteExclusion} className="btn btn-link">
-                                <i className="fa fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            );
-        }
-        return retData;
-    }
-
-    onSearchChange = (e: any) => {
-        const { value } = e.target;
-        this.setState({
-            searchKey: value,
-        });
-        const { duplicatedata } = this.state;
-        var searchResult = [];
-        for (let i = 0; i < duplicatedata.length; i++) {
-            if (duplicatedata[i].ruleName.indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicatedata[i]);
-            } else if (duplicatedata[i].ruleName.toLowerCase().indexOf(value) !== -1 || value === '') {
-                searchResult.push(duplicatedata[i]);
-            }
-        }
-        this.setState({
-            exclusionData: searchResult,
-        });
-    }
-
     render() {
-        const {exclusionData, perPageLimit} = this.state;
+        const { exclusionData, perPageLimit } = this.state;
         return (
             <div className="compliance-exclusions-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | EXCLUSIONS" />
@@ -257,13 +206,26 @@ export class ComplianceExclusions extends React.Component<any, any> {
                     <div className="common-container results-container">
                         <div className="d-block width-100 heading">
                             <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100">
-                                        <h3>Showing {exclusionData.length} of {exclusionData.length} results</h3>
+                                <div className="col-lg-12 col-md-12 col-sm-12 text-right">
+                                    <div className="d-inline-block p-r-10 search-box">
+                                        <div className="d-block text-right file-export">
+                                            <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                                                <img src={fileExportIcon} alt="" />
+                                            </a>
+
+                                            <div className={`file-export-toggle ${this.state.fileExportActive}`}>
+                                                <ul>
+                                                    <li>
+                                                        <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                                    </li>
+                                                    <li>
+                                                        <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100 text-right exclusion-button">
+                                    <div className="d-inline-block exclusion-button">
                                         <a onClick={this.onClickEditExclusion} className="blue-button m-r-0">
                                             CREATE NEW EXCLUSION
                                         </a>
@@ -272,62 +234,9 @@ export class ComplianceExclusions extends React.Component<any, any> {
                             </div>
                         </div>
 
-                        <div className="d-block width-100 p-t-15 p-b-20 search-box">
-                            <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-9">
-                                    <div className="d-inline-block form-group search-control-group">
-                                        <form>
-                                            <input type="text" onChange={this.onSearchChange} value={this.state.searchKey} className="input-group-text" placeholder="Search" />
-                                            <button>
-                                                <i className="fa fa-search"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-3">
-                                    <div className="d-inline-block text-right width-100 file-export">
-                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
-                                            <img src={fileExportIcon} alt="" />
-                                        </a>
-
-                                        <div className={`file-export-toggle ${this.state.fileExportActive}`}>
-                                            <ul>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
-                                                </li>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="exclusion-details">
-                            <div className="container-inner">
-                                <table className="exclusion-data-table">
-                                    <tbody>
-                                        <tr className="exclusion-data-table-header">
-                                            <th>
-                                                <div className="pointer-label">
-                                                    <input type="checkbox" className="checkbox" />
-                                                    Ruleset
-                                                </div>
-                                            </th>
-                                            <th>Rule Name</th>
-                                            <th>Cloud Account</th>
-                                            <th>Entity Name</th>
-                                            <th>Entity ID</th>
-                                            <th>Commnets</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        {this.createExclusionTable()}
-                                    </tbody>
-
-                                </table>
-                            </div>
+                        <div className="d-block p-t-20 exclusion-details">
+                            <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
+                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" />
                         </div>
                     </div>
                 </div>
