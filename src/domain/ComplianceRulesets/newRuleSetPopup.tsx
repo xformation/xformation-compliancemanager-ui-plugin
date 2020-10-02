@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { config } from '../../config';
+import QueryPanel from './query/QueryPanel';
 import Utils from '../../utils';
 
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -9,7 +10,8 @@ const entBaseClsPkg = "com.synectiks.cms.entities.";
 export class NewRulSetPopup extends React.Component<any, any> {
 
     constructor(props: any) {
-        super(props);
+		super(props);
+		console.log("props: ", props);
         this.state = {
 			modal: false,
 			entities: props.entities,
@@ -125,7 +127,9 @@ export class NewRulSetPopup extends React.Component<any, any> {
                         </select>
 						<div className="form-group">
 							<label htmlFor="checks" className="d-block">Check*</label>
-							<input id="checks" type="text" value={this.state.checks} onChange={this.onChange}
+							<QueryPanel id="inputChecks" isTranslate="false"
+								resHandler={this.autofillSelection} entity={this.state.entity}/>
+							<input id="checks" type="hidden" value={this.state.checks} onChange={this.onChange}
 								className="input-group-text d-block" placeholder="Rule check" />
 						</div>
                     </div>
@@ -138,5 +142,12 @@ export class NewRulSetPopup extends React.Component<any, any> {
             </Modal>
             
         );
-    }
+	}
+
+	autofillSelection = (sel: any) => {
+		console.log("Set")
+		this.setState({
+			checks: sel
+		});
+	}
 }
