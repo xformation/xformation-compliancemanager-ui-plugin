@@ -31,7 +31,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         return (
             <div className="compliance-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
-                <div className="compliancemanager-page-container aipgateway-page-container">
+                <div className="compliancemanager-page-container editorgslbuilder-page-container">
                     <div className="common-container">
                         <div className="gsl-editor-logos">
                             <h3>GSL Editor</h3>

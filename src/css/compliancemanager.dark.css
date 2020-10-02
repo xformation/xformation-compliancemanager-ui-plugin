@@ -2402,6 +2402,7 @@ a:hover {
   padding: 0 10px;
   color: #2a9ce7;
   margin-right: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
@@ -3577,6 +3578,255 @@ a:hover {
   color: #2a9ce7;
 }
 .script-page-container
+  .context-preview-box
+  .context-preview
+  .preview
+  ul
+  li
+  span {
+  color: #73954f;
+}
+
+@media (max-width: 1150px) {
+  .context-preview-box {
+    padding-top: 30px;
+  }
+}
+
+.editorgslbuilder-page-container .gsl-editor-logos h3 {
+  display: block;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.editorgslbuilder-page-container .gsl-editor-logos ul li {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 30px;
+  padding-bottom: 15px;
+}
+.editorgslbuilder-page-container .gsl-editor-logos ul li a {
+  display: block;
+  width: 180px;
+  height: 50px;
+  background-color: #f0f3f7;
+  box-shadow: 0px 1px 5px #00000029;
+  border-radius: 5px;
+  text-align: left;
+  padding-right: 10px;
+}
+.editorgslbuilder-page-container .gsl-editor-logos ul li a span {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-left: 10px;
+  width: 65px;
+  line-height: 48px;
+}
+.editorgslbuilder-page-container .gsl-editor-logos ul li a span img {
+  max-width: 100%;
+  height: auto;
+}
+.editorgslbuilder-page-container .gsl-editor-logos ul li a p {
+  color: #3b4859;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 50px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.editorgslbuilder-page-container .gsl-editor-radio {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.editorgslbuilder-page-container .gsl-editor-radio ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.editorgslbuilder-page-container .gsl-editor-radio ul li {
+  padding: 0;
+  margin: 0 25px 0 0;
+  display: inline-block;
+}
+.editorgslbuilder-page-container .gsl-editor-radio ul li input {
+  margin-top: 3px;
+  cursor: pointer;
+  vertical-align: top;
+}
+.editorgslbuilder-page-container .gsl-editor-radio ul li label {
+  padding-left: 7px;
+  vertical-align: top;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.editorgslbuilder-page-container .filter-control-group label {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.editorgslbuilder-page-container .filter-control-group .form-control {
+  background-color: #f0f3f7 !important;
+  border: none !important;
+  font-size: 12px;
+  cursor: pointer;
+  height: 35px;
+}
+
+.editorgslbuilder-page-container .filter-control-group .runtest-button i {
+  font-size: 16px;
+}
+
+.editorgslbuilder-page-container .editor-add-code {
+  background-color: #f0f3f7;
+  box-shadow: 0px 1px 5px #00000029;
+  border-radius: 2px;
+  padding: 10px 15px;
+  margin-top: 20px;
+}
+.editorgslbuilder-page-container .editor-add-code .code {
+  padding-right: 10px;
+}
+.editorgslbuilder-page-container .editor-add-code .code button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.editorgslbuilder-page-container .editor-code {
+  padding-top: 30px;
+}
+.editorgslbuilder-page-container .editor-code .editor-code-heading {
+  font-size: 11px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 28px;
+}
+.editorgslbuilder-page-container .editor-code span {
+  display: inline-block;
+  background-color: #f0f3f7;
+  font-size: 11px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 28px;
+  padding: 0 10px;
+  color: #2a9ce7;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.editorgslbuilder-page-container .context-preview-box h4 {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.editorgslbuilder-page-container .context-preview-box .context-preview {
+  background-color: #f0f3f7;
+  box-shadow: 0px 1px 5px #00000029;
+  border-radius: 2px;
+  padding: 20px 30px;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .filter-search-control {
+  position: relative;
+  margin-bottom: 0;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .filter-search-control
+  .input-group-text {
+  max-width: 100%;
+  text-align: left;
+  padding-right: 15px;
+  padding-left: 30px;
+  font-size: 12px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding-top: 0.399rem;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .filter-search-control
+  button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .preview {
+  padding: 20px 15px 0 15px;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .preview
+  ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  list-style: none;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .preview
+  ul
+  li {
+  position: relative;
+  padding: 0 0 0 10px;
+  margin: 0;
+  display: block;
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #3b4859;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .preview
+  ul
+  li
+  i {
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+.editorgslbuilder-page-container
+  .context-preview-box
+  .context-preview
+  .preview
+  ul
+  li
+  a {
+  color: #2a9ce7;
+}
+.editorgslbuilder-page-container
   .context-preview-box
   .context-preview
   .preview
