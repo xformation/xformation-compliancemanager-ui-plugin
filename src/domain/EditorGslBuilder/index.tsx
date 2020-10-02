@@ -4,6 +4,7 @@ import awsLogo from '../../img/amazon-logo.png';
 import microsoftAzureLogo from '../../img/microsoftazure.png';
 import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
+import Tree from './../../components/tree';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -11,6 +12,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
+          
         };
         this.breadCrumbs = [
             {
@@ -23,6 +25,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
             }
         ];
     }
+
 
     render() {
         return (
@@ -168,12 +171,24 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                             <span>source</span>
                                             <span>tags</span>
                                             <span>externalfindigs</span>
-                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-12 col-sm-12"></div>
+                            <div className="col-lg-4 col-md-12 col-sm-12">
+                                <div className="context-preview-box">
+                                    <h4>Context Preview</h4>
+                                    <div className="context-preview">
+                                        <div className="d-block form-group filter-search-control">
+                                            <form>
+                                                <input type="text" className="input-group-text" placeholder="Search" value="" />
+                                                <button><i className="fa fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                        <Tree />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
