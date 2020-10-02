@@ -5,14 +5,17 @@ import microsoftAzureLogo from '../../img/microsoftazure.png';
 import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
 import Tree from './../../components/tree';
+import { OpenDescardPopup } from './../../components/OpenDescardPopup';
+
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
+    openDiscardRef: any;
 
     constructor(props: any) {
         super(props);
         this.state = {
-          
+
         };
         this.breadCrumbs = [
             {
@@ -24,7 +27,13 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
+        this.openDiscardRef = React.createRef();
+
     }
+
+    onClickOpenDescardPopup = (e: any) => {
+        this.openDiscardRef.current.toggle();
+    };
 
 
     render() {
@@ -125,7 +134,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                         </button>
                                         <p>ApiGateway</p>
                                     </div>
-                                    <div className="d-inline-block code">
+                                    <div className="d-inline-block code" onClick={this.onClickOpenDescardPopup}>
                                         <button>
                                             <i className="fa fa-trash"></i>
                                         </button>
@@ -192,6 +201,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
+                <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard="Region isPrivate[]" />
             </div>
         );
     }
