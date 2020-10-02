@@ -2353,6 +2353,9 @@ a:hover {
   height: 35px;
 }
 
+.aipgateway-page-container .filter-control-group .runtest-button {
+  margin-top: 26px;
+}
 .aipgateway-page-container .filter-control-group .runtest-button i {
   font-size: 16px;
 }
@@ -3440,6 +3443,59 @@ a:hover {
 }
 .script-page-container .filter-control-group .runtest-button i {
   font-size: 16px;
+}
+
+.script-page-container .editor-add-code {
+  background-color: #f0f3f7;
+  box-shadow: 0px 1px 5px #00000029;
+  border-radius: 2px;
+  padding: 10px 15px;
+  margin-top: 20px;
+}
+.script-page-container .editor-add-code .code {
+  padding-right: 10px;
+  color: #3b4859;
+}
+.script-page-container .editor-add-code .code p {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.script-page-container .editor-add-code .choosh-popup {
+  width: 220px;
+  background-color: #f8f9fb;
+  padding: 0;
+  border: 1px solid #6c737e;
+}
+.script-page-container .editor-add-code .choosh-popup ul {
+  padding: 5px 0 5px 0;
+  margin: 0;
+  list-style: none;
+  display: block;
+  overflow-y: auto;
+  max-height: 220px;
+}
+.script-page-container .editor-add-code .choosh-popup ul li {
+  display: block;
+  font-size: 11px;
+  color: #3b4859;
+  line-height: 24px;
+  padding: 5px 10px;
+}
+.script-page-container .editor-add-code .choosh-popup ul li span {
+  display: inline-block;
+  vertical-align: top;
+  width: 24px;
+}
+.script-page-container .editor-add-code .choosh-popup ul li span img {
+  max-width: 100%;
+  height: auto;
+}
+.script-page-container .editor-add-code .choosh-popup ul li p {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 5px;
+  margin-bottom: 0;
 }
 
 .script-page-container .context-preview-box h4 {
