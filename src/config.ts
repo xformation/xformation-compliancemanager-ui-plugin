@@ -13,5 +13,7 @@ export const config = {
   GET_ENTITIES_LIST: `${searchSrvUrl}/search/getIndexes`,
   POST_RULE: `${policySrvUrl}/rule/create`,
   POST_POLICY: `${policySrvUrl}/policy/create`,
-  LIST_RULES: `${policySrvUrl}/rule/listAll`
+  LIST_RULES: `${policySrvUrl}/rule/listAll`,
+  SUGGEST_URL: `${policySrvUrl}/suggestKey`,
+  ELS_QUERY: `${searchSrvUrl}/search/elsQuery`
 };

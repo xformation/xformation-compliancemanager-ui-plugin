@@ -1,7 +1,8 @@
 import * as React from 'react';
 import QryUtils from './QryUtils';
-import './QueryPanel.css';
 import Utils from '../../../utils';
+import { config } from '../../../config';
+import './QueryPanel.css';
 
 const entBaseClsPkg: string = 'com.synectiks.cms.entities.';
 
@@ -52,7 +53,7 @@ export default class QueryPanel extends React.Component<any, any> {
 			elsQry: "Searching ..."
 		});
 		console.log(process.env);
-		Utils.postReq('http://localhost:8098/suggestKey',
+		Utils.postReq(config.SUGGEST_URL,
 			"query=" + val + "&cls=" + this.state.selEntity,
 			(response: any, err: any) => {
 				if (err) {
@@ -71,7 +72,7 @@ export default class QueryPanel extends React.Component<any, any> {
 		const params = "query=" + JSON.stringify(query)
 			+ "&cls=" + this.state.selEntity
 			+ "&pageNo=0&pageSize=10&notOnlyIds=true";
-			Utils.postReq('http://localhost:8092/search/elsQuery',
+			Utils.postReq(config.ELS_QUERY,
 			params, (response: any, err: any) => {
 				if (err) {
 					this.setState({

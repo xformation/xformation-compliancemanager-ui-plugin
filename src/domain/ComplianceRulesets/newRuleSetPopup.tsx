@@ -127,10 +127,10 @@ export class NewRulSetPopup extends React.Component<any, any> {
                         </select>
 						<div className="form-group">
 							<label htmlFor="checks" className="d-block">Check*</label>
+							<input id="checks" type="test" value={this.state.checks} readOnly
+								className="input-group-text d-block" placeholder="Fill query and click on 'Done'" />
 							<QueryPanel id="inputChecks" isTranslate="false"
 								resHandler={this.autofillSelection} entity={this.state.entity}/>
-							<input id="checks" type="hidden" value={this.state.checks} onChange={this.onChange}
-								className="input-group-text d-block" placeholder="Rule check" />
 						</div>
                     </div>
                 </ModalBody>
