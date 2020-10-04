@@ -4,13 +4,18 @@ import awsLogo from '../../img/amazon-logo.png';
 import microsoftAzureLogo from '../../img/microsoftazure.png';
 import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
+import Tree from './../../components/tree';
+import { OpenDescardPopup } from './../../components/OpenDescardPopup';
+
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
+    openDiscardRef: any;
 
     constructor(props: any) {
         super(props);
         this.state = {
+
         };
         this.breadCrumbs = [
             {
@@ -22,13 +27,20 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
+        this.openDiscardRef = React.createRef();
+
     }
+
+    onClickOpenDescardPopup = (e: any) => {
+        this.openDiscardRef.current.toggle();
+    };
+
 
     render() {
         return (
             <div className="compliance-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
-                <div className="compliancemanager-page-container aipgateway-page-container">
+                <div className="compliancemanager-page-container editorgslbuilder-page-container">
                     <div className="common-container">
                         <div className="gsl-editor-logos">
                             <h3>GSL Editor</h3>
@@ -122,7 +134,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                         </button>
                                         <p>ApiGateway</p>
                                     </div>
-                                    <div className="d-inline-block code">
+                                    <div className="d-inline-block code" onClick={this.onClickOpenDescardPopup}>
                                         <button>
                                             <i className="fa fa-trash"></i>
                                         </button>
@@ -168,15 +180,28 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                             <span>source</span>
                                             <span>tags</span>
                                             <span>externalfindigs</span>
-                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-12 col-sm-12"></div>
+                            <div className="col-lg-4 col-md-12 col-sm-12">
+                                <div className="context-preview-box">
+                                    <h4>Context Preview</h4>
+                                    <div className="context-preview">
+                                        <div className="d-block form-group filter-search-control">
+                                            <form>
+                                                <input type="text" className="input-group-text" placeholder="Search" value="" />
+                                                <button><i className="fa fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                        <Tree />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard="Region isPrivate[]" />
             </div>
         );
     }

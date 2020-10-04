@@ -4,6 +4,17 @@ import awsLogo from '../../img/amazon-logo.png';
 import microsoftAzureLogo from '../../img/microsoftazure.png';
 import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
+import ApiGateway from '../../img/ApiGateway.png';
+import ApplicationLoadBalancer from '../../img/ApplicationLoadBalancer.png';
+import CloudFront from '../../img/CloudFront.png';
+import CustomerGateway from '../../img/CustomerGateway.png';
+import ELB from '../../img/ELB.png';
+import AutoScalingGroup from '../../img/AutoScalingGroup.png';
+import ECSCluster from '../../img/ECSCluster.png';
+import lamServeCertificate from '../../img/lamServeCertificate.png';
+import CloudWatchEventsRule from '../../img/CloudWatchEventsRule.png';
+import Organization from '../../img/Organization.png';
+import Route53Domain from '../../img/Route53Domain.png';
 
 export class Script extends React.Component<any, any> {
     breadCrumbs: any;
@@ -116,6 +127,26 @@ export class Script extends React.Component<any, any> {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="editor-add-code">
+                                    <div className="d-inline-block code">
+                                        <p>ApiGateway</p>
+                                    </div>
+                                    <div className="choosh-popup">
+                                        <ul>
+                                            <li><a href="#"><span><img src={ApiGateway} alt="" /></span><p>ApiGateway</p></a></li>
+                                            <li><a href="#"><span><img src={ApplicationLoadBalancer} alt="" /></span><p>ApplicationLoadBalancer</p></a></li>
+                                            <li><a href="#"><span><img src={CustomerGateway} alt="" /></span><p>CustomerGateway</p></a></li>
+                                            <li><a href="#"><span><img src={ELB} alt="" /></span><p>ELB</p></a></li>
+                                            <li><a href="#"><span><img src={CloudFront} alt="" /></span><p>CloudFront</p></a></li>
+                                            <li><a href="#"><span><img src={AutoScalingGroup} alt="" /></span><p>AutoScalingGroup</p></a></li>
+                                            <li><a href="#"><span><img src={ECSCluster} alt="" /></span><p>ECSCluster</p></a></li>
+                                            <li><a href="#"><span><img src={lamServeCertificate} alt="" /></span><p>lamServeCertificate</p></a></li>
+                                            <li><a href="#"><span><img src={CloudWatchEventsRule} alt="" /></span><p>CloudWatchEventsRule</p></a></li>
+                                            <li><a href="#"><span><img src={Organization} alt="" /></span><p>Organization</p></a></li>
+                                            <li><a href="#"><span><img src={Route53Domain} alt="" /></span><p>Route53Domain</p></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div className="col-xl-4 col-sm-12">
                                 <div className="context-preview-box">
@@ -145,6 +176,7 @@ export class Script extends React.Component<any, any> {
                                             </ul>
                                         </div>
                                     </div>
+                                
                                 </div>
                             </div>
                         </div>
