@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 class MySelectObj {
 
@@ -30,6 +30,12 @@ export class OpenDescardPopup extends React.Component<any, any> {
                 <ModalBody style={{ height: 'calc(10vh - 20px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div>Remove {discardLabel} ,Are you sure?</div>
                 </ModalBody>
+                <ModalFooter>
+                    <div className="text-right">
+                        <button className="gray-button m-b-0">CANCEL</button>
+                        <button className="blue-button m-r-0 m-b-0">YES</button>
+                    </div>
+                </ModalFooter>
             </Modal>
         );
     }

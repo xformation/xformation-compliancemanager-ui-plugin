@@ -3694,11 +3694,18 @@ a:hover {
 }
 .editorgslbuilder-page-container .editor-add-code .code {
   padding-right: 10px;
+  cursor: pointer;
 }
 .editorgslbuilder-page-container .editor-add-code .code button {
   border: none;
   background-color: transparent;
   padding: 0;
+}
+.editorgslbuilder-page-container .editor-add-code .code:hover button {
+  color: #f93d3d;
+}
+.editorgslbuilder-page-container .editor-add-code .code:hover p {
+  color: #f93d3d;
 }
 
 .editorgslbuilder-page-container .editor-code {
@@ -3938,6 +3945,12 @@ a:hover {
   border-top: 1px dashed #a2c0d4;
 }
 .modal-container .modal-content .modal-footer .blue-button {
+  border-radius: 7px !important;
+}
+.modal-container .modal-content .modal-footer .gray-button {
+  border-radius: 7px !important;
+}
+.modal-container .modal-content .modal-footer .white-button {
   border-radius: 7px !important;
 }
 

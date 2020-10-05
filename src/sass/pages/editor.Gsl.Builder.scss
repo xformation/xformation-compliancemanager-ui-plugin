@@ -104,10 +104,19 @@
         margin-top: 20px;
         .code{
             padding-right: 10px;
+            cursor: pointer;
             button{
                 border: none;
                 background-color: transparent;
                 padding: 0;
+            }
+            &:hover{
+                button{
+                    color: #f93d3d;
+                }
+                p{
+                    color: #f93d3d;
+                }
             }
         }
     }
