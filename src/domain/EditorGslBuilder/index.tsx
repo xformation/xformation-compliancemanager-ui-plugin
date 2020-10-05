@@ -15,7 +15,41 @@ export class EditorGslBuilder extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-
+            descardText: '',
+            operators: [
+                { value: 'operator', name: '=' },
+                { value: 'operator', name: '!=' },
+                { value: 'operator', name: 'and' },
+                { value: 'operator', name: 'or' },
+                { value: 'operator', name: 'not' },
+                { value: 'operator', name: 'like' },
+                { value: 'operator', name: 'Unlike' },
+                { value: 'operator', name: 'regexMatch' }
+            ],
+            functions: [
+                { value: 'function', name: 'apiKeySource' },
+                { value: 'function', name: 'binaryMediaTypes' },
+                { value: 'function', name: 'createdDate' },
+                { value: 'function', name: 'description' },
+                { value: 'function', name: 'endPointConfiguration' },
+                { value: 'function', name: 'compressionsize' },
+                { value: 'function', name: 'policy' },
+                { value: 'function', name: 'version' },
+                { value: 'function', name: 'resources' },
+                { value: 'function', name: 'authorizers' },
+                { value: 'function', name: 'vpc' },
+                { value: 'function', name: 'id' },
+                { value: 'function', name: 'type' },
+                { value: 'function', name: 'name' },
+                { value: 'function', name: 'accountnumber' },
+                { value: 'function', name: 'region' },
+                { value: 'function', name: 'source' },
+                { value: 'function', name: 'tags' },
+                { value: 'function', name: 'externalfindigs' },
+            ],
+            sentence: [
+                { value: 'function', name: 'ApiGateWay' },
+            ],
         };
         this.breadCrumbs = [
             {
@@ -31,10 +65,83 @@ export class EditorGslBuilder extends React.Component<any, any> {
 
     }
 
-    onClickOpenDescardPopup = (e: any) => {
+    addFunctionToEditor = (item: any, index: any) => {
+        const { sentence, functions } = this.state;
+        sentence.push(item);
+        functions.splice(index, 1);
+        this.setState({
+            sentence,
+            functions
+        })
+    }
+
+    removeFunctionFromEditor = (data: any) => {
+        this.openDiscardRef.current.toggle();
+        let functionArrayData = [];
+        const { sentence, functions } = this.state;
+        for (let j = 0; j < sentence.length; j++) {
+            if (data == sentence[j].name) {
+                functionArrayData.push({ value: 'function', name: data });
+                sentence.splice(j, 1);
+            }
+        }
+        for (let i = 0; i < functions.length; i++) {
+            let row = functions[i];
+            functionArrayData.push(row);
+        }
+        this.setState({
+            functions: functionArrayData,
+            sentence
+        })
+    }
+
+    onClickOpenDescardPopup = (item: any) => {
+        this.setState({
+            descardText: item,
+        });
         this.openDiscardRef.current.toggle();
     };
 
+    displayOperators = () => {
+        const { operators } = this.state;
+        let retOperatorData = [];
+        for (let i = 0; i < operators.length; i++) {
+            let row = operators[i];
+            retOperatorData.push(
+                <span>{row.name}</span>
+            );
+        }
+        return retOperatorData;
+    }
+
+    displayFunctions = () => {
+        const { functions } = this.state;
+        let retfunctionsData = [];
+        for (let i = 0; i < functions.length; i++) {
+            let row = functions[i];
+            retfunctionsData.push(
+                <span onClick={() => this.addFunctionToEditor(row, i)}>{row.name}</span>
+            );
+        }
+        return retfunctionsData;
+    }
+
+    displayEditorBox = () => {
+        const { sentence } = this.state;
+        let retData = [];
+        for (let i = 0; i < sentence.length; i++) {
+            let row = sentence[i];
+            retData.push(
+                <div className="d-inline-block code" onClick={() => this.onClickOpenDescardPopup(row.name)}>
+                    <button>
+                        <i className="fa fa-trash"></i>
+                    </button>
+                    <p>{row.name}</p>
+                </div>
+            );
+        }
+        return retData;
+    }
 
     render() {
         return (
@@ -128,18 +235,14 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className="editor-add-code">
-                                    <div className="d-inline-block code">
-                                        <button>
-                                            <i className="fa fa-trash"></i>
-                                        </button>
-                                        <p>ApiGateway</p>
-                                    </div>
-                                    <div className="d-inline-block code" onClick={this.onClickOpenDescardPopup}>
+                                    {this.displayEditorBox()}
+
+                                    {/* <div className="d-inline-block code" onClick={this.onClickOpenDescardPopup}>
                                         <button>
                                             <i className="fa fa-trash"></i>
                                         </button>
                                         <p>Should have</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="editor-code">
                                     <div className="row">
@@ -147,11 +250,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                             <div className="editor-code-heading">Operators:</div>
                                         </div>
                                         <div className="col-md-10">
-                                            <span>(</span>
-                                            <span>)</span>
-                                            <span>and</span>
-                                            <span>or</span>
-                                            <span>not</span>
+                                            {this.displayOperators()}
                                         </div>
                                     </div>
                                 </div>
@@ -161,25 +260,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                             <div className="editor-code-heading">Properties:</div>
                                         </div>
                                         <div className="col-md-10">
-                                            <span>apiKeySource</span>
-                                            <span>binaryMediaTypes</span>
-                                            <span>createdDate</span>
-                                            <span>description</span>
-                                            <span>endPointConfiguration</span>
-                                            <span>compressionsize</span>
-                                            <span>policy</span>
-                                            <span>version</span>
-                                            <span>resources</span>
-                                            <span>authorizers</span>
-                                            <span>vpc</span>
-                                            <span>id</span>
-                                            <span>type</span>
-                                            <span>name</span>
-                                            <span>accountnumber</span>
-                                            <span>region</span>
-                                            <span>source</span>
-                                            <span>tags</span>
-                                            <span>externalfindigs</span>
+                                            {this.displayFunctions()}
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +282,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard="Region isPrivate[]" />
+                <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard={this.state.descardText} removeFunction={this.removeFunctionFromEditor} />
             </div>
         );
     }
