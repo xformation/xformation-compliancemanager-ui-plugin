@@ -6,25 +6,27 @@ import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
 import Tree from './../../components/tree';
 import { OpenDescardPopup } from './../../components/OpenDescardPopup';
-
+import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
     openDiscardRef: any;
-
+    ApikeysourceRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
             descardText: '',
             operators: [
+                { value: 'operator', name: '(' },
+                { value: 'operator', name: ')' },
                 { value: 'operator', name: '=' },
                 { value: 'operator', name: '!=' },
-                { value: 'operator', name: 'and' },
-                { value: 'operator', name: 'or' },
-                { value: 'operator', name: 'not' },
-                { value: 'operator', name: 'like' },
-                { value: 'operator', name: 'Unlike' },
-                { value: 'operator', name: 'regexMatch' }
+                { value: 'function', name: 'and' },
+                { value: 'function', name: 'or' },
+                { value: 'function', name: 'not' },
+                { value: 'function', name: 'like' },
+                { value: 'function', name: 'Unlike' },
+                { value: 'function', name: 'regexMatch' }
             ],
             functions: [
                 { value: 'function', name: 'apiKeySource' },
@@ -62,16 +64,60 @@ export class EditorGslBuilder extends React.Component<any, any> {
             }
         ];
         this.openDiscardRef = React.createRef();
-
+        this.ApikeysourceRef = React.createRef();
     }
 
     addFunctionToEditor = (item: any, index: any) => {
         const { sentence, functions } = this.state;
-        sentence.push(item);
+        let lastData = '';
+        let lastindex = 0;
+        for (let i = 0; i < sentence.length; i++) {
+            lastData = sentence[i].name;
+            lastindex = i;
+        }
+        if (lastData == '(') {
+            let newString = lastData + item.name;
+            sentence.splice(lastindex, 1);
+            sentence.push({ value: 'function', name: newString })
+        } else {
+            sentence.push(item);
+        }
         functions.splice(index, 1);
         this.setState({
             sentence,
             functions
+        });
+    }
+
+    addOperatorToEditor = (data: any, index: any) => {
+        const { sentence, operators } = this.state;
+        if (data.value == 'operator') {
+            if (data.name == '(') {
+                sentence.push(data);
+            } else if (data.name == '!=' || data.name == '=' || data.name == ')') {
+                let lastData = '';
+                let lastindex = 0;
+                for (let i = 0; i < sentence.length; i++) {
+                    lastData = sentence[i].name;
+                    lastindex = i;
+                }
+                lastData = lastData + data.name;
+                sentence.splice(lastindex, 1);
+                sentence.push({ value: 'operator', name: lastData });
+                if (data.name == '=') {
+                    this.ApikeysourceRef.current.toggle();
+                }
+            }
+
+
+        } else {
+            sentence.push(data);
+            operators.splice(index, 1);
+        }
+
+        this.setState({
+            sentence,
+            operators
         })
     }
 
@@ -81,6 +127,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         const { sentence, functions } = this.state;
         for (let j = 0; j < sentence.length; j++) {
             if (data == sentence[j].name) {
+                data = data.split("(").toString().split(")");
                 functionArrayData.push({ value: 'function', name: data });
                 sentence.splice(j, 1);
             }
@@ -91,6 +138,23 @@ export class EditorGslBuilder extends React.Component<any, any> {
         }
         this.setState({
             functions: functionArrayData,
+            sentence
+        })
+    }
+
+    addSourceKey = (addData: any) => {
+        this.ApikeysourceRef.current.toggle();
+        const { sentence } = this.state;
+        let lastData = '';
+        let lastIndex = 0;
+        for (let j = 0; j < sentence.length; j++) {
+            lastData = sentence[j].name;
+            lastIndex = j;
+        }
+        lastData = lastData + addData;
+        sentence.splice(lastIndex, 1);
+        sentence.push({ value: 'function', name: lastData });
+        this.setState({
             sentence
         })
     }
@@ -108,7 +172,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         for (let i = 0; i < operators.length; i++) {
             let row = operators[i];
             retOperatorData.push(
-                <span>{row.name}</span>
+                <span onClick={() => this.addOperatorToEditor(row, i)}>{row.name}</span>
             );
         }
         return retOperatorData;
@@ -236,13 +300,6 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                 </div>
                                 <div className="editor-add-code">
                                     {this.displayEditorBox()}
-
-                                    {/* <div className="d-inline-block code" onClick={this.onClickOpenDescardPopup}>
-                                        <button>
-                                            <i className="fa fa-trash"></i>
-                                        </button>
-                                        <p>Should have</p>
-                                    </div> */}
                                 </div>
                                 <div className="editor-code">
                                     <div className="row">
@@ -283,6 +340,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                     </div>
                 </div>
                 <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard={this.state.descardText} removeFunction={this.removeFunctionFromEditor} />
+                <ApiKeySourcePopup ref={this.ApikeysourceRef} AddApikeySourceFunction={this.addSourceKey} />
             </div>
         );
     }

@@ -29,7 +29,7 @@ export class ApiKeySourcePopup extends React.Component<any, any> {
                 <ModalFooter>
                     <div className="text-right">
                         <button onClick={this.toggle} className="gray-button m-b-0">CANCEL</button>
-                        <button className="blue-button m-r-0 m-b-0">ADD</button>
+                        <button className="blue-button m-r-0 m-b-0" onClick={()=>this.props.AddApikeySourceFunction('20')}>ADD</button>
                     </div>
                 </ModalFooter>
             </Modal>
