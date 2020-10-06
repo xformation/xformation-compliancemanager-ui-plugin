@@ -3938,6 +3938,17 @@ a:hover {
   margin-top: 10px;
   margin-left: 30px;
 }
+.modal-container .modal-content .modal-body .form-group .d-inline-block {
+  display: inline-block;
+}
+.modal-container .modal-content .modal-body .form-group .width-auto {
+  width: auto;
+}
+.modal-container .modal-content .modal-body .form-group .text {
+  padding: 0 3px;
+  line-height: 12px;
+  vertical-align: top;
+}
 .modal-container .modal-content .modal-footer {
   padding: 20px 15px 0px;
   background: none;
