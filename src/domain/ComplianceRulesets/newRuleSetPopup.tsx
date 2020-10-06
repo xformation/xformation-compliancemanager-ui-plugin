@@ -38,6 +38,14 @@ export class NewRulSetPopup extends React.Component<any, any> {
 		// console.log("entities: ", this.state.entities);
 	};
 
+	componentDidUpdate(prevProps, prevState){
+		if(JSON.stringify(prevProps.entities) !== JSON.stringify(this.props.entities)){
+			this.setState({
+				entities: this.props.entities
+			});
+		}
+	}
+
 	onChange = (e: any) => {
 		const data: any = this.state.reqObj;
 		const val = e.target.value;
