@@ -45,6 +45,19 @@ export class NewPolicyPopup extends React.Component<any, any> {
 		// console.log("Rules: ", this.state.rules);
 	};
 
+	componentDidUpdate(prevProps:any, prevState:any){
+		if(JSON.stringify(prevProps.entities) !== JSON.stringify(this.props.entities)){
+			this.setState({
+				entities: this.props.entities
+			});
+		}
+		if(JSON.stringify(prevProps.rules) !== JSON.stringify(this.props.rules)){
+			this.setState({
+				rules: this.props.rules
+			});
+		}
+	}
+
 	onChange = (e: any) => {
 		const data: any = this.state.reqObj;
 		const val = e.target.value;
