@@ -52,6 +52,77 @@ export class EditorGslBuilder extends React.Component<any, any> {
             sentence: [
                 { value: 'function', name: 'ApiGateWay' },
             ],
+            treeData: [
+                {
+                    name: 'apiKeySource:',
+                    type: 'string'
+                },
+                {
+                    name: 'binaryMediaTypes:',
+                    type: 'Array[1]',
+                    isOpened: false,
+                    subData: [
+                        {
+                            name: 'O:', type: 'object', isOpened: false, subData: [
+                                { name: 'xyz:', type: 'string' }
+                            ]
+                        },
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+
+                    ]
+                },
+                {
+                    name: 'endPointConfiguration:',
+                    type: 'object',
+                    isOpened: false,
+                    subData: [],
+                },
+                { name: 'MinimumCompretionSize:', type: 'string' },
+                {
+                    name: 'policy:',
+                    type: 'object',
+                    subData: [
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+                    ],
+                    isOpened: false,
+                },
+                { name: 'Version:', type: 'String', },
+                {
+                    name: 'resources:',
+                    type: ' Array[1]',
+                    isOpened: false,
+                    subData: [
+                        {
+                            name: 'O:', type: 'object', isOpened: false, subData: [
+                                { name: 'abc:', type: 'string' }
+                            ]
+                        },
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+
+                    ]
+                },
+                {
+                    name: 'Authorizers:',
+                    type: 'Array[1]',
+                    subData: [],
+                    isOpened: false,
+                },
+                {
+                    name: 'VPC:',
+                    type: 'object',
+                    subData: [],
+                    isOpened: false,
+                },
+                { name: 'id:', type: 'String' },
+                { name: 'Types:', type: 'String' },
+                { name: 'Name:', type: 'String' },
+                { name: 'Dome9id:', type: 'String' },
+                { name: 'AccountNumber:', type: 'String' },
+                { name: 'Region:', type: 'String' },
+            ]
         };
         this.breadCrumbs = [
             {
@@ -332,7 +403,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                                 <button><i className="fa fa-search"></i></button>
                                             </form>
                                         </div>
-                                        <Tree />
+                                        <Tree valueForTree={this.state.treeData} />
                                     </div>
                                 </div>
                             </div>

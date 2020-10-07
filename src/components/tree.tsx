@@ -1,118 +1,82 @@
 import * as React from 'react';
+import { Collapse } from 'reactstrap';
 
 export class Tree extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            treeData: [
-                {
-                    rootNode: [
-                        {
-                            name: 'apiKeySource:',
-                            type: 'string'
-                        },
-                        {
-                            name: 'binaryMediaTypes:',
-                            type: 'Array[1]',
-                            subNodes: [
-                                {
-                                    name: 'O:', type: 'object', thirdNodes: [
-                                        { name: '', }
-                                    ]
-                                },
-                                { name: 'CreatedDate:', type: 'int' },
-                                { name: 'description:', type: 'string' },
-
-                            ]
-                        },
-                        {
-                            name: 'endPointConfiguration:',
-                            type: 'object',
-                            subNodes: [],
-                        },
-                        { name: 'MinimumCompretionSize:', type: 'string' },
-                        {
-                            name: 'policy:',
-                            type: 'object',
-                            subNodes: [],
-                        },
-                        { name: 'Version:', type: 'String', },
-                        {
-                            name: 'resources:',
-                            type: ' Array[1]',
-                            subNodes: [],
-                        },
-                        {
-                            name: 'Authorizers:',
-                            type: 'Array[1]',
-                            subNodes: [],
-                        },
-                        {
-                            name: 'VPC:',
-                            type: 'object',
-                            subNodes: [],
-                        },
-                        { name: 'id:', type: 'String' },
-                        { name: 'Types:', type: 'String' },
-                        { name: 'Name:', type: 'String' },
-                        { name: 'Dome9id:', type: 'String' },
-                        { name: 'AccountNumber:', type: 'String' },
-                        { name: 'Region:', type: 'String' },
-                    ]
-                }
-            ]
+           treeData: this.props.valueForTree,
         }
     };
 
-
-    displayTreeData() {
+    displayTreeData = () => {
+        const retData = [];
         const { treeData } = this.state;
-        let retData = [];
-        for (let i = 0; i < treeData.length; i++) {
-            let row = treeData[i].rootNode;
-            for (let j = 0; j < row.length; j++) {
-                let subNodes = [];
-                let value = row[j];
-                if (value.subNodes != undefined) {
-                    if (value.subNodes.length > 0) {
-                        for (let k = 0; k < value.subNodes.length; k++) {
-                            let subData = value.subNodes[k];
-                            subNodes.push(
-                                <ul>
-                                    <li>
-                                        {(subData.thirdNodes != undefined) && <i className="fa fa-caret-right"></i>}{subData.name} <a href="#">{subData.type}</a></li>
-                                </ul>
-                            );
-                        }
-                    }
-                }
-                retData.push(
-                    <li>
-                        {(value.subNodes != undefined) && <i className={value.subNodes.length > 0 ? "fa fa-caret-down" : "fa fa-caret-right"}></i>}{value.name} <a href="#">{value.type}</a>
-                        {subNodes}
-                    </li>
-                );
-            }
+        const length = treeData.length;
+        for (let i = 0; i < length; i++) {
+            const folder = treeData[i];
+            retData.push(this.renderTree(folder, [i]));
         }
-        // retData.push(
-        //     <ul>
-        //         <li>apiKeySource:<span>string</span></li>
-        //         <li>
-        //             <i className="fa fa-caret-down"></i> binaryMediaTypes:Array <a href="#">[1]</a>
-        //             <ul>
-        //                 <li>
-        //                     <i className="fa fa-caret-right"></i> O:Object
-        //                                                 </li>
-        //             </ul>
-        //         </li>
-        //         <li>createdDate:<span>string</span></li>
-        //         <li>description:<span>string</span></li>
-        //         <li><i className="fa fa-caret-right"></i> endpointConfiguration:Object</li>
-        //         <li>minimumCompressionSize:<span>string</span></li>
-        //     </ul>
-        // );
         return retData;
     }
+
+    renderTree = (folder: any, indexArr: any): any => {
+        const retData = [];
+        const subFolders = folder.subData;
+        const subFolderJSX = [];
+        if (subFolders != undefined) {
+            for (let j = 0; j < subFolders.length; j++) {
+                const subFolder = subFolders[j];
+                let subIndexArr: any = [];
+                subIndexArr = [...indexArr, j];
+                subFolderJSX.push(
+                    <ul>
+                        {(subFolder.subData == undefined) &&
+                            <li>
+                                {subFolder.name} <a className="subfolderType">{subFolder.type}</a>
+                            </li>
+                        }
+                        {
+                            subFolder.subData &&
+                            this.renderTree(subFolder, subIndexArr)
+                        }
+                    </ul>
+                );
+
+            }
+        }
+        retData.push(
+            <li>
+                <i className={folder.isOpened != true ? "fa fa-caret-right" : "fa fa-caret-down"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></i>{folder.name}<a href="#">{folder.type}</a>
+                {folder.isOpened == true &&
+                    <Collapse>
+                        {subFolderJSX}
+                    </Collapse>}
+            </li>
+
+        );
+        return retData;
+    }
+
+    onClickOpenSubTreeArr = (indexArr: any) => {
+        console.log(indexArr);
+        const { treeData } = this.state;
+        const folder = this.findChild(treeData, [...indexArr]);
+        folder.isOpened = !folder.isOpened;
+        this.setState({
+            treeData
+        });
+    }
+
+    findChild = (folderList: any, indexArr: any): any => {
+        const index = indexArr.splice(0, 1)[0];
+        if (indexArr.length === 0) {
+            return folderList[index];
+        } else {
+            return this.findChild(folderList[index].subData, indexArr);
+        }
+    };
+
 
     render() {
         return (
