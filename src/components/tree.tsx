@@ -9,6 +9,14 @@ export class Tree extends React.Component<any, any> {
         }
     };
 
+    componentDidUpdate(prevProps:any, prevState:any){​​​​​
+        if(JSON.stringify(prevProps.valueForTree) !== JSON.stringify(this.props.valueForTree)){​​​​​
+            this.setState({​​​​​
+                treeData: this.props.valueForTree
+            }​​​​​);
+        }​​​​​
+    }​​​​​
+
     displayTreeData = () => {
         const retData = [];
         const { treeData } = this.state;
@@ -60,7 +68,6 @@ export class Tree extends React.Component<any, any> {
     }
 
     onClickOpenSubTreeArr = (indexArr: any) => {
-        console.log(indexArr);
         const { treeData } = this.state;
         const folder = this.findChild(treeData, [...indexArr]);
         folder.isOpened = !folder.isOpened;
