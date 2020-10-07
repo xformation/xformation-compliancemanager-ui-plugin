@@ -59,7 +59,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 },
                 {
                     name: 'binaryMediaTypes:',
-                    type: 'Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     isOpened: false,
                     subData: [
                         {
@@ -91,7 +92,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 { name: 'Version:', type: 'String', },
                 {
                     name: 'resources:',
-                    type: ' Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     isOpened: false,
                     subData: [
                         {
@@ -106,7 +108,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 },
                 {
                     name: 'Authorizers:',
-                    type: 'Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     subData: [],
                     isOpened: false,
                 },
