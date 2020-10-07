@@ -2,65 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { config } from '../../config';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import awsLogo from '../../img/amazon-logo.png';
-import microsoftAzureLogo from '../../img/microsoftazure.png';
-import gcpLogo from '../../img/google-cloud.png';
-import KubernetesLogo from '../../img/kubernetes.png';
-import ApiGateway from '../../img/ApiGateway.png';
-import ElasticIP from '../../img/ElasticIP.png';
-import Route53HostedZone from '../../img/Route53HostedZone.png';
-import TranstGateway from '../../img/TranstGateway.png';
-import ApplicationLoadBalancer from '../../img/ApplicationLoadBalancer.png';
-import NACL from '../../img/NACL.png';
-import Route53RecordSetGroup from '../../img/Route53RecordSetGroup.png';
-import VPNConnection from '../../img/VPNConnection.png';
-import CloudFront from '../../img/CloudFront.png';
-import NetworkInterface from '../../img/NetworkInterface.png';
-import RouteTable from '../../img/RouteTable.png';
-import VPNGateway from '../../img/VPNGateway.png';
-import CustomerGateway from '../../img/CustomerGateway.png';
-import NetworkLoadBalancer from '../../img/NetworkLoadBalancer.png';
-import SecurityGroup from '../../img/SecurityGroup.png';
-import VpcEndpoint from '../../img/VpcEndpoint.png';
-import ELB from '../../img/ELB.png';
-import Route53Domain from '../../img/Route53Domain.png';
-import Subnet from '../../img/Subnet.png';
-import WAFRegional from '../../img/WAFRegional.png';
-import AutoScalingGroup from '../../img/AutoScalingGroup.png';
-import EcsService from '../../img/EcsService.png';
-import EksCluster from '../../img/EksCluster.png';
-import Lambda from '../../img/Lambda.png';
-import ECSCluster from '../../img/ECSCluster.png';
-import EcsTask from '../../img/EcsTask.png';
-import Instance from '../../img/Instance.png';
-import VPC from '../../img/VPC.png';
-import lam from '../../img/lam.png';
-import lamPolicy from '../../img/lamPolicy.png';
-import lamServeCertificate from '../../img/lamServeCertificate.png';
-import KMS from '../../img/KMS.png';
-import lamGroup from '../../img/lamGroup.png';
-import lamRole from '../../img/lamRole.png';
-import lamUser from '../../img/lamUser.png';
-import Account from '../../img/Account.png';
-import CloudTrail from '../../img/CloudTrail.png';
-import ConfigSetting from '../../img/ConfigSetting.png';
-import AcmCertificate from '../../img/AcmCertificate.png';
-import CloudWatchEventsRule from '../../img/CloudWatchEventsRule.png';
-import Organization from '../../img/Organization.png';
-import AMI from '../../img/AMI.png';
-import EFS from '../../img/EFS.png';
-import Bucket from '../../img/53Bucket.png';
-import Volume from '../../img/Volume.png';
-import DynamoDbtable from '../../img/DynamoDbtable.png';
-import ElastiCache from '../../img/ElastiCache.png';
-import RDS from '../../img/RDS.png';
-import Redshift from '../../img/Redshift.png';
-import ElasticSrarchDomain from '../../img/ElasticSrarchDomain.png';
-import EmrCluster from '../../img/EmrCluster.png';
-import Kinesis from '../../img/Kinesis.png';
-import SnsTopic from '../../img/SnsTopic.png';
-import Sqs from '../../img/Sqs.png';
-import SageMakerNotebook from '../../img/SageMakerNotebook.png';
+import { images } from '../../img';
 
 export class GslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -93,25 +35,25 @@ export class GslBuilder extends React.Component<any, any> {
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <span><img src={awsLogo} alt="" /></span>
+                                        <span><img src={images.awsLogo} alt="" /></span>
                                         <p>AWS</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span><img src={microsoftAzureLogo} alt="" /></span>
+                                        <span><img src={images.microsoftAzureLogo} alt="" /></span>
                                         <p>Azure</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span><img src={gcpLogo} alt="" /></span>
+                                        <span><img src={images.gcpLogo} alt="" /></span>
                                         <p>GCP</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span><img src={KubernetesLogo} alt="" /></span>
+                                        <span><img src={images.KubernetesLogo} alt="" /></span>
                                         <p>Kubernetes</p>
                                     </a>
                                 </li>
@@ -137,121 +79,121 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <Link to={`${config.basePath}/apigateway`}>
-                                                <span><img src={ApiGateway} alt="" /></span>
+                                                <span><img src={images.ApiGateway} alt="" /></span>
                                                 <p>ApiGateway</p>
                                             </Link>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ElasticIP} alt="" /></span>
+                                                <span><img src={images.ElasticIP} alt="" /></span>
                                                 <p>ElasticIP</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Route53HostedZone} alt="" /></span>
+                                                <span><img src={images.Route53HostedZone} alt="" /></span>
                                                 <p>Route53HostedZone</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={TranstGateway} alt="" /></span>
+                                                <span><img src={images.TranstGateway} alt="" /></span>
                                                 <p>TranstGateway</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ApplicationLoadBalancer} alt="" /></span>
+                                                <span><img src={images.ApplicationLoadBalancer} alt="" /></span>
                                                 <p>ApplicationLoadBalancer</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={NACL} alt="" /></span>
+                                                <span><img src={images.NACL} alt="" /></span>
                                                 <p>NACL</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Route53RecordSetGroup} alt="" /></span>
+                                                <span><img src={images.Route53RecordSetGroup} alt="" /></span>
                                                 <p>Route53RecordSetGroup</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={VPNConnection} alt="" /></span>
+                                                <span><img src={images.VPNConnection} alt="" /></span>
                                                 <p>VPNConnection</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={CloudFront} alt="" /></span>
+                                                <span><img src={images.CloudFront} alt="" /></span>
                                                 <p>CloudFront</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={NetworkInterface} alt="" /></span>
+                                                <span><img src={images.NetworkInterface} alt="" /></span>
                                                 <p>NetworkInterface</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={RouteTable} alt="" /></span>
+                                                <span><img src={images.RouteTable} alt="" /></span>
                                                 <p>RouteTable</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={VPNGateway} alt="" /></span>
+                                                <span><img src={images.VPNGateway} alt="" /></span>
                                                 <p>VPNGateway</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={CustomerGateway} alt="" /></span>
+                                                <span><img src={images.CustomerGateway} alt="" /></span>
                                                 <p>CustomerGateway</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={NetworkLoadBalancer} alt="" /></span>
+                                                <span><img src={images.NetworkLoadBalancer} alt="" /></span>
                                                 <p>NetworkLoadBalancer</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={SecurityGroup} alt="" /></span>
+                                                <span><img src={images.SecurityGroup} alt="" /></span>
                                                 <p>SecurityGroup</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={VpcEndpoint} alt="" /></span>
+                                                <span><img src={images.VpcEndpoint} alt="" /></span>
                                                 <p>VpcEndpoint</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ELB} alt="" /></span>
+                                                <span><img src={images.ELB} alt="" /></span>
                                                 <p>ELB</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Route53Domain} alt="" /></span>
+                                                <span><img src={images.Route53Domain} alt="" /></span>
                                                 <p>Route53Domain</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Subnet} alt="" /></span>
+                                                <span><img src={images.Subnet} alt="" /></span>
                                                 <p>Subnet</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={WAFRegional} alt="" /></span>
+                                                <span><img src={images.WAFRegional} alt="" /></span>
                                                 <p>WAFRegional</p>
                                             </a>
                                         </li>
@@ -262,49 +204,49 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={AutoScalingGroup} alt="" /></span>
+                                                <span><img src={images.AutoScalingGroup} alt="" /></span>
                                                 <p>AutoScalingGroup</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={EcsService} alt="" /></span>
+                                                <span><img src={images.EcsService} alt="" /></span>
                                                 <p>EcsService</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={EksCluster} alt="" /></span>
+                                                <span><img src={images.EksCluster} alt="" /></span>
                                                 <p>EksCluster</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Lambda} alt="" /></span>
+                                                <span><img src={images.Lambda} alt="" /></span>
                                                 <p>Lambda</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ECSCluster} alt="" /></span>
+                                                <span><img src={images.ECSCluster} alt="" /></span>
                                                 <p>ECSCluster</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={EcsTask} alt="" /></span>
+                                                <span><img src={images.EcsTask} alt="" /></span>
                                                 <p>EcsTask</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Instance} alt="" /></span>
+                                                <span><img src={images.Instance} alt="" /></span>
                                                 <p>Instance</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={VPC} alt="" /></span>
+                                                <span><img src={images.VPC} alt="" /></span>
                                                 <p>VPC</p>
                                             </a>
                                         </li>
@@ -315,43 +257,43 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lam} alt="" /></span>
+                                                <span><img src={images.lam} alt="" /></span>
                                                 <p>lam</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lamPolicy} alt="" /></span>
+                                                <span><img src={images.lamPolicy} alt="" /></span>
                                                 <p>lamPolicy</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lamServeCertificate} alt="" /></span>
+                                                <span><img src={images.lamServeCertificate} alt="" /></span>
                                                 <p>lamServeCertificate</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={KMS} alt="" /></span>
+                                                <span><img src={images.KMS} alt="" /></span>
                                                 <p>KMS</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lamGroup} alt="" /></span>
+                                                <span><img src={images.lamGroup} alt="" /></span>
                                                 <p>lamGroup</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lamRole} alt="" /></span>
+                                                <span><img src={images.lamRole} alt="" /></span>
                                                 <p>lamRole</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={lamUser} alt="" /></span>
+                                                <span><img src={images.lamUser} alt="" /></span>
                                                 <p>lamUser</p>
                                             </a>
                                         </li>
@@ -362,37 +304,37 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Account} alt="" /></span>
+                                                <span><img src={images.Account} alt="" /></span>
                                                 <p>Account</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={CloudTrail} alt="" /></span>
+                                                <span><img src={images.CloudTrail} alt="" /></span>
                                                 <p>CloudTrail</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ConfigSetting} alt="" /></span>
+                                                <span><img src={images.ConfigSetting} alt="" /></span>
                                                 <p>ConfigSetting</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={AcmCertificate} alt="" /></span>
+                                                <span><img src={images.AcmCertificate} alt="" /></span>
                                                 <p>AcmCertificate</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={CloudWatchEventsRule} alt="" /></span>
+                                                <span><img src={images.CloudWatchEventsRule} alt="" /></span>
                                                 <p>CloudWatchEventsRule</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Organization} alt="" /></span>
+                                                <span><img src={images.Organization} alt="" /></span>
                                                 <p>Organization</p>
                                             </a>
                                         </li>
@@ -403,25 +345,25 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={AMI} alt="" /></span>
+                                                <span><img src={images.AMI} alt="" /></span>
                                                 <p>AMI</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={EFS} alt="" /></span>
+                                                <span><img src={images.EFS} alt="" /></span>
                                                 <p>EFS</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Bucket} alt="" /></span>
+                                                <span><img src={images.Bucket} alt="" /></span>
                                                 <p>53Bucket</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Volume} alt="" /></span>
+                                                <span><img src={images.Volume} alt="" /></span>
                                                 <p>Volume</p>
                                             </a>
                                         </li>
@@ -432,25 +374,25 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={DynamoDbtable} alt="" /></span>
+                                                <span><img src={images.DynamoDbtable} alt="" /></span>
                                                 <p>DynamoDbtable</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ElastiCache} alt="" /></span>
+                                                <span><img src={images.ElastiCache} alt="" /></span>
                                                 <p>ElastiCache</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={RDS} alt="" /></span>
+                                                <span><img src={images.RDS} alt="" /></span>
                                                 <p>RDS</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Redshift} alt="" /></span>
+                                                <span><img src={images.Redshift} alt="" /></span>
                                                 <p>Redshift</p>
                                             </a>
                                         </li>
@@ -461,19 +403,19 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={ElasticSrarchDomain} alt="" /></span>
+                                                <span><img src={images.ElasticSrarchDomain} alt="" /></span>
                                                 <p>ElasticSrarchDomain</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={EmrCluster} alt="" /></span>
+                                                <span><img src={images.EmrCluster} alt="" /></span>
                                                 <p>EmrCluster</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Kinesis} alt="" /></span>
+                                                <span><img src={images.Kinesis} alt="" /></span>
                                                 <p>Kinesis</p>
                                             </a>
                                         </li>
@@ -484,13 +426,13 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={SnsTopic} alt="" /></span>
+                                                <span><img src={images.SnsTopic} alt="" /></span>
                                                 <p>SnsTopic</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span><img src={Sqs} alt="" /></span>
+                                                <span><img src={images.Sqs} alt="" /></span>
                                                 <p>Sqs</p>
                                             </a>
                                         </li>
@@ -501,7 +443,7 @@ export class GslBuilder extends React.Component<any, any> {
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <span><img src={SageMakerNotebook} alt="" /></span>
+                                                <span><img src={images.SageMakerNotebook} alt="" /></span>
                                                 <p>SageMakerNotebook</p>
                                             </a>
                                         </li>
