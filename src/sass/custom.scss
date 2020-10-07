@@ -297,8 +297,12 @@ a {
 /*********************************** Filters Container *********************************/
 .filter-container {    
     .filter-control-group {
-        max-width: 250px;
-        padding-left: 0px;
+        width: 158px;
+        max-width: 158px;
+        padding-left: 0;
+        display: inline-block;
+        position: relative;
+        margin-right: 15px;
         &.clear-filters {
             margin-top: 23px;
             position: relative;
@@ -352,6 +356,11 @@ a {
                     }
                 }
             }
+        }
+        &.assessments{
+            width: 100%;
+            max-width: 100%;
+            margin-right: 0;
         }
         .form-control{
             background-color: #f0f3f7 !important;

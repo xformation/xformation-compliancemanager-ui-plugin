@@ -323,8 +323,12 @@ a:hover {
 
 /*********************************** Filters Container *********************************/
 .filter-container .filter-control-group {
-  max-width: 250px;
-  padding-left: 0px;
+  width: 158px;
+  max-width: 158px;
+  padding-left: 0;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
 }
 .filter-container .filter-control-group.clear-filters {
   margin-top: 23px;
@@ -377,6 +381,11 @@ a:hover {
   transform: rotate(45deg);
   cursor: pointer;
   z-index: 1;
+}
+.filter-container .filter-control-group.assessments {
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0;
 }
 .filter-container .filter-control-group .form-control {
   background-color: #f0f3f7 !important;
@@ -1815,23 +1824,6 @@ a:hover {
   background: #f0f3f7;
   padding: 0;
   height: 290px;
-}
-
-.filter-container .filter-control-group {
-  max-width: 100%;
-  padding-left: 0px;
-}
-.filter-container .filter-control-group .form-control {
-  background-color: #f0f3f7 !important;
-  border: none !important;
-  font-size: 12px;
-  cursor: pointer;
-  height: 35px;
-}
-.filter-container .filter-control-group label {
-  color: #ffffff;
-  padding-bottom: 3px;
-  font-size: 12px;
 }
 
 .filter-container .search-control-group {
