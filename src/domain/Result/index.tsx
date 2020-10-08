@@ -4,6 +4,7 @@ import awsLogo from '../../img/amazon-logo.png';
 import microsoftAzureLogo from '../../img/microsoftazure.png';
 import gcpLogo from '../../img/google-cloud.png';
 import KubernetesLogo from '../../img/kubernetes.png';
+import { config } from '../../config';
 
 export class Result extends React.Component<any, any> {
     breadCrumbs: any;
@@ -18,7 +19,11 @@ export class Result extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Dashboard",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Result",
                 isCurrentPage: true
             }
         ];

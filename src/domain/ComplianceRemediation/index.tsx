@@ -120,7 +120,11 @@ export class ComplianceRemediation extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Remediation",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Remediation",
                 isCurrentPage: true
             }
         ];

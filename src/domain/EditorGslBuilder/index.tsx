@@ -7,6 +7,7 @@ import KubernetesLogo from '../../img/kubernetes.png';
 import Tree from './../../components/tree';
 import { OpenDescardPopup } from './../../components/OpenDescardPopup';
 import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
+import { config } from '../../config';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -208,7 +209,11 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Dashboard",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Editor Gsl Builder",
                 isCurrentPage: true
             }
         ];

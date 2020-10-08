@@ -119,7 +119,11 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Exclusions",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Exclusions",
                 isCurrentPage: true
             }
         ];

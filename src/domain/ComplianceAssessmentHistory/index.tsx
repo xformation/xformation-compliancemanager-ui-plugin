@@ -104,7 +104,11 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Assessment History",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Assessment History",
                 isCurrentPage: true
             }
         ];

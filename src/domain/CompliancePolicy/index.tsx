@@ -3,6 +3,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import amazonLogo from '../../img/amazon-logo.png';
 import { AddOrganizationalUnitPolicyPopup } from './addOrganizationalUnitPolicyPopup';
 import { CloudAccountPolicyPopup } from './cloudAccountPolicyPopup';
+import { config } from '../../config';
 
 export class CompliancePolicy extends React.Component<any, any> {
     breadCrumbs: any;
@@ -149,7 +150,11 @@ export class CompliancePolicy extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Compliance Policy",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Compliance Policy",
                 isCurrentPage: true
             }
         ];
