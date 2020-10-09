@@ -17,7 +17,11 @@ export class GslBuilder extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Dashboard",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Gsl Builder",
                 isCurrentPage: true
             }
         ];
@@ -78,7 +82,7 @@ export class GslBuilder extends React.Component<any, any> {
                                     <h4>Networking & Content Delivery</h4>
                                     <ul>
                                         <li>
-                                            <Link to={`${config.basePath}/apigateway`}>
+                                            <Link to={`${config.basePath}/editorgslbuilder`}>
                                                 <span><img src={images.ApiGateway} alt="" /></span>
                                                 <p>ApiGateway</p>
                                             </Link>

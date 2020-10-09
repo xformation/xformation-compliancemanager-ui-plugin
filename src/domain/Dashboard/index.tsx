@@ -147,115 +147,105 @@ export class Dashboard extends React.Component<any, any> {
                     <div className="common-container filter-container">
                         <div className="row">
                             <div className="col-xl-8 col-lg-12 col-md-12 col-sm-12">
-                                <div className="row">
-                                    <div className="col-lg-3 col-md-4 col-sm-12">
-                                        <div className="form-group filter-control-group">
-                                            <label htmlFor="rousourceGroup">
-                                                Platform&nbsp;&nbsp;&nbsp;
-                                            <i className="fa fa-info-circle"></i>
-                                            </label>
-                                            <select className="form-control" id="rousourceGroup">
-                                                <option value="" selected>Select Platform</option>
-                                                <option value="All">All</option>
-                                                <option value="AWS">AWS</option>
-                                                <option value="Azure">Azure</option>
-                                                <option value="Gcp">Gcp</option>
-                                                <option value="Kubernetes">Kubernetes</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-12">
-                                        <div className="form-group filter-control-group">
-                                            <label htmlFor="resources">
-                                                Ruleset&nbsp;&nbsp;&nbsp;
-                                            <i className="fa fa-info-circle"></i>
-                                            </label>
-                                            <select className="form-control" id="resources">
-                                                <option value="">Select Ruleset</option>
-                                                <option value="All">All</option>
-                                                <option value="AWS-Test">AWS-Test</option>
-                                                <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
-                                                <option value="AzureCheckUp">Azure CheckUp</option>
-                                                <option value="GcpCheckUp">GCP CheckUp</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-12">
-                                        <div className="form-group filter-control-group">
-                                            <label htmlFor="timeRange">
-                                                Organizational Unit&nbsp;&nbsp;&nbsp;
-                                            <i className="fa fa-info-circle"></i>
-                                            </label>
-                                            <select className="form-control" id="timeRange">
-                                                <option value="">Select Organizational Unit</option>
-                                                <option value="Synectiks">Synectiks</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-4 col-sm-12">
-                                        <div className="form-group filter-control-group clear-filters">
-                                            <label htmlFor="clearFilter">
-                                                <span>Clear All Filters</span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                <div className="form-group filter-control-group">
+                                    <label htmlFor="rousourceGroup">
+                                        Platform&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                    </label>
+                                    <select className="form-control" id="rousourceGroup">
+                                        <option value="" selected>Select Platform</option>
+                                        <option value="All">All</option>
+                                        <option value="AWS">AWS</option>
+                                        <option value="Azure">Azure</option>
+                                        <option value="Gcp">Gcp</option>
+                                        <option value="Kubernetes">Kubernetes</option>
+                                    </select>
+                                </div>
+                                <div className="form-group filter-control-group">
+                                    <label htmlFor="resources">
+                                        Ruleset&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                    </label>
+                                    <select className="form-control" id="resources">
+                                        <option value="">Select Ruleset</option>
+                                        <option value="All">All</option>
+                                        <option value="AWS-Test">AWS-Test</option>
+                                        <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                        <option value="AzureCheckUp">Azure CheckUp</option>
+                                        <option value="GcpCheckUp">GCP CheckUp</option>
+                                    </select>
+                                </div>
+                                <div className="form-group filter-control-group">
+                                    <label htmlFor="timeRange">
+                                        Organizational Unit&nbsp;&nbsp;&nbsp;
+                                    <i className="fa fa-info-circle"></i>
+                                    </label>
+                                    <select className="form-control" id="timeRange">
+                                        <option value="">Select Organizational Unit</option>
+                                        <option value="Synectiks">Synectiks</option>
+                                    </select>
+                                </div>
+                                <div className="form-group filter-control-group m-r-0 clear-filters">
+                                    <label htmlFor="clearFilter">
+                                        <span>Clear All Filters</span>
+                                    </label>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                                <div className="float-right assessments">
-                                    <a onClick={this.onClickonClickRunAssessment} className="blue-button">
-                                        <i className="fa fa-caret-right"></i>&nbsp;&nbsp; RUN ASSESSMENTS
+                                <div className="form-group filter-control-group assessments">
+                                <a onClick={this.onClickonClickRunAssessment} className="blue-button">
+                                    <i className="fa fa-caret-right"></i>&nbsp;&nbsp; RUN ASSESSMENTS
+                                </a>
+
+                                <div className="d-inline-block settings">
+                                    <a href="#" className="white-button" onClick={this.settingsHandleClick}>
+                                        <img src={settingsIcon} alt="" />
                                     </a>
 
-                                    <div className="d-inline-block settings">
-                                        <a href="#" className="white-button" onClick={this.settingsHandleClick}>
-                                            <img src={settingsIcon} alt="" />
-                                        </a>
-
-                                        {settingsActive && <div className="settings-toggle">
-                                            <ul>
-                                                <li>
-                                                    <span className="red">Red </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">0% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>10%</span>
-                                                </li>
-                                                <li>
-                                                    <span className="orange">Yellow </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">10% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>90%</span>
-                                                </li>
-                                                <li>
-                                                    <span className="yellow-green">Green </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">90% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>100%</span>
-                                                </li>
-                                            </ul>
-                                        </div>}
-                                    </div>
-
-                                    <div className="d-inline-block file-export">
-                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
-                                            <img src={fileExportIcon} alt="" />
-                                        </a>
-
-                                       {fileExporActive && <div className="file-export-toggle">
-                                            <ul>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
-                                                </li>
-                                                <li>
-                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
-                                                </li>
-                                            </ul>
-                                        </div>}
-                                    </div>
+                                    {settingsActive && <div className="settings-toggle">
+                                        <ul>
+                                            <li>
+                                                <span className="red">Red </span>
+                                                <span>form </span>
+                                                <span className="p-r-5">0% </span>
+                                                <span className="p-r-5">to </span>
+                                                <span>10%</span>
+                                            </li>
+                                            <li>
+                                                <span className="orange">Yellow </span>
+                                                <span>form </span>
+                                                <span className="p-r-5">10% </span>
+                                                <span className="p-r-5">to </span>
+                                                <span>90%</span>
+                                            </li>
+                                            <li>
+                                                <span className="yellow-green">Green </span>
+                                                <span>form </span>
+                                                <span className="p-r-5">90% </span>
+                                                <span className="p-r-5">to </span>
+                                                <span>100%</span>
+                                            </li>
+                                        </ul>
+                                    </div>}
                                 </div>
+
+                                <div className="d-inline-block file-export">
+                                    <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                                        <img src={fileExportIcon} alt="" />
+                                    </a>
+
+                                    {fileExporActive && <div className="file-export-toggle">
+                                        <ul>
+                                            <li>
+                                                <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                            </li>
+                                            <li>
+                                                <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                            </li>
+                                        </ul>
+                                    </div>}
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import KubernetesLogo from '../../img/kubernetes.png';
 import Tree from './../../components/tree';
 import { OpenDescardPopup } from './../../components/OpenDescardPopup';
 import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
+import { config } from '../../config';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -16,6 +17,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         super(props);
         this.state = {
             descardText: '',
+            searchKey: '',
             operators: [
                 { value: 'operator', name: '(' },
                 { value: 'operator', name: ')' },
@@ -59,7 +61,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 },
                 {
                     name: 'binaryMediaTypes:',
-                    type: 'Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     isOpened: false,
                     subData: [
                         {
@@ -91,7 +94,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 { name: 'Version:', type: 'String', },
                 {
                     name: 'resources:',
-                    type: ' Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     isOpened: false,
                     subData: [
                         {
@@ -106,7 +110,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 },
                 {
                     name: 'Authorizers:',
-                    type: 'Array[1]',
+                    type: 'Array',
+                    length: '[1]',
                     subData: [],
                     isOpened: false,
                 },
@@ -122,7 +127,81 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 { name: 'Dome9id:', type: 'String' },
                 { name: 'AccountNumber:', type: 'String' },
                 { name: 'Region:', type: 'String' },
-            ]
+            ],
+            treeDuplicateData: [
+                {
+                    name: 'apiKeySource:',
+                    type: 'string'
+                },
+                {
+                    name: 'binaryMediaTypes:',
+                    type: 'Array',
+                    length: '[1]',
+                    isOpened: false,
+                    subData: [
+                        {
+                            name: 'O:', type: 'object', isOpened: false, subData: [
+                                { name: 'xyz:', type: 'string' }
+                            ]
+                        },
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+
+                    ]
+                },
+                {
+                    name: 'endPointConfiguration:',
+                    type: 'object',
+                    isOpened: false,
+                    subData: [],
+                },
+                { name: 'MinimumCompretionSize:', type: 'string' },
+                {
+                    name: 'policy:',
+                    type: 'object',
+                    subData: [
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+                    ],
+                    isOpened: false,
+                },
+                { name: 'Version:', type: 'String', },
+                {
+                    name: 'resources:',
+                    type: 'Array',
+                    length: '[1]',
+                    isOpened: false,
+                    subData: [
+                        {
+                            name: 'O:', type: 'object', isOpened: false, subData: [
+                                { name: 'abc:', type: 'string' }
+                            ]
+                        },
+                        { name: 'CreatedDate:', type: 'int' },
+                        { name: 'description:', type: 'string' },
+
+                    ]
+                },
+                {
+                    name: 'Authorizers:',
+                    type: 'Array',
+                    length: '[1]',
+                    subData: [],
+                    isOpened: false,
+                },
+                {
+                    name: 'VPC:',
+                    type: 'object',
+                    subData: [],
+                    isOpened: false,
+                },
+                { name: 'id:', type: 'String' },
+                { name: 'Types:', type: 'String' },
+                { name: 'Name:', type: 'String' },
+                { name: 'Dome9id:', type: 'String' },
+                { name: 'AccountNumber:', type: 'String' },
+                { name: 'Region:', type: 'String' },
+            ],
         };
         this.breadCrumbs = [
             {
@@ -130,12 +209,35 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Dashboard",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Editor Gsl Builder",
                 isCurrentPage: true
             }
         ];
         this.openDiscardRef = React.createRef();
         this.ApikeysourceRef = React.createRef();
+    }
+
+    onSearchChange = (e: any) => {
+        const { value } = e.target;
+        this.setState({
+            searchKey: value,
+        });
+        const { treeDuplicateData } = this.state;
+        var searchResult = [];
+        for (let i = 0; i < treeDuplicateData.length; i++) {
+            if (treeDuplicateData[i].name.indexOf(value) !== -1 || value === '') {
+                searchResult.push(treeDuplicateData[i]);
+            } else if (treeDuplicateData[i].name.toLowerCase().indexOf(value) !== -1 || value === '') {
+                searchResult.push(treeDuplicateData[i]);
+            }
+        }
+        this.setState({
+            treeData: searchResult,
+        });
     }
 
     addFunctionToEditor = (item: any, index: any) => {
@@ -399,7 +501,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                     <div className="context-preview">
                                         <div className="d-block form-group filter-search-control">
                                             <form>
-                                                <input type="text" className="input-group-text" placeholder="Search" value="" />
+                                                <input type="text" className="input-group-text" onChange={this.onSearchChange} value={this.state.searchKey} placeholder="Search" />
                                                 <button><i className="fa fa-search"></i></button>
                                             </form>
                                         </div>

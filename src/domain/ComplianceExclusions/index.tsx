@@ -119,7 +119,11 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Exclusions",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Exclusions",
                 isCurrentPage: true
             }
         ];
@@ -148,59 +152,49 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | EXCLUSIONS" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="rousourceGroup">
-                                        Platform&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="rousourceGroup">
-                                        <option value="" selected>Select Platform</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS">AWS</option>
-                                        <option value="Azure">Azure</option>
-                                        <option value="Gcp">Gcp</option>
-                                        <option value="Kubernetes">Kubernetes</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="resources">
-                                        Ruleset&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="resources">
-                                        <option value="">Select Ruleset</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS-Test">AWS-Test</option>
-                                        <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
-                                        <option value="AzureCheckUp">Azure CheckUp</option>
-                                        <option value="GcpCheckUp">GCP CheckUp</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="timeRange">
-                                        Organizational Unit&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="timeRange">
-                                        <option value="">Select Organizational Unit</option>
-                                        <option value="Synectiks">Synectiks</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group clear-filters">
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="rousourceGroup">
+                                Platform&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="rousourceGroup">
+                                <option value="" selected>Select Platform</option>
+                                <option value="All">All</option>
+                                <option value="AWS">AWS</option>
+                                <option value="Azure">Azure</option>
+                                <option value="Gcp">Gcp</option>
+                                <option value="Kubernetes">Kubernetes</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="resources">
+                                Ruleset&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="resources">
+                                <option value="">Select Ruleset</option>
+                                <option value="All">All</option>
+                                <option value="AWS-Test">AWS-Test</option>
+                                <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                <option value="AzureCheckUp">Azure CheckUp</option>
+                                <option value="GcpCheckUp">GCP CheckUp</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="timeRange">
+                                Organizational Unit&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="timeRange">
+                                <option value="">Select Organizational Unit</option>
+                                <option value="Synectiks">Synectiks</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group clear-filters">
                                     <label htmlFor="clearFilter">
                                         <span>Clear All Filters</span>
                                     </label>
                                 </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="common-container results-container">

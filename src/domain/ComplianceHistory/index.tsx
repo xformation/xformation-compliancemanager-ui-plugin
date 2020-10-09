@@ -74,7 +74,11 @@ export class ComplianceHistory extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Assessment History",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Assessment History",
                 isCurrentPage: true
             }
         ];
@@ -375,7 +379,7 @@ export class ComplianceHistory extends React.Component<any, any> {
                     </div>
                     <div className="common-container filter-container">
                         <div className="row">
-                            <div className="col-lg-2 col-md-4 col-sm-12">
+                            <div className="col-lg-9 col-md-12 col-sm-12">
                                 <div className="form-group filter-control-group">
                                     <label htmlFor="rulesGroup">
                                         Rules&nbsp;&nbsp;&nbsp;
@@ -388,8 +392,6 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <option value="Failed">Failed</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div className="col-lg-2 col-md-4 col-sm-12">
                                 <div className="form-group filter-control-group">
                                     <label htmlFor="resourcesGroup">
                                         Severity&nbsp;&nbsp;&nbsp;
@@ -403,8 +405,6 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <option value="Low">Low</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div className="col-lg-2 col-md-4 col-sm-12">
                                 <div className="form-group filter-control-group">
                                     <label htmlFor="typeGroup">
                                         Type&nbsp;&nbsp;&nbsp;
@@ -417,8 +417,6 @@ export class ComplianceHistory extends React.Component<any, any> {
                                         <option value="Lambda">Lambda</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
                                 <div className="form-group filter-control-group">
                                     <label htmlFor="complianceSectionGroup">
                                         Compliance Section&nbsp;&nbsp;&nbsp;

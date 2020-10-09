@@ -15,6 +15,7 @@ import lamServeCertificate from '../../img/lamServeCertificate.png';
 import CloudWatchEventsRule from '../../img/CloudWatchEventsRule.png';
 import Organization from '../../img/Organization.png';
 import Route53Domain from '../../img/Route53Domain.png';
+import { config } from '../../config';
 
 export class Script extends React.Component<any, any> {
     breadCrumbs: any;
@@ -29,7 +30,11 @@ export class Script extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | Dashboard",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Script",
                 isCurrentPage: true
             }
         ];

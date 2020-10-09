@@ -36,7 +36,11 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compiiance | COMPLIANCE RULESETS",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Compiiance Rulesets",
                 isCurrentPage: true
             }
         ];

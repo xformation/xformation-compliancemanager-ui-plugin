@@ -104,7 +104,11 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance | Assessment History",
+                label: "Compliance",
+                route: `${config.basePath}/dashboard`
+            },
+            {
+                label: "Assessment History",
                 isCurrentPage: true
             }
         ];
@@ -117,75 +121,63 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | ASSESSMENT HISTORY" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
-                        <div className="row">
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="rousourceGroup">
-                                        Cloud Accounts&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="rousourceGroup">
-                                        <option value="" selected>Select Cloud Accounts</option>
-                                        <option value="All">All Accounts</option>
-                                        <option value="AWS">AWS(123456)</option>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="rousourceGroup">
+                                Cloud Accounts&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="rousourceGroup">
+                                <option value="" selected>Select Cloud Accounts</option>
+                                <option value="All">All Accounts</option>
+                                <option value="AWS">AWS(123456)</option>
 
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="resources">
-                                        Ruleset&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="resources">
-                                        <option value="">Select Ruleset</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS-Test">AWS-Test</option>
-                                        <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
-                                        <option value="AzureCheckUp">Azure CheckUp</option>
-                                        <option value="GcpCheckUp">GCP CheckUp</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="rousourceGroup">
-                                        Triggered By&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="rousourceGroup">
-                                        <option value="" selected>Select Trigered By</option>
-                                        <option value="All">All</option>
-                                        <option value="Policy">Policy</option>
-                                        <option value="Manual">Manual</option>
-                                        <option value="System">System</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="timeRange">
-                                        Time Period&nbsp;&nbsp;&nbsp;
-                                    <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="timeRange">
-                                        <option value="">Select Time Period</option>
-                                        <option value="4 Hours">4 Hours</option>
-                                        <option value="24 Hours">24 Hours</option>
-                                        <option value="7 Hours">7 Hours</option>
-                                        <option value="custom">Custom</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group clear-filters">
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="resources">
+                                Ruleset&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="resources">
+                                <option value="">Select Ruleset</option>
+                                <option value="All">All</option>
+                                <option value="AWS-Test">AWS-Test</option>
+                                <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                <option value="AzureCheckUp">Azure CheckUp</option>
+                                <option value="GcpCheckUp">GCP CheckUp</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="rousourceGroup">
+                                Triggered By&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="rousourceGroup">
+                                <option value="" selected>Select Trigered By</option>
+                                <option value="All">All</option>
+                                <option value="Policy">Policy</option>
+                                <option value="Manual">Manual</option>
+                                <option value="System">System</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="timeRange">
+                                Time Period&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-info-circle"></i>
+                            </label>
+                            <select className="form-control" id="timeRange">
+                                <option value="">Select Time Period</option>
+                                <option value="4 Hours">4 Hours</option>
+                                <option value="24 Hours">24 Hours</option>
+                                <option value="7 Hours">7 Hours</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group clear-filters">
                                     <label htmlFor="clearFilter">
                                         <span>Clear All Filters</span>
                                     </label>
                                 </div>
-                            </div>
-                        </div>
                     </div>
                     <div className="common-container results-container">
                         <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}

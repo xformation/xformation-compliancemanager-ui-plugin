@@ -5,9 +5,17 @@ export class Tree extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-           treeData: this.props.valueForTree,
+            treeData: this.props.valueForTree,
         }
     };
+
+    componentDidUpdate(prevProps:any, prevState:any){​​​​​
+        if(JSON.stringify(prevProps.valueForTree) !== JSON.stringify(this.props.valueForTree)){​​​​​
+            this.setState({​​​​​
+                treeData: this.props.valueForTree
+            }​​​​​);
+        }​​​​​
+    }​​​​​
 
     displayTreeData = () => {
         const retData = [];
@@ -33,7 +41,7 @@ export class Tree extends React.Component<any, any> {
                     <ul>
                         {(subFolder.subData == undefined) &&
                             <li>
-                                {subFolder.name} <a className="subfolderType">{subFolder.type}</a>
+                                {subFolder.name} <span>{subFolder.type}</span>{subFolder.type == 'Array' && <a href="#">{subFolder.length}</a>}
                             </li>
                         }
                         {
@@ -47,7 +55,8 @@ export class Tree extends React.Component<any, any> {
         }
         retData.push(
             <li>
-                <i className={folder.isOpened != true ? "fa fa-caret-right" : "fa fa-caret-down"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></i>{folder.name}<a href="#">{folder.type}</a>
+                {folder.subData != undefined && <i className={folder.isOpened != true ? "fa fa-caret-right" : "fa fa-caret-down"} onClick={() => this.onClickOpenSubTreeArr([...indexArr])}></i>}
+                {folder.name}<span>{folder.type}</span>{folder.type == 'Array' && <a href="#">{folder.length}</a>}
                 {folder.isOpened == true &&
                     <Collapse>
                         {subFolderJSX}
@@ -59,7 +68,6 @@ export class Tree extends React.Component<any, any> {
     }
 
     onClickOpenSubTreeArr = (indexArr: any) => {
-        console.log(indexArr);
         const { treeData } = this.state;
         const folder = this.findChild(treeData, [...indexArr]);
         folder.isOpened = !folder.isOpened;
