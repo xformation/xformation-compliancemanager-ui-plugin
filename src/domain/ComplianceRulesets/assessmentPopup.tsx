@@ -11,9 +11,10 @@ export class AssessmentPopup extends React.Component<any, any> {
         };
     }
 
-    toggle = () => {
+    toggle = (resObj: any) => {
         this.setState({
             modal: !this.state.modal,
+            data: resObj
         });
     };
 
@@ -26,42 +27,37 @@ export class AssessmentPopup extends React.Component<any, any> {
                     <div className="d-block p-b-15 environment-text">Environment</div>
                     <div className="form-group">
                         <label htmlFor="rulesetGroup" className="d-block">
-                            Cloud account&nbsp;&nbsp;&nbsp;
+                            {state.data ? state.data.name : ""}
                             <i className="fa fa-info-circle"></i>
                         </label>
-                        <select className="form-control d-block" id="rulesetGroup">
-                            <option value="" selected>Cloud account</option>
-                            <option value="AllAccount">All Account</option>
-                            <option value="AWS">AWS</option>
-                            <option value="Azure">Azure</option>
-                            <option value="Gcp">Gcp</option>
-                            <option value="Kubernetes">Kubernetes</option>
-                        </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="rulesetGroup" className="d-block">
-                            Region&nbsp;&nbsp;&nbsp;
+                            {state.data ? state.data.description : ""}
                             <i className="fa fa-info-circle"></i>
                         </label>
-                        <select className="form-control d-block" id="rulesetGroup">
-                            <option value="" selected>Select Region</option>
-                            <option value="Bahrain">Bahrain</option>
-                            <option value="CanadaCentral">Canada Central</option>
-                            <option value="Frunkfurt">Frunkfurt</option>
-                            <option value="HongKong">Hong Kong</option>
-                            <option value="Ireland">Ireland</option>
-                        </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="rulesetGroup" className="d-block">
-                            VPC&nbsp;&nbsp;&nbsp;
+                            {state.data ? state.data.entity : ""}
                             <i className="fa fa-info-circle"></i>
                         </label>
-                        <select className="form-control d-block" id="rulesetGroup">
-                            <option>Select VPC</option>
-                            <option value="All">All</option>
-                            <option value="vpc-0123abcdrfgh">vpc-0123abcdrfgh</option>
-                        </select>
+                    </div>
+                    <div className="form-group">
+                        <div className="d-block width-100 p-b-10 rules-policies-text">
+                            {state.data ? state.data.checks.length : 0}
+                        </div>
+                        {
+                            state.data && state.data.checks.map((item: any) => {
+                                <div className="d-block width-100 p-b-5 privacy-text">
+                                    {item}
+                                </div>
+                            })
+                        }
+                        <div className="d-block width-100 p-b-10 rules-policies-text">
+                            Searchable: <input type="checkbox" readOnly={true}
+                                checked={state.data ? state.data.searchable : false}/>
+                        </div>
                     </div>
                 </ModalBody>
                 <ModalFooter>

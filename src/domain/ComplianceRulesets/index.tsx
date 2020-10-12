@@ -93,22 +93,27 @@ export class ComplianceRulesets extends React.Component<any, any> {
     };
 
     onClickonClickRunRuleset = (e: any) => {
+        console.log("onClickonClickRunRuleset clicked");
         this.rulesetRef.current.toggle();
     };
 
     addNewPolicy = (e: any) => {
+        console.log("addNewPolicy clicked");
         this.policyRef.current.toggle();
     }
 
-    onClickonClickRunAssessment = (e: any) => {
-        this.assessmentRef.current.toggle();
+    onClickonClickRunAssessment = (data: any) => {
+        console.log("onClickonClickRunAssessment clicked");
+        this.assessmentRef.current.toggle(data);
     };
 
     onClickonClickopenExclusionPopup = (e: any) => {
+        console.log("onClickonClickopenExclusionPopup clicked");
         this.exclusionRef.current.toggle();
     };
 
     onClickonClickopenRemediationPopup = (e: any) => {
+        console.log("onClickonClickopenRemediationPopup clicked");
         this.remediationRef.current.toggle();
     };
 
@@ -137,10 +142,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
         console.log(data);
         return (
             <div className="col-lg-4 col-md-6 col-sm-12" >
-                <div className="d-block width-100 assessment-box">
+                <div className="d-block width-100 assessment-box" onClick={() => this.onClickonClickRunAssessment(data)}>
                     <div className="d-block width-100 assessment-heading">
-                        <i onClick={this.onClickonClickRunAssessment} className="fa fa-caret-right left-arrow"></i>
-                        <strong onClick={this.onClickonClickRunAssessment} className="d-inline-block">{data.name}</strong>
+                        <i className="fa fa-caret-right left-arrow"></i>
+                        <strong className="d-inline-block">{data.name}</strong>
                         <div className="d-inline-block float-right width-auto assessment-toggle-main">
                             <a href="#" className="gray-button min-width-inherit m-r-0" onClick={() => this.assessmentHandleClick(indx)}>
                                 <i className="fa fa-ellipsis-v"></i>
@@ -155,7 +160,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
                             </div>} */}
                         </div>
                     </div>
-                    <div className="d-block width-100 assessment-inner" onClick={this.onClickonClickRunAssessment}>
+                    <div className="d-block width-100 assessment-inner" >
                         <div className="d-block width-100 p-b-15">
                             <div className="d-inline-block width-50">
                                 <strong className="d-block cat-sub-name">{data.description}</strong>
