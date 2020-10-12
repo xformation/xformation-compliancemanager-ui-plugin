@@ -20,7 +20,7 @@ export class AssessmentPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Run Assessments</ModalHeader>
                 <ModalBody style={{ overflowY: 'auto', overflowX: "hidden" }}>
                     <p>You are about to run all displayed assessments. This could take a few minutes. Are you sure?</p>

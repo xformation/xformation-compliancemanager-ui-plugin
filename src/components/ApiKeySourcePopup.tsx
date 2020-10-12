@@ -19,7 +19,7 @@ export class ApiKeySourcePopup extends React.Component<any, any> {
     render() {
         const { modal } = this.state;
         return (
-            <Modal isOpen={modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalBody style={{ height: 'calc(20vh - 20px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="d-block form-group">
                         <label className="d-inline-block">ApiKeySource = </label>

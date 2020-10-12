@@ -19,7 +19,7 @@ export class DeleteRemediationPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Delete Remediation</ModalHeader>
                 <ModalBody style={{ overflowY: 'auto', overflowX: "hidden" }}>
                     <p>You are about to delete Remediation for cloud account '*' and ruleset 'AWS CIS Foundations v. 1.0.0', are you sure?</p>

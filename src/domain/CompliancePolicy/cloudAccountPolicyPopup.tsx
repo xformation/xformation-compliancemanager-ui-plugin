@@ -37,7 +37,7 @@ export class CloudAccountPolicyPopup extends React.Component<any, any> {
     render() {
         const { modal } = this.state;
         return (
-            <Modal isOpen={modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Policy</ModalHeader>
                 <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <Wizard steps={this.steps} />
