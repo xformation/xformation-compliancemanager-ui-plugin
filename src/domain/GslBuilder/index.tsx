@@ -33,19 +33,22 @@ export class GslBuilder extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        let url: String = config.LIST_ALL_CLD_GRP;
-        if (this.state.cldName) {
-            url  += "?cloudName=" + this.state.cldName;
-        }
-        console.log("url: " + url);
-		Utils.getReq(url)
-			.then((response: any) => {
-				this.setState({
-					cldByGroup: response.data
-				});
-                this.getCloudNames();
-			});
-        console.log("cldByGroup: ", this.state.cldByGroup);
+        // let url: String = config.LIST_ALL_CLD_GRP;
+        // if (this.state.cldName) {
+        //     url  += "?cloudName=" + this.state.cldName;
+        // }
+        // console.log("url: " + url);
+		// Utils.getReq(url)
+		// 	.then((response: any) => {
+		// 		this.setState({
+		// 			cldByGroup: response.data
+		// 		});
+        //         this.getCloudNames();
+		// 	});
+        // console.log("cldByGroup: ", this.state.cldByGroup);
+        this.setState({
+            cldByGroup: [{"id":27,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"Network","entity":"com.synecticks.common.entities.ApiGateway"},{"id":23,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"Network","entity":"com.synecticks.common.entities.Network"},{"id":25,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"User","entity":"com.synecticks.common.entities.Password"}]
+        });
     };
 
     getCloudNames = () => {
