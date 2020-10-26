@@ -2110,11 +2110,8 @@ a:hover {
 .gslbuilder-page-container .gsl-editor-logos ul li {
   display: inline-block;
   vertical-align: top;
-  padding-right: 30px;
-  padding-bottom: 15px;
-}
-.gslbuilder-page-container .gsl-editor-logos ul li a {
-  display: block;
+  margin-right: 30px;
+  margin-bottom: 15px;
   width: 180px;
   height: 50px;
   background-color: #f0f3f7;
@@ -2122,6 +2119,23 @@ a:hover {
   border-radius: 5px;
   text-align: left;
   padding-right: 10px;
+  padding-left: 10px;
+  line-height: 50px;
+}
+.gslbuilder-page-container .gsl-editor-logos ul li input {
+  display: inline-block;
+  margin-right: 10px;
+}
+.gslbuilder-page-container .gsl-editor-logos ul li label {
+  color: #3b4859;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 50px;
+  display: inline-block;
+  vertical-align: top;
+}
+.gslbuilder-page-container .gsl-editor-logos ul li a {
+  display: block;
 }
 .gslbuilder-page-container .gsl-editor-logos ul li a span {
   display: inline-block;
@@ -2201,13 +2215,14 @@ a:hover {
 }
 .gslbuilder-page-container .gsl-editor-items .item-content .items ul li {
   display: inline-block;
-  width: 25%;
+  width: 33.33%;
   vertical-align: top;
   margin-bottom: 10px;
+  padding-right: 10px;
 }
 .gslbuilder-page-container .gsl-editor-items .item-content .items ul li a {
   color: #3b4859;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 24px;
 }
 .gslbuilder-page-container .gsl-editor-items .item-content .items ul li a span {
@@ -2231,7 +2246,7 @@ a:hover {
 .gslbuilder-page-container .gsl-editor-items .item-content .items ul li a p {
   display: inline-block;
   color: #3b4859;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 24px;
   font-weight: 500;
   margin-bottom: 0;

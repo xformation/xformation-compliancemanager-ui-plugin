@@ -129,11 +129,9 @@ export class GslBuilder extends React.Component<any, any> {
         this.state.clds.map((cld: string) => {
             retcldsData.push(
                 <li>
-                    <a href="#">
-                        <input type="radio" name="clouds" id={cld} value={cld} onChange={this.cloudSelection} />
-                        {/* <span><img src={images.awsLogo} alt="" /></span> */}
-                        <label htmlFor={cld}>{cld}</label>
-                    </a>
+                    <input type="radio" name="clouds" id={cld} value={cld} onChange={this.cloudSelection} />
+                    {/* <span><img src={images.awsLogo} alt="" /></span> */}
+                    <label htmlFor={cld}>{cld}</label>
                 </li>
             );
         })
