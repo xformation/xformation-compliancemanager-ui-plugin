@@ -38,24 +38,25 @@ export class GslBuilder extends React.Component<any, any> {
         //     url  += "?cloudName=" + this.state.cldName;
         // }
         // console.log("url: " + url);
-		// Utils.getReq(url)
-		// 	.then((response: any) => {
-		// 		this.setState({
-		// 			cldByGroup: response.data
-		// 		});
+        // Utils.getReq(url)
+        // 	.then((response: any) => {
+        // 		this.setState({
+        // 			cldByGroup: response.data
+        // 		});
         //         this.getCloudNames();
-		// 	});
+        // 	});
         // console.log("cldByGroup: ", this.state.cldByGroup);
+        let cldByGroup = [{ "id": 27, "createdAt": null, "updatedAt": null, "createdBy": null, "updatedBy": null, "cloudName": "AWS", "groupName": "Network", "entity": "com.synecticks.common.entities.ApiGateway" }, { "id": 23, "createdAt": null, "updatedAt": null, "createdBy": null, "updatedBy": null, "cloudName": "AWS", "groupName": "Network", "entity": "com.synecticks.common.entities.Network" }, { "id": 25, "createdAt": null, "updatedAt": null, "createdBy": null, "updatedBy": null, "cloudName": "AWS", "groupName": "User", "entity": "com.synecticks.common.entities.Password" }];
         this.setState({
-            cldByGroup: [{"id":27,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"Network","entity":"com.synecticks.common.entities.ApiGateway"},{"id":23,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"Network","entity":"com.synecticks.common.entities.Network"},{"id":25,"createdAt":null,"updatedAt":null,"createdBy":null,"updatedBy":null,"cloudName":"AWS","groupName":"User","entity":"com.synecticks.common.entities.Password"}]
+            cldByGroup
         });
+        this.getCloudNames(cldByGroup);
     };
 
-    getCloudNames = () => {
-        console.log("cloud groups", this.state.cldByGroup);
+    getCloudNames = (cldByGroup: any) => {
         const cld: Array<string> = [];
-        if (this.state.cldByGroup) {
-            this.state.cldByGroup.map((item: any) => {
+        if (cldByGroup) {
+            cldByGroup.map((item: any) => {
                 if (cld.indexOf(item.cloudName) < 0) {
                     cld.push(item.cloudName);
                 }
@@ -83,22 +84,23 @@ export class GslBuilder extends React.Component<any, any> {
     }
 
     getGroupBody = () => {
-        if (!this.state.cldByGroup) {
+        const { cldByGroup, selCloud } = this.state;
+        if (!cldByGroup) {
             return;
         }
         let retData: Array<any> = [];
-        this.state.cldByGroup.map((item: any) => {
-            let grp:string = "";
-            if (this.state.selCloud === item.cloudName) {
+        cldByGroup.map((item: any) => {
+            let grp: string = "";
+            if (selCloud === item.cloudName) {
                 if (item.groupName != grp) {
                     grp = item.groupName;
                     retData.push(
-                    <div className="items">
-                        <h4>{grp}</h4>
-                        <ul>
-                        {this.getGroupEntities(grp)}
-                        </ul>
-                    </div>); 
+                        <div className="items">
+                            <h4>{grp}</h4>
+                            <ul>
+                                {this.getGroupEntities(grp)}
+                            </ul>
+                        </div>);
                 }
             }
         })
@@ -122,7 +124,24 @@ export class GslBuilder extends React.Component<any, any> {
         return retData;
     }
 
+    displayclds = () => {
+        let retcldsData: Array<any> = [];
+        this.state.clds.map((cld: string) => {
+            retcldsData.push(
+                <li>
+                    <a href="#">
+                        <input type="radio" name="clouds" id={cld} value={cld} onChange={this.cloudSelection} />
+                        {/* <span><img src={images.awsLogo} alt="" /></span> */}
+                        <label htmlFor={cld}>{cld}</label>
+                    </a>
+                </li>
+            );
+        })
+        return retcldsData;
+    }
+
     render() {
+        const { cldByGroup } = this.state;
         return (
             <div className="compliance-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
@@ -131,16 +150,7 @@ export class GslBuilder extends React.Component<any, any> {
                         <div className="gsl-editor-logos">
                             <h3>GSL Editor</h3>
                             <ul>
-                            {this.state.clds && this.state.clds.map((cld: string) => {
-                                <li>
-                                    <a href="#">
-                                        <input type="radio" name="clouds" id={cld} value={cld} onChange={this.cloudSelection} />
-                                        {/* <span><img src={images.awsLogo} alt="" /></span> */}
-                                        <label htmlFor={cld}>{cld}</label>
-                                    </a>
-                                </li>
-                            })
-                            }
+                                {this.state.clds != undefined && this.displayclds()}
                             </ul>
                         </div>
                         {/* <div className="gsl-editor-radio">
@@ -158,7 +168,7 @@ export class GslBuilder extends React.Component<any, any> {
                         <div className="gsl-editor-items">
                             <h3>Select the context from the items below</h3>
                             <div className="item-content">
-                                { this.getGroupBody() }
+                                {cldByGroup.length > 0 && this.getGroupBody()}
                             </div>
                         </div>
                     </div>
