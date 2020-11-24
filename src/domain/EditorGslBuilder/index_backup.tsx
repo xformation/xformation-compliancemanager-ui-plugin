@@ -9,7 +9,7 @@ import { OpenDescardPopup } from './../../components/OpenDescardPopup';
 import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
 import { config } from '../../config';
 import { dummyData } from './dummyData';
-import { propertiesDummy } from './properties';
+// import { properties } from './properties';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -20,10 +20,40 @@ export class EditorGslBuilder extends React.Component<any, any> {
         this.state = {
             descardText: '',
             searchKey: '',
-            operators: [],
-            functions: [],
-            properties: [],
-            keywords: [],
+            
+            operators: [
+                { value: 'operator', name: '(' },
+                { value: 'operator', name: ')' },
+                { value: 'operator', name: '=' },
+                { value: 'operator', name: '!=' },
+                { value: 'function', name: 'and' },
+                { value: 'function', name: 'or' },
+                { value: 'function', name: 'not' },
+                { value: 'function', name: 'like' },
+                { value: 'function', name: 'Unlike' },
+                { value: 'function', name: 'regexMatch' }
+            ],
+            functions: [
+                { value: 'function', name: 'apiKeySource' },
+                { value: 'function', name: 'binaryMediaTypes' },
+                { value: 'function', name: 'createdDate' },
+                { value: 'function', name: 'description' },
+                { value: 'function', name: 'endPointConfiguration' },
+                { value: 'function', name: 'compressionsize' },
+                { value: 'function', name: 'policy' },
+                { value: 'function', name: 'version' },
+                { value: 'function', name: 'resources' },
+                { value: 'function', name: 'authorizers' },
+                { value: 'function', name: 'vpc' },
+                { value: 'function', name: 'id' },
+                { value: 'function', name: 'type' },
+                { value: 'function', name: 'name' },
+                { value: 'function', name: 'accountnumber' },
+                { value: 'function', name: 'region' },
+                { value: 'function', name: 'source' },
+                { value: 'function', name: 'tags' },
+                { value: 'function', name: 'externalfindigs' },
+            ],
             query: [],
             treeData: [
                 {
@@ -193,19 +223,16 @@ export class EditorGslBuilder extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        // make an api call here
-        this.setState({
-            operators: dummyData.OPERATOR,
-            functions: dummyData.FUNCTION,
-            keywords: dummyData.KEYWORD,
-            properties: propertiesDummy.properties
-        });
+        //make an api call here
+        // this.setState({
+
+        // });
         let getParamByName = this.getParameterByName("cls", window.location.href);
-        if (getParamByName) {
-            const { query } = this.state;
+        if(getParamByName){
+            const {query} = this.state;
             query.push({
                 value: 'function',
-                key: getParamByName
+                name: getParamByName
             });
             this.setState({
                 query
@@ -242,28 +269,58 @@ export class EditorGslBuilder extends React.Component<any, any> {
     }
 
     addFunctionToEditor = (item: any, index: any) => {
-        const { query } = this.state;
-        query.push(item);
+        const { query, functions } = this.state;
+        let lastData = '';
+        let lastindex = 0;
+        for (let i = 0; i < query.length; i++) {
+            lastData = query[i].name;
+            lastindex = i;
+        }
+        if (lastData == '(') {
+            let newString = lastData + item.name;
+            query.splice(lastindex, 1);
+            query.push({ value: 'function', name: newString })
+        } else {
+            query.push(item);
+        }
+        functions.splice(index, 1);
         this.setState({
             query,
+            functions
         });
     }
 
     addOperatorToEditor = (data: any, index: any) => {
         const { query, operators } = this.state;
-        query.push(data);
-        this.setState({
-            query,
-        });
-    }
+        if (data.value == 'operator') {
+            if (data.name == '(') {
+                query.push(data);
+            } else if (data.name == '!=' || data.name == '=' || data.name == ')') {
+                let lastData = '';
+                let lastindex = 0;
+                for (let i = 0; i < query.length; i++) {
+                    lastData = query[i].name;
+                    lastindex = i;
+                }
+                lastData = lastData + data.name;
+                query.splice(lastindex, 1);
+                query.push({ value: 'operator', name: lastData });
+                if (data.name == '=') {
+                    this.ApikeysourceRef.current.toggle();
+                }
+            }
 
-    addKeywordToEditor = (data: any, index: any) => {
-        const { query } = this.state;
-        query.push(data);
+
+        } else {
+            query.push(data);
+            operators.splice(index, 1);
+        }
+
         this.setState({
             query,
+            operators
         })
-    };
+    }
 
     removeFunctionFromEditor = (data: any) => {
         this.openDiscardRef.current.toggle();
@@ -316,7 +373,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         for (let i = 0; i < operators.length; i++) {
             let row = operators[i];
             retOperatorData.push(
-                <span onClick={() => this.addOperatorToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
+                <span onClick={() => this.addOperatorToEditor(row, i)}>{row.name}</span>
             );
         }
         return retOperatorData;
@@ -324,26 +381,14 @@ export class EditorGslBuilder extends React.Component<any, any> {
 
     displayFunctions = () => {
         const { functions } = this.state;
-        let retData = [];
+        let retfunctionsData = [];
         for (let i = 0; i < functions.length; i++) {
             let row = functions[i];
-            retData.push(
-                <span onClick={() => this.addFunctionToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
+            retfunctionsData.push(
+                <span onClick={() => this.addFunctionToEditor(row, i)}>{row.name}</span>
             );
         }
-        return retData;
-    }
-
-    displayKeywords = () => {
-        const { keywords } = this.state;
-        let retData = [];
-        for (let i = 0; i < keywords.length; i++) {
-            let row = keywords[i];
-            retData.push(
-                <span onClick={() => this.addKeywordToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
-            );
-        }
-        return retData;
+        return retfunctionsData;
     }
 
     displayEditorBox = () => {
@@ -356,7 +401,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                     <button>
                         <i className="fa fa-trash"></i>
                     </button>
-                    <p dangerouslySetInnerHTML={{__html: row.key}}></p>
+                    <p>{row.name}</p>
                 </div>
             );
         }
@@ -470,20 +515,10 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                 <div className="editor-code">
                                     <div className="row">
                                         <div className="col-md-2">
-                                            <div className="editor-code-heading">Functions:</div>
+                                            <div className="editor-code-heading">Properties:</div>
                                         </div>
                                         <div className="col-md-10">
                                             {this.displayFunctions()}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="editor-code">
-                                    <div className="row">
-                                        <div className="col-md-2">
-                                            <div className="editor-code-heading">Keywords:</div>
-                                        </div>
-                                        <div className="col-md-10">
-                                            {this.displayKeywords()}
                                         </div>
                                     </div>
                                 </div>
