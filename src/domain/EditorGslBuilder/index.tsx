@@ -14,7 +14,7 @@ import { propertiesDummy } from './properties';
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
     openDiscardRef: any;
-    ApikeysourceRef: any;
+    addValuePopupRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -173,6 +173,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 { name: 'AccountNumber:', type: 'String' },
                 { name: 'Region:', type: 'String' },
             ],
+            mouseOverIndex: -1
         };
         this.breadCrumbs = [
             {
@@ -189,7 +190,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
             }
         ];
         this.openDiscardRef = React.createRef();
-        this.ApikeysourceRef = React.createRef();
+        this.addValuePopupRef = React.createRef();
     }
 
     componentDidMount() {
@@ -204,8 +205,8 @@ export class EditorGslBuilder extends React.Component<any, any> {
         if (getParamByName) {
             const { query } = this.state;
             query.push({
-                value: 'function',
-                key: getParamByName
+                type: "root",
+                value: getParamByName,
             });
             this.setState({
                 query
@@ -241,28 +242,53 @@ export class EditorGslBuilder extends React.Component<any, any> {
         });
     }
 
-    addFunctionToEditor = (item: any, index: any) => {
+    addFunctionToEditor = (item: any) => {
         const { query } = this.state;
-        query.push(item);
-        this.setState({
-            query,
-        });
-    }
-
-    addOperatorToEditor = (data: any, index: any) => {
-        const { query, operators } = this.state;
+        const data = {
+            type: item.type,
+            value: item.key,
+            item
+        };
         query.push(data);
         this.setState({
             query,
         });
     }
 
-    addKeywordToEditor = (data: any, index: any) => {
+    addOperatorToEditor = (item: any) => {
         const { query } = this.state;
+        const data = {
+            type: item.type,
+            value: item.key,
+            item
+        };
+        this.addValuePopupRef.current.toggle(query[query.length - 1], data);
+    }
+
+    addKeywordToEditor = (item: any) => {
+        const { query } = this.state;
+        const data = {
+            type: item.type,
+            value: item.key,
+            item
+        };
         query.push(data);
         this.setState({
             query,
-        })
+        });
+    };
+
+    addPropertyToEditor = (item: any, value: any) => {
+        const { query } = this.state;
+        const data = {
+            type: "PROPERTIES",
+            value: value,
+            item
+        };
+        query.push(data);
+        this.setState({
+            query,
+        });
     };
 
     removeFunctionFromEditor = (data: any) => {
@@ -286,21 +312,14 @@ export class EditorGslBuilder extends React.Component<any, any> {
         })
     }
 
-    addSourceKey = (addData: any) => {
-        this.ApikeysourceRef.current.toggle();
+    addSourceKey = (operator: any, value: any) => {
         const { query } = this.state;
-        let lastData = '';
-        let lastIndex = 0;
-        for (let j = 0; j < query.length; j++) {
-            lastData = query[j].name;
-            lastIndex = j;
-        }
-        lastData = lastData + addData;
-        query.splice(lastIndex, 1);
-        query.push({ value: 'function', name: lastData });
+        let lastQueryValue = query[query.length - 1].value;
+        query[query.length - 1].value = lastQueryValue + ' ' + operator.value + ' ' + value;
         this.setState({
             query
-        })
+        });
+        this.addValuePopupRef.current.toggle({ value: "" }, { value: "" });
     }
 
     onClickOpenDescardPopup = (item: any) => {
@@ -316,7 +335,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         for (let i = 0; i < operators.length; i++) {
             let row = operators[i];
             retOperatorData.push(
-                <span onClick={() => this.addOperatorToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
+                <span onClick={() => this.addOperatorToEditor(row)} dangerouslySetInnerHTML={{ __html: row.key }} title={row.hint ? row.hint : ''}></span>
             );
         }
         return retOperatorData;
@@ -328,7 +347,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
         for (let i = 0; i < functions.length; i++) {
             let row = functions[i];
             retData.push(
-                <span onClick={() => this.addFunctionToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
+                <span onClick={() => this.addFunctionToEditor(row)} dangerouslySetInnerHTML={{ __html: row.key }} title={row.hint ? row.hint : ''}></span>
             );
         }
         return retData;
@@ -340,23 +359,54 @@ export class EditorGslBuilder extends React.Component<any, any> {
         for (let i = 0; i < keywords.length; i++) {
             let row = keywords[i];
             retData.push(
-                <span onClick={() => this.addKeywordToEditor(row, i)} dangerouslySetInnerHTML={{__html: row.key}} title={row.hint ? row.hint : ''}></span>
+                <span onClick={() => this.addKeywordToEditor(row)} dangerouslySetInnerHTML={{ __html: row.key }} title={row.hint ? row.hint : ''}></span>
             );
         }
         return retData;
     }
 
+    displayProperties = () => {
+        const { properties } = this.state;
+        let retData = [];
+        for (let i = 0; i < properties.length; i++) {
+            let row = properties[i];
+            let key = Object.keys(row);
+            retData.push(
+                <span onClick={() => this.addPropertyToEditor(row, key[0])} dangerouslySetInnerHTML={{ __html: key[0] }}></span>
+            );
+        }
+        return retData;
+    };
+
+    onMouseEnterEditor = (index: any) => {
+        this.setState({
+            mouseOverIndex: index
+        });
+    };
+
+    onMouseLeaveEditor = () => {
+        this.setState({
+            mouseOverIndex: -1
+        });
+    };
+
     displayEditorBox = () => {
-        const { query } = this.state;
+        const { query, mouseOverIndex } = this.state;
         let retData = [];
         for (let i = 0; i < query.length; i++) {
             let row = query[i];
+            let color = '';
+            let textDecoration = '';
+            if (mouseOverIndex <= i && mouseOverIndex !== -1) {
+                color = '#f93d3d';
+                textDecoration = "line-through";
+            }
             retData.push(
-                <div className="d-inline-block code" onClick={() => this.onClickOpenDescardPopup(row.name)}>
-                    <button>
+                <div style={{ color: color, textDecoration: textDecoration }} className="d-inline-block code" onClick={() => this.onClickOpenDescardPopup(row.value)} onMouseEnter={() => this.onMouseEnterEditor(i)} onMouseLeave={() => this.onMouseLeaveEditor()}>
+                    <button style={{ visibility: mouseOverIndex === i ? 'visible' : 'hidden' }}>
                         <i className="fa fa-trash"></i>
                     </button>
-                    <p dangerouslySetInnerHTML={{__html: row.key}}></p>
+                    <p dangerouslySetInnerHTML={{ __html: row.value }}></p>
                 </div>
             );
         }
@@ -371,32 +421,6 @@ export class EditorGslBuilder extends React.Component<any, any> {
                     <div className="common-container">
                         <div className="gsl-editor-logos">
                             <h3>GSL Editor</h3>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <span><img src={awsLogo} alt="" /></span>
-                                        <p>AWS</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span><img src={microsoftAzureLogo} alt="" /></span>
-                                        <p>Azure</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span><img src={gcpLogo} alt="" /></span>
-                                        <p>GCP</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span><img src={KubernetesLogo} alt="" /></span>
-                                        <p>Kubernetes</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                         <div className="row">
                             <div className="col-lg-8 col-md-12 col-sm-12">
@@ -487,6 +511,16 @@ export class EditorGslBuilder extends React.Component<any, any> {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="editor-code">
+                                    <div className="row">
+                                        <div className="col-md-2">
+                                            <div className="editor-code-heading">Properties:</div>
+                                        </div>
+                                        <div className="col-md-10">
+                                            {this.displayProperties()}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="col-lg-4 col-md-12 col-sm-12">
                                 <div className="context-preview-box">
@@ -506,7 +540,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                     </div>
                 </div>
                 <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard={this.state.descardText} removeFunction={this.removeFunctionFromEditor} />
-                <ApiKeySourcePopup ref={this.ApikeysourceRef} AddApikeySourceFunction={this.addSourceKey} />
+                <ApiKeySourcePopup ref={this.addValuePopupRef} addApikeySourceFunction={this.addSourceKey} />
             </div>
         );
     }
