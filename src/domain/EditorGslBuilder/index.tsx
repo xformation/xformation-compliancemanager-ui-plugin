@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import awsLogo from '../../img/amazon-logo.png';
-import microsoftAzureLogo from '../../img/microsoftazure.png';
-import gcpLogo from '../../img/google-cloud.png';
-import KubernetesLogo from '../../img/kubernetes.png';
 import Tree from './../../components/tree';
-import { OpenDescardPopup } from './../../components/OpenDescardPopup';
+import { DiscardPopup } from '../../components/DiscardPopup';
 import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
 import { config } from '../../config';
 import { dummyData } from './dummyData';
@@ -13,12 +9,11 @@ import { propertiesDummy } from './properties';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
-    openDiscardRef: any;
+    discardPopupRef: any;
     addValuePopupRef: any;
     constructor(props: any) {
         super(props);
         this.state = {
-            descardText: '',
             searchKey: '',
             operators: [],
             functions: [],
@@ -189,7 +184,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 isCurrentPage: true
             }
         ];
-        this.openDiscardRef = React.createRef();
+        this.discardPopupRef = React.createRef();
         this.addValuePopupRef = React.createRef();
     }
 
@@ -291,25 +286,16 @@ export class EditorGslBuilder extends React.Component<any, any> {
         });
     };
 
-    removeFunctionFromEditor = (data: any) => {
-        this.openDiscardRef.current.toggle();
-        let functionArrayData = [];
-        const { query, functions } = this.state;
-        for (let j = 0; j < query.length; j++) {
-            if (data == query[j].name) {
-                data = data.split("(").toString().split(")");
-                functionArrayData.push({ value: 'function', name: data });
-                query.splice(j, 1);
-            }
+    onClickConfirmRemoveEntity = (index: any) => {
+        const { query } = this.state;
+        let length = index;
+        if (index < 0) {
+            length = 0;
         }
-        for (let i = 0; i < functions.length; i++) {
-            let row = functions[i];
-            functionArrayData.push(row);
-        }
+        query.length = length;
         this.setState({
-            functions: functionArrayData,
             query
-        })
+        });
     }
 
     addSourceKey = (operator: any, value: any) => {
@@ -322,11 +308,13 @@ export class EditorGslBuilder extends React.Component<any, any> {
         this.addValuePopupRef.current.toggle({ value: "" }, { value: "" });
     }
 
-    onClickOpenDescardPopup = (item: any) => {
-        this.setState({
-            descardText: item,
-        });
-        this.openDiscardRef.current.toggle();
+    onClickDeleteItem = (item: any, index: any) => {
+        const { query } = this.state;
+        let text = "";
+        for (let i = index; i < query.length; i++) {
+            text = text + query[i].value + " ";
+        }
+        this.discardPopupRef.current.toggle(index, text);
     };
 
     displayOperators = () => {
@@ -402,7 +390,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                 textDecoration = "line-through";
             }
             retData.push(
-                <div style={{ color: color, textDecoration: textDecoration }} className="d-inline-block code" onClick={() => this.onClickOpenDescardPopup(row.value)} onMouseEnter={() => this.onMouseEnterEditor(i)} onMouseLeave={() => this.onMouseLeaveEditor()}>
+                <div style={{ color: color, textDecoration: textDecoration }} className="d-inline-block code" onClick={() => this.onClickDeleteItem(row, i)} onMouseEnter={() => this.onMouseEnterEditor(i)} onMouseLeave={() => this.onMouseLeaveEditor()}>
                     <button style={{ visibility: mouseOverIndex === i ? 'visible' : 'hidden' }}>
                         <i className="fa fa-trash"></i>
                     </button>
@@ -539,7 +527,7 @@ export class EditorGslBuilder extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                <OpenDescardPopup ref={this.openDiscardRef} valueOfDiscard={this.state.descardText} removeFunction={this.removeFunctionFromEditor} />
+                <DiscardPopup ref={this.discardPopupRef} onRemoveEntity={this.onClickConfirmRemoveEntity} />
                 <ApiKeySourcePopup ref={this.addValuePopupRef} addApikeySourceFunction={this.addSourceKey} />
             </div>
         );
