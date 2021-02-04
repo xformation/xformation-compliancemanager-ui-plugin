@@ -19,7 +19,7 @@ export class ApiGateway extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance",
+                label: "Compliance | Dashboard",
                 route: `${config.basePath}/dashboard`
             },
             {

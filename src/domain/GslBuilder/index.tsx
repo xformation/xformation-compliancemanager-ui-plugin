@@ -21,7 +21,7 @@ export class GslBuilder extends React.Component<any, any> {
                 route: `/`
             },
             {
-                label: "Compliance",
+                label: "Compliance | Dashboard",
                 route: `${config.basePath}/dashboard`
             },
             {

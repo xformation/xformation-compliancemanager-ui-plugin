@@ -202,31 +202,36 @@ export class Dashboard extends React.Component<any, any> {
                                         <img src={settingsIcon} alt="" />
                                     </a>
 
-                                    {settingsActive && <div className="settings-toggle">
-                                        <ul>
-                                            <li>
-                                                <span className="red">Red </span>
-                                                <span>form </span>
-                                                <span className="p-r-5">0% </span>
-                                                <span className="p-r-5">to </span>
-                                                <span>10%</span>
-                                            </li>
-                                            <li>
-                                                <span className="orange">Yellow </span>
-                                                <span>form </span>
-                                                <span className="p-r-5">10% </span>
-                                                <span className="p-r-5">to </span>
-                                                <span>90%</span>
-                                            </li>
-                                            <li>
-                                                <span className="yellow-green">Green </span>
-                                                <span>form </span>
-                                                <span className="p-r-5">90% </span>
-                                                <span className="p-r-5">to </span>
-                                                <span>100%</span>
-                                            </li>
-                                        </ul>
-                                    </div>}
+                                    {settingsActive && <div>
+                                        <div className="open-full-screen" onClick={this.settingsHandleClick}></div>
+                                        <div className="settings-toggle">
+                                            <ul>
+                                                <li>
+                                                    <span className="red">Red </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">0% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>10%</span>
+                                                </li>
+                                                <li>
+                                                    <span className="orange">Yellow </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">10% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>90%</span>
+                                                </li>
+                                                <li>
+                                                    <span className="yellow-green">Green </span>
+                                                    <span>form </span>
+                                                    <span className="p-r-5">90% </span>
+                                                    <span className="p-r-5">to </span>
+                                                    <span>100%</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    }
+
                                 </div>
 
                                 <div className="d-inline-block file-export">
@@ -244,6 +249,7 @@ export class Dashboard extends React.Component<any, any> {
                                             </li>
                                         </ul>
                                     </div>}
+
                                 </div>
                             </div>
                             </div>

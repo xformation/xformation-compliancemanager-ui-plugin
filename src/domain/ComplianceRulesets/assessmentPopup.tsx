@@ -21,7 +21,7 @@ export class AssessmentPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Run Assessments</ModalHeader>
                 <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="d-block p-b-15 environment-text">Environment</div>

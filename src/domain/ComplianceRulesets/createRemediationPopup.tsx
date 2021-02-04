@@ -42,7 +42,7 @@ export class CreateRemediationPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Remediation</ModalHeader>
                 <ModalBody style={{ height: 'calc(74vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="form-group">

@@ -101,7 +101,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
     render() {
         const state = this.state;
         return (
-            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container">
+            <Modal isOpen={state.modal} toggle={this.toggle} className="modal-container assessments-modal-container">
                 <ModalHeader toggle={this.toggle}>Create New Ruleset</ModalHeader>
                 <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="form-group">
@@ -117,7 +117,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
                     <div className="form-group">
                         <label htmlFor="searchable" className="d-block">Searchable</label>
                         <input type="checkbox" id="searchable" defaultChecked={this.state.searchable}
-							onChange={this.onChkChange} className="input-group-text d-block"/>
+							onChange={this.onChkChange} className="input-group-text d-block" style={{ width: 'auto' }} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="entity" className="d-block">
