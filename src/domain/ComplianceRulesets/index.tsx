@@ -26,7 +26,7 @@ export class ComplianceRulesets extends React.Component<any, any> {
             totalPages: '',
             currentPage: 0,
             perPageLimit: 6,
-			entities: [],
+            entities: [],
             rules: [],
             searchRules: []
         };
@@ -65,20 +65,20 @@ export class ComplianceRulesets extends React.Component<any, any> {
     };
 
     componentDidMount() {
-		Utils.getReq(config.GET_ENTITIES_LIST)
-			.then((response: any) => {
-				this.setState({
-					entities: response.data
-				});
-			});
-		console.log("entities: ", this.state.entities);
-		Utils.getReq(config.LIST_RULES)
-			.then((response: any) => {
-				this.setState({
-					rules: response.data
-				});
+        Utils.getReq(config.GET_ENTITIES_LIST)
+            .then((response: any) => {
+                this.setState({
+                    entities: response.data
+                });
+            });
+        console.log("entities: ", this.state.entities);
+        Utils.getReq(config.LIST_RULES)
+            .then((response: any) => {
+                this.setState({
+                    rules: response.data
+                });
                 this.calculateTotalPages(this.state.rules);
-			});
+            });
         this.calculateTotalPages(this.state.ruleSetData);
     };
 
@@ -218,19 +218,19 @@ export class ComplianceRulesets extends React.Component<any, any> {
         for (let i = 0; i < totalPages; i++) {
             console.log(currentPage);
             rows.push(<li className="" key={i}>
-                <a className={currentPage === i ? 'active' : 'deactive'} href="#" 
-                onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
+                <a className={currentPage === i ? 'active' : 'deactive'} href="#"
+                    onClick={(e) => this.navigatePage('btn-click', e, i)}>{i + 1}</a></li >);
         }
         return (
             <ul>
                 <li className="previous">
-                    <a className={currentPage === 0 ? 'desable' : 'enable'} 
-                    href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
+                    <a className={currentPage === 0 ? 'desable' : 'enable'}
+                        href="#" onClick={(e) => this.navigatePage('pre', e, '')}>Previous</a>
                 </li>
                 {rows}
                 <li className="next">
-                    <a className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'} 
-                    href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
+                    <a className={currentPage === this.state.totalPages - 1 ? 'desable' : 'enable'}
+                        href="#" onClick={(e) => this.navigatePage('next', e, '')}>Next</a>
                 </li>
             </ul>
         );
@@ -269,71 +269,57 @@ export class ComplianceRulesets extends React.Component<any, any> {
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | COMPLIANCE RULESETS" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
-                        <div className="row">
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="rousourceGroup">
-                                        Platform&nbsp;&nbsp;&nbsp;
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="rousourceGroup">
+                                Platform&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="rousourceGroup">
-                                        <option value="" selected>Select Platform</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS">AWS</option>
-                                        <option value="Azure">Azure</option>
-                                        <option value="Gcp">Gcp</option>
-                                        <option value="Kubernetes">Kubernetes</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="resources">
-                                        Policy Category&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <select className="form-control" id="rousourceGroup">
+                                <option value="" selected>Select Platform</option>
+                                <option value="All">All</option>
+                                <option value="AWS">AWS</option>
+                                <option value="Azure">Azure</option>
+                                <option value="Gcp">Gcp</option>
+                                <option value="Kubernetes">Kubernetes</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="resources">
+                                Policy Category&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="resources">
-                                        <option value="" selected>Select Policy Category</option>
-                                        <option value="All">All</option>
-                                        <option value="ComplianceFramework">Compliance Framework</option>
-                                        <option value="BestPractices">Best Practices</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="timeRange">
-                                        Type&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <select className="form-control" id="resources">
+                                <option value="" selected>Select Policy Category</option>
+                                <option value="All">All</option>
+                                <option value="ComplianceFramework">Compliance Framework</option>
+                                <option value="BestPractices">Best Practices</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="timeRange">
+                                Type&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="timeRange">
-                                        <option value="" selected>Select Type</option>
-                                        <option value="All">All</option>
-                                        <option value="Managed">Managed</option>
-                                        <option value="All">Customer Managed</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="timeRange">
-                                        Policy Enabled&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <select className="form-control" id="timeRange">
+                                <option value="" selected>Select Type</option>
+                                <option value="All">All</option>
+                                <option value="Managed">Managed</option>
+                                <option value="All">Customer Managed</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="timeRange">
+                                Policy Enabled&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="timeRange">
-                                        <option value="" selected>Select Policy Enabled</option>
-                                        <option value="All">All</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group clear-filters">
-                                    <label htmlFor="clearFilter">
-                                        <span>Clear All Filters</span>
-                                    </label>
-                                </div>
-                            </div>
+                            </label>
+                            <select className="form-control" id="timeRange">
+                                <option value="" selected>Select Policy Enabled</option>
+                                <option value="All">All</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group clear-filters">
+                            <button className="blue-button m-r-0 m-b-0 clear-btn">Clear All Filters</button>
                         </div>
                     </div>
                     <div className="common-container">
@@ -345,10 +331,10 @@ export class ComplianceRulesets extends React.Component<any, any> {
                                 <div className="d-inline-block width-50 text-right">
                                     <a onClick={this.addNewPolicy} className="blue-button m-b-0">ADD POLICY</a>
                                     <a onClick={this.onClickonClickRunRuleset} className="blue-button m-r-0 m-b-0">ADD RULESET</a>
-                                    
+
                                 </div>
                                 <div className="d-inline-block width-50 text-right">
-                                    
+
                                 </div>
                             </div>
                             <div className="d-block width-100 p-t-15 p-b-20 search-box">
@@ -382,8 +368,8 @@ export class ComplianceRulesets extends React.Component<any, any> {
                     </div>
                 </div>
                 <AssessmentPopup ref={this.assessmentRef} />
-                <NewRulSetPopup ref={this.rulesetRef} entities={this.state.entities}/>
-                <NewPolicyPopup ref={this.policyRef} entities={this.state.entities} rules={this.state.rules}/>
+                <NewRulSetPopup ref={this.rulesetRef} entities={this.state.entities} />
+                <NewPolicyPopup ref={this.policyRef} entities={this.state.entities} rules={this.state.rules} />
                 <CreateRemediationPopup ref={this.remediationRef} />
                 <CreateExclusionPopup ref={this.exclusionRef} />
             </div>

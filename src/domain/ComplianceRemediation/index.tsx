@@ -110,10 +110,10 @@ export class ComplianceRemediation extends React.Component<any, any> {
                 }],
         };
         this.perPageLimit = 6,
-        this.checkboxValue = true,
-        this.state = {
-            
-        };
+            this.checkboxValue = true,
+            this.state = {
+
+            };
         this.breadCrumbs = [
             {
                 label: "Home",
@@ -200,64 +200,52 @@ export class ComplianceRemediation extends React.Component<any, any> {
     // }
 
     render() {
-        const {remediationData} = this.state;
+        const { remediationData } = this.state;
         return (
             <div className="compliance-remediation-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | Remediation" />
                 <div className="compliancemanager-page-container">
                     <div className="common-container filter-container">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="rousourceGroup">
-                                        Platform&nbsp;&nbsp;&nbsp;
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="rousourceGroup">
+                                Platform&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="rousourceGroup">
-                                        <option value="" selected>Select Platform</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS">AWS</option>
-                                        <option value="Azure">Azure</option>
-                                        <option value="Gcp">Gcp</option>
-                                        <option value="Kubernetes">Kubernetes</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="resources">
-                                        Ruleset&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <select className="form-control" id="rousourceGroup">
+                                <option value="" selected>Select Platform</option>
+                                <option value="All">All</option>
+                                <option value="AWS">AWS</option>
+                                <option value="Azure">Azure</option>
+                                <option value="Gcp">Gcp</option>
+                                <option value="Kubernetes">Kubernetes</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="resources">
+                                Ruleset&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="resources">
-                                        <option value="">Select Ruleset</option>
-                                        <option value="All">All</option>
-                                        <option value="AWS-Test">AWS-Test</option>
-                                        <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
-                                        <option value="AzureCheckUp">Azure CheckUp</option>
-                                        <option value="GcpCheckUp">GCP CheckUp</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group">
-                                    <label htmlFor="timeRange">
-                                        Organizational Unit&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <select className="form-control" id="resources">
+                                <option value="">Select Ruleset</option>
+                                <option value="All">All</option>
+                                <option value="AWS-Test">AWS-Test</option>
+                                <option value="AwsnetWorkAlerts">AWS Network Alerts</option>
+                                <option value="AzureCheckUp">Azure CheckUp</option>
+                                <option value="GcpCheckUp">GCP CheckUp</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group">
+                            <label htmlFor="timeRange">
+                                Organizational Unit&nbsp;&nbsp;&nbsp;
                                     <i className="fa fa-info-circle"></i>
-                                    </label>
-                                    <select className="form-control" id="timeRange">
-                                        <option value="">Select Organizational Unit</option>
-                                        <option value="Synectiks">Synectiks</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group filter-control-group clear-filters">
-                                    <label htmlFor="clearFilter">
-                                        <span>Clear All Filters</span>
-                                    </label>
-                                </div>
-                            </div>
+                            </label>
+                            <select className="form-control" id="timeRange">
+                                <option value="">Select Organizational Unit</option>
+                                <option value="Synectiks">Synectiks</option>
+                            </select>
+                        </div>
+                        <div className="form-group filter-control-group clear-filters">
+                            <button className="blue-button m-r-0 m-b-0 clear-btn">Clear All Filters</button>
                         </div>
                     </div>
 

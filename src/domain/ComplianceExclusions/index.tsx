@@ -110,9 +110,9 @@ export class ComplianceExclusions extends React.Component<any, any> {
                 }],
         };
         this.perPageLimit = 6,
-        this.checkboxValue = true,
-        this.state = {
-        };
+            this.checkboxValue = true,
+            this.state = {
+            };
         this.breadCrumbs = [
             {
                 label: "Home",
@@ -191,10 +191,8 @@ export class ComplianceExclusions extends React.Component<any, any> {
                             </select>
                         </div>
                         <div className="form-group filter-control-group clear-filters">
-                                    <label htmlFor="clearFilter">
-                                        <span>Clear All Filters</span>
-                                    </label>
-                                </div>
+                            <button className="blue-button m-r-0 m-b-0 clear-btn">Clear All Filters</button>
+                        </div>
                     </div>
 
                     <div className="common-container results-container">

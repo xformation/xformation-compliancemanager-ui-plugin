@@ -139,7 +139,7 @@ export class Dashboard extends React.Component<any, any> {
 
 
     render() {
-        const {settingsActive, fileExporActive} = this.state;
+        const { settingsActive, fileExporActive } = this.state;
         return (
             <div className="compliance-dashboard-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | DASHBOARD" />
@@ -186,72 +186,70 @@ export class Dashboard extends React.Component<any, any> {
                                     </select>
                                 </div>
                                 <div className="form-group filter-control-group m-r-0 clear-filters">
-                                    <label htmlFor="clearFilter">
-                                        <span>Clear All Filters</span>
-                                    </label>
+                                    <button className="blue-button m-r-0 m-b-0 clear-btn">Clear All Filters</button>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                 <div className="form-group filter-control-group assessments">
-                                <a onClick={this.onClickonClickRunAssessment} className="blue-button">
-                                    <i className="fa fa-caret-right"></i>&nbsp;&nbsp; RUN ASSESSMENTS
+                                    <a onClick={this.onClickonClickRunAssessment} className="blue-button">
+                                        <i className="fa fa-caret-right"></i>&nbsp;&nbsp; RUN ASSESSMENTS
                                 </a>
 
-                                <div className="d-inline-block settings">
-                                    <a href="#" className="white-button" onClick={this.settingsHandleClick}>
-                                        <img src={settingsIcon} alt="" />
-                                    </a>
+                                    <div className="d-inline-block settings">
+                                        <a href="#" className="white-button" onClick={this.settingsHandleClick}>
+                                            <img src={settingsIcon} alt="" />
+                                        </a>
 
-                                    {settingsActive && <div>
-                                        <div className="open-full-screen" onClick={this.settingsHandleClick}></div>
-                                        <div className="settings-toggle">
+                                        {settingsActive && <div>
+                                            <div className="open-full-screen" onClick={this.settingsHandleClick}></div>
+                                            <div className="settings-toggle">
+                                                <ul>
+                                                    <li>
+                                                        <span className="red">Red </span>
+                                                        <span>form </span>
+                                                        <span className="p-r-5">0% </span>
+                                                        <span className="p-r-5">to </span>
+                                                        <span>10%</span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="orange">Yellow </span>
+                                                        <span>form </span>
+                                                        <span className="p-r-5">10% </span>
+                                                        <span className="p-r-5">to </span>
+                                                        <span>90%</span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="yellow-green">Green </span>
+                                                        <span>form </span>
+                                                        <span className="p-r-5">90% </span>
+                                                        <span className="p-r-5">to </span>
+                                                        <span>100%</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        }
+
+                                    </div>
+
+                                    <div className="d-inline-block file-export">
+                                        <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
+                                            <img src={fileExportIcon} alt="" />
+                                        </a>
+
+                                        {fileExporActive && <div className="file-export-toggle">
                                             <ul>
                                                 <li>
-                                                    <span className="red">Red </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">0% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>10%</span>
-                                                </li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - All Result
+                                            </li>
                                                 <li>
-                                                    <span className="orange">Yellow </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">10% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>90%</span>
-                                                </li>
-                                                <li>
-                                                    <span className="yellow-green">Green </span>
-                                                    <span>form </span>
-                                                    <span className="p-r-5">90% </span>
-                                                    <span className="p-r-5">to </span>
-                                                    <span>100%</span>
-                                                </li>
+                                                    <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
+                                            </li>
                                             </ul>
-                                        </div>
+                                        </div>}
+
                                     </div>
-                                    }
-
                                 </div>
-
-                                <div className="d-inline-block file-export">
-                                    <a href="#" className="white-button m-r-0" onClick={this.fileExportHandleClick}>
-                                        <img src={fileExportIcon} alt="" />
-                                    </a>
-
-                                    {fileExporActive && <div className="file-export-toggle">
-                                        <ul>
-                                            <li>
-                                                <img src={fileExportIcon} alt="" /> Export to CSV - All Result
-                                            </li>
-                                            <li>
-                                                <img src={fileExportIcon} alt="" /> Export to CSV - Flitered Result
-                                            </li>
-                                        </ul>
-                                    </div>}
-
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
