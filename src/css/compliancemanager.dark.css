@@ -420,6 +420,7 @@ a:hover {
 
 .compliance-dashboard-container .filter-container .assessments {
   margin-top: 23px;
+  text-align: right;
 }
 .compliance-dashboard-container .filter-container .assessments .settings {
   position: relative;
@@ -428,7 +429,7 @@ a:hover {
   padding: 5px 10px 4px !important;
   min-width: auto;
   position: relative;
-  z-index: 100;
+  z-index: 1;
 }
 .compliance-dashboard-container
   .filter-container
@@ -438,7 +439,7 @@ a:hover {
   position: absolute;
   right: 10px;
   top: 35px;
-  z-index: 100;
+  z-index: 1;
   background-color: #e6e6e6;
   width: 180px;
   padding: 5px;
@@ -487,6 +488,7 @@ a:hover {
   background-color: #e6e6e6;
   width: 230px;
   padding: 5px;
+  text-align: left;
 }
 .compliance-dashboard-container
   .filter-container
