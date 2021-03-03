@@ -146,61 +146,15 @@ export class ComplianceRemediation extends React.Component<any, any> {
         this.editRemediationRef.current.toggle();
     };
 
-    // createRemediationTable = () => {
-    //     const { remediationData } = this.state;
-    //     const retData = [];
-    //     for (let i = 0; i < remediationData.length; i++) {
-    //         const remediation = this.state.remediationData[i];
-    //         retData.push(
-    //             <tr className="">
-    //                 <td className="">
-    //                     <div className="pointer-label">
-    //                         <input type="checkbox" className="checkbox" />
-    //                         {remediation.ruleSet}
-    //                     </div>
-    //                 </td>
-    //                 <td>{remediation.ruleName}</td>
-    //                 <td>{remediation.cloudAmount}</td>
-    //                 <td>{remediation.entityName}</td>
-    //                 <td>{remediation.entityId}</td>
-    //                 <td>{remediation.comments}</td>
-    //                 <td>
-    //                     <div className="d-flex">
-    //                         <button onClick={this.onClickEditRemediation} className="btn btn-link">
-    //                             <i className="fa fa-edit"></i>
-    //                         </button>
-    //                         <button onClick={this.onClickDeleteRemediation} className="btn btn-link">
-    //                             <i className="fa fa-trash"></i>
-    //                         </button>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         );
-    //     }
-    //     return retData;
-    // }
-
-    // onSearchChange = (e: any) => {
-    //     const { value } = e.target;
-    //     this.setState({
-    //         searchKey: value,
-    //     });
-    //     const { duplicatedata } = this.state;
-    //     var searchResult = [];
-    //     for (let i = 0; i < duplicatedata.length; i++) {
-    //         if (duplicatedata[i].ruleName.indexOf(value) !== -1 || value === '') {
-    //             searchResult.push(duplicatedata[i]);
-    //         } else if (duplicatedata[i].ruleName.toLowerCase().indexOf(value) !== -1 || value === '') {
-    //             searchResult.push(duplicatedata[i]);
-    //         }
-    //     }
-    //     this.setState({
-    //         remediationData: searchResult,
-    //     });
-    // }
+    isLightTheme() {
+        const w: any = window;
+        if (w.grafanaBootData && w.grafanaBootData.user) {
+            return w.grafanaBootData.user.lightTheme;
+        }
+        return false;
+    }
 
     render() {
-        const { remediationData } = this.state;
         return (
             <div className="compliance-remediation-container">
                 <Breadcrumbs breadcrumbs={this.breadCrumbs} pageTitle="COMPLIANCE | Remediation" />
@@ -248,25 +202,7 @@ export class ComplianceRemediation extends React.Component<any, any> {
                             <button className="blue-button m-r-0 m-b-0 clear-btn">Clear All Filters</button>
                         </div>
                     </div>
-
                     <div className="common-container results-container">
-                        {/* <div className="d-block width-100 heading">
-                            <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100">
-                                        <h3>Showing {remediationData.length} of {remediationData.length} results</h3>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="d-block width-100 text-right exclusion-button">
-                                        <a onClick={this.onClickEditRemediation} className="blue-button m-r-0">
-                                            CREATE NEW REMEDIATION
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-
                         <div className="d-block width-100 heading">
                             <div className="row">
                                 <div className="col-lg-12 col-md-12 col-sm-12 text-right">
@@ -299,33 +235,8 @@ export class ComplianceRemediation extends React.Component<any, any> {
 
                         <div className="d-block p-t-20 exclusion-details">
                             <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
-                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" />
+                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" dark={!this.isLightTheme()} />
                         </div>
-
-                        {/* <div className="exclusion-details">
-                            <div className="container-inner">
-                                <table className="exclusion-data-table">
-                                    <tbody>
-                                        <tr className="exclusion-data-table-header">
-                                            <th>
-                                                <div className="pointer-label">
-                                                    <input type="checkbox" className="checkbox" />
-                                                    Ruleset
-                                                </div>
-                                            </th>
-                                            <th>Rule Name</th>
-                                            <th>Cloud Account</th>
-                                            <th>Entity Name</th>
-                                            <th>Entity ID</th>
-                                            <th>Commnets</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        {this.createRemediationTable()}
-                                    </tbody>
-
-                                </table>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
                 <DeleteRemediationPopup ref={this.deleteRemediationRef} />

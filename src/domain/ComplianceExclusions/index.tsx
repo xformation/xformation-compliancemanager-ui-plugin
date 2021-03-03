@@ -145,6 +145,14 @@ export class ComplianceExclusions extends React.Component<any, any> {
         this.editExclusionRef.current.toggle();
     };
 
+    isLightTheme() {
+        const w: any = window;
+        if (w.grafanaBootData && w.grafanaBootData.user) {
+            return w.grafanaBootData.user.lightTheme;
+        }
+        return false;
+    }
+
     render() {
         const { exclusionData, perPageLimit } = this.state;
         return (
@@ -228,7 +236,7 @@ export class ComplianceExclusions extends React.Component<any, any> {
 
                         <div className="d-block p-t-20 exclusion-details">
                             <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
-                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results" />
+                                tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleSet" showingLine="Showing %start% to %end% of %total% results"  dark={!this.isLightTheme()} />
                         </div>
                     </div>
                 </div>

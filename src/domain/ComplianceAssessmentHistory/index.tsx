@@ -115,6 +115,14 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
 
     }
 
+    isLightTheme() {
+        const w: any = window;
+        if (w.grafanaBootData && w.grafanaBootData.user) {
+            return w.grafanaBootData.user.lightTheme;
+        }
+        return false;
+    }
+
     render() {
         return (
             <div className="compliance-assessmenthistory-container">
@@ -179,7 +187,7 @@ export class ComplianceAssessmentHistory extends React.Component<any, any> {
                     </div>
                     <div className="common-container results-container">
                         <Table valueFromData={this.tableValue} perPageLimit={this.perPageLimit} visiblecheckboxStatus={this.checkboxValue}
-                            tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleName" showingLine="Showing %start% to %end% of %total% Assessment History" />
+                            tableClasses={{ table: "exclusion-data-table", tableParent: "container-inner", parentClass: "exclusion-details" }} searchKey="ruleName" showingLine="Showing %start% to %end% of %total% Assessment History" dark={!this.isLightTheme()} />
                     </div>
 
                 </div>
