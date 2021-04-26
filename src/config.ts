@@ -1,9 +1,9 @@
-const IP = "localhost";
+const IP = "100.64.108.25";
 
-const searchSrvUrl = `http://localhost:8092`;
-const policySrvUrl = `http://localhost:8098`;
-const dynModelUrl = `http://localhost:8099`;
-const securitySrvUrl = `http://localhost:8094`;
+const searchSrvUrl = `http://100.64.108.25:8092`;
+const policySrvUrl = `http://100.64.108.25:8098`;
+const dynModelUrl = `http://100.64.108.25:8099`;
+const securitySrvUrl = `http://100.64.108.25:8094`;
 const catalogSrvUrl = `http://${IP}:4000/api`;
 
 export const config = {
