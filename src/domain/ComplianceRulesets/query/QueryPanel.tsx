@@ -29,6 +29,15 @@ export default class QueryPanel extends React.Component<any, any> {
 		this.suggestions = this.suggestions.bind(this);
 		this.setSuggestions = this.setSuggestions.bind(this);
 		this.selectSuggestion = this.selectSuggestion.bind(this);
+		this.getEntity = this.getEntity.bind(this);
+	}
+
+	getEntity() {
+		if (this.props.entity) {
+			return this.props.entity();
+		} else {
+			return '';
+		}
 	}
 
 	qryChange(e: any) {
@@ -53,7 +62,7 @@ export default class QueryPanel extends React.Component<any, any> {
 		});
 		console.log(process.env);
 		Utils.postReq(config.SUGGEST_URL,
-			"query=" + val + "&cls=" + this.props.entity(),
+			"query=" + val + "&cls=" + this.getEntity(),
 			(response: any, err: any) => {
 				if (err) {
 					this.setState({
@@ -69,7 +78,7 @@ export default class QueryPanel extends React.Component<any, any> {
 
 	execute(query: any) {
 		const params = "query=" + JSON.stringify(query)
-			+ "&cls=" + this.props.entity()
+			+ "&cls=" + this.getEntity()
 			+ "&pageNo=0&pageSize=10&notOnlyIds=true";
 			Utils.postReq(config.ELS_QUERY,
 			params, (response: any, err: any) => {

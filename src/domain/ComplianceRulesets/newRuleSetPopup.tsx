@@ -16,6 +16,8 @@ export class NewRulSetPopup extends React.Component<any, any> {
 			modal: false,
 			entities: props.entities,
 			reqObj: {
+				name: '',
+				description: '',
 				searchable: false,
 				checks: ''
 			}
@@ -112,17 +114,17 @@ export class NewRulSetPopup extends React.Component<any, any> {
                 <ModalBody style={{ height: 'calc(75vh - 110px)', overflowY: 'auto', overflowX: "hidden" }}>
                     <div className="form-group">
                         <label htmlFor="name" className="d-block">Name*</label>
-						<input id="name" type="text" value={this.state.name} onChange={this.onChange}
+						<input id="name" type="text" value={this.state.reqObj.name} onChange={this.onChange}
 							className="input-group-text d-block" placeholder="Rule name" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="description" className="d-block">Description</label>
-						<textarea id="description" value={this.state.description}
+						<textarea id="description" value={this.state.reqObj.description}
 							onChange={this.onChange} className="input-group-text d-block"></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="searchable" className="d-block">Searchable</label>
-                        <input type="checkbox" id="searchable" defaultChecked={this.state.searchable}
+                        <input type="checkbox" id="searchable" defaultChecked={this.state.reqObj.searchable}
 							onChange={this.onChkChange} className="input-group-text d-block" style={{ width: 'auto' }} />
                     </div>
                     <div className="form-group">
@@ -141,7 +143,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
                         </select>
 						<div className="form-group">
 							<label htmlFor="checks" className="d-block">Check*</label>
-							<input id="checks" type="text" value={this.state.checks} readOnly
+							<input id="checks" type="text" value={this.state.reqObj.checks} readOnly
 								className="input-group-text d-block" placeholder="Fill query and click on 'Done'" />
 							<QueryPanel id="inputChecks" isTranslate="false"
 								resHandler={this.autofillSelection} entity={this.getEntity}/>
@@ -160,10 +162,10 @@ export class NewRulSetPopup extends React.Component<any, any> {
 
 	autofillSelection = (sel: any) => {
 		console.log("Set: ", sel);
+		const data = this.state.reqObj;
+		data.checks = sel;
 		this.setState({
-			reqObj: {
-				checks: sel
-			}
+			reqObj: data
 		});
 	}
 }
