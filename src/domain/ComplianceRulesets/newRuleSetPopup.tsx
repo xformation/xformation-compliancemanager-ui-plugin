@@ -17,7 +17,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
 			entities: props.entities,
 			reqObj: {
 				searchable: false,
-				checks: []
+				checks: ''
 			}
         };
     }
@@ -135,7 +135,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
                         </select>
 						<div className="form-group">
 							<label htmlFor="checks" className="d-block">Check*</label>
-							<input id="checks" type="test" value={this.state.checks} readOnly
+							<input id="checks" type="text" value={this.state.checks} readOnly
 								className="input-group-text d-block" placeholder="Fill query and click on 'Done'" />
 							<QueryPanel id="inputChecks" isTranslate="false"
 								resHandler={this.autofillSelection} entity={this.state.entity}/>
@@ -153,9 +153,11 @@ export class NewRulSetPopup extends React.Component<any, any> {
 	}
 
 	autofillSelection = (sel: any) => {
-		console.log("Set")
+		console.log("Set: ", sel);
 		this.setState({
-			checks: sel
+			reqObj: {
+				checks: sel
+			}
 		});
 	}
 }
