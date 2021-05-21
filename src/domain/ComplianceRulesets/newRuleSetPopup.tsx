@@ -60,6 +60,10 @@ export class NewRulSetPopup extends React.Component<any, any> {
 		});
 	};
 
+	getEntity = () => {
+		return this.state.entity;
+	}
+
 	onChkChange = () => {
 		const data: any = this.state.reqObj;
 		data.searchable = !data.searchable;
@@ -84,7 +88,9 @@ export class NewRulSetPopup extends React.Component<any, any> {
 			alert("Checks is mandatory.");
 			return;
 		} else {
-			data.checks = [ data.checks ];
+			const chk = data.checks;
+			data.checks = [];
+			data.checks.push(chk);
 		}
 		alert('Payload: ' +  JSON.stringify(data));
 		Utils.postReq(config.POST_RULE, data, this.responseHandler)
@@ -138,7 +144,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
 							<input id="checks" type="text" value={this.state.checks} readOnly
 								className="input-group-text d-block" placeholder="Fill query and click on 'Done'" />
 							<QueryPanel id="inputChecks" isTranslate="false"
-								resHandler={this.autofillSelection} entity={this.state.entity}/>
+								resHandler={this.autofillSelection} entity={this.getEntity}/>
 						</div>
                     </div>
                 </ModalBody>
