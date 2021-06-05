@@ -104,7 +104,7 @@ export class GslBuilder extends React.Component<any, any> {
     getGroupEntities = (grp: any) => {
         let retData: Array<any> = [];
         this.state.cldByGroup.map((item: any) => {
-            if (this.state.selCloud === item.cloudName && item.groupName != grp) {
+            if (this.state.selCloud === item.cloudName && item.groupName === grp) {
                 retData.push(
                     <li>
                         <Link to={`${config.basePath}/editorgslbuilder?cls=${item.entity}`}>

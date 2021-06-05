@@ -4,8 +4,7 @@ import Tree from './../../components/tree';
 import { DiscardPopup } from '../../components/DiscardPopup';
 import { ApiKeySourcePopup } from './../../components/ApiKeySourcePopup';
 import { config } from '../../config';
-import { dummyData } from './dummyData';
-import { propertiesDummy } from './properties';
+import Utils from '../../utils';
 
 export class EditorGslBuilder extends React.Component<any, any> {
     breadCrumbs: any;
@@ -17,8 +16,10 @@ export class EditorGslBuilder extends React.Component<any, any> {
             searchKey: '',
             operators: [],
             functions: [],
-            properties: [],
             keywords: [],
+            groups: [],
+            conjuctions: [],
+            properties: [],
             query: [],
             treeData: [
                 {
@@ -190,24 +191,47 @@ export class EditorGslBuilder extends React.Component<any, any> {
 
     componentDidMount() {
         // make an api call here
-        this.setState({
-            operators: dummyData.OPERATOR,
-            functions: dummyData.FUNCTION,
-            keywords: dummyData.KEYWORD,
-            properties: propertiesDummy.properties
-        });
-        let getParamByName = this.getParameterByName("cls", window.location.href);
-        if (getParamByName) {
+        let url: String = config.GET_OPERTORS;
+        console.log("url: " + url);
+        Utils.getReq(url)
+            .then((response: any) => {
+                this.setOperators(response.data);
+            });
+        let clsName = this.getParameterByName("cls", window.location.href);
+        let fldUrl = config.GET_MAPPINGS;
+        if (clsName) {
+            fldUrl = fldUrl + "?cls=" + clsName;
+            console.log("url: " + fldUrl);
+            Utils.getReq(fldUrl)
+                .then((response: any) => {
+                    this.setFields(response.data);
+                });
             const { query } = this.state;
             query.push({
                 type: "root",
-                value: getParamByName,
+                value: clsName,
             });
             this.setState({
                 query
             });
         }
     }
+
+    setFields = (resp: any) => {
+        this.setState({
+            properties: resp.properties
+        });
+    };
+
+    setOperators = (resp: any) => {
+        this.setState({
+            operators: resp.OPERATOR,
+            functions: resp.FUNCTION,
+            keywords: resp.KEYWORD,
+            groups: resp.GROUP,
+            conjunctions: resp.CONJUNCTION,
+        });
+    };
 
     getParameterByName = (name: any, url: any) => {
         name = name.replace(/[\[\]]/g, '\\$&');

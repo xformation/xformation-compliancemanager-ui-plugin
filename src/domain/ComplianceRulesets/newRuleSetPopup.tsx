@@ -17,6 +17,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
 			entities: props.entities,
 			reqObj: {
 				name: '',
+				entity: '',
 				description: '',
 				searchable: false,
 				checks: ''
@@ -63,7 +64,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
 	};
 
 	getEntity = () => {
-		return this.state.entity;
+		return this.state.reqObj.entity;
 	}
 
 	onChkChange = () => {
@@ -133,7 +134,7 @@ export class NewRulSetPopup extends React.Component<any, any> {
                             <i className="fa fa-info-circle"></i>
                         </label>
 						<select className="form-control d-block" id="entity"
-							onChange={this.onChange} value={this.state.entity}>
+							onChange={this.onChange} value={this.state.reqObj.entity}>
                             <option value="" selected>Select Entity</option>
                             {this.state.entities.map((item: any) => (
 								<option key={item} value={item}>
