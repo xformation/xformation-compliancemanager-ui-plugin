@@ -378,14 +378,24 @@ export class EditorGslBuilder extends React.Component<any, any> {
     }
 
     displayProperties = () => {
+        let retData: any = [];
         const { properties } = this.state;
-        let retData = [];
-        for (let i = 0; i < properties.length; i++) {
-            let row = properties[i];
-            let key = Object.keys(row);
-            retData.push(
-                <span onClick={() => this.addPropertyToEditor(row, key[0])} dangerouslySetInnerHTML={{ __html: key[0] }}></span>
-            );
+        if (Array.isArray(properties)) {
+            for (let i = 0; i < properties.length; i++) {
+                let row = properties[i];
+                let key = Object.keys(row);
+                retData.push(
+                    <span onClick={() => this.addPropertyToEditor(row, key[0])} dangerouslySetInnerHTML={{ __html: key[0] }}></span>
+                );
+            }
+        } else {
+            const keys = Object.keys(properties);
+            keys.map((key: any) => {
+                let item = Object.keys(properties[key]);
+                retData.push(
+                    <span onClick={() => this.addPropertyToEditor(item, key)} dangerouslySetInnerHTML={{ __html: key }}></span>
+                );
+            });
         }
         return retData;
     };
