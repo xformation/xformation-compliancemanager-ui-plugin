@@ -1,20 +1,20 @@
 {
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "app",
   "name": "Compliance Manager",
   "id": "xformation-compliancemanager-ui-plugin",
   "info": {
     "description": "Compliance Manager",
     "author": {
-      "name": "Synectiks",
-      "url": "https://xformation.com"
+      "name": "Synectiks"
     },
-    "keywords": ["cms", "panel"],
-    "version": "1.0",
-    "updated": "2018-10-12",
     "logos": {
-      "small": "img/alert_logo.svg",
-      "large": "img/alert_logo.svg"
-    }
+      "small": "img/asset_logo.svg",
+      "large": "img/asset_logo.svg"
+    },
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
   },
   "includes": [
     {
@@ -22,95 +22,100 @@
       "name": "Dashboard",
       "addToNav": false,
       "defaultNav": false,
-      "component": "Dashboard"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%"
     },
     {
       "type": "page",
       "name": "ComplianceExclusions",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ComplianceExclusions"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=complianceexclusions"
     },
     {
       "type": "page",
       "name": "ComplianceRulesets",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ComplianceRulesets"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=compliancerulesets"
     },
     {
       "type": "page",
       "name": "ComplianceRemediation",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ComplianceRemediation"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=complianceremediation"
     },
     {
       "type": "page",
       "name": "ComplianceAssessmentHistory",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ComplianceAssessmentHistory"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=complianceassessmenthistory"
     },
     {
       "type": "page",
       "name": "CompliancePolicy",
       "addToNav": false,
       "defaultNav": false,
-      "component": "CompliancePolicy"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=compliancepolicy"
     },
     {
       "type": "page",
       "name": "ComplianceHistory",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ComplianceHistory"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=compliancehistory"
     },
     {
       "type": "page",
       "name": "GslBuilder",
       "addToNav": false,
       "defaultNav": false,
-      "component": "GslBuilder"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=gslbuilder"
     },
     {
       "type": "page",
       "name": "ApiGateway",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ApiGateway"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=apigateway"
     },
     {
       "type": "page",
       "name": "EditorGslBuilder",
       "addToNav": false,
       "defaultNav": false,
-      "component": "EditorGslBuilder"
-    },
-    {
-      "type": "page",
-      "name": "Result",
-      "addToNav": false,
-      "defaultNav": false,
-      "component": "Result"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=editorgslbuilder"
     },
     {
       "type": "page",
       "name": "ClearHistory",
       "addToNav": false,
       "defaultNav": false,
-      "component": "ClearHistory"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=clearhistory"
     },
     {
       "type": "page",
       "name": "Script",
       "addToNav": false,
       "defaultNav": false,
-      "component": "Script"
+      "role": "Admin",
+      "path": "/a/%PLUGIN_ID%?path=script"
     }
   ],
   "dependencies": {
-    "grafanaVersion": "3.x 4.x 5.x",
+    "grafanaDependency": ">=8.0.0",
     "plugins": []
   }
 }
